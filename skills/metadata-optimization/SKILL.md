@@ -139,11 +139,28 @@ Include for each:
 
 ### Keyword Coverage Matrix
 
-| Keyword | Title | Subtitle | Keyword Field | Total Coverage |
-|---------|-------|----------|---------------|---------------|
-| [kw1] | ✓ | | | Title |
-| [kw2] | | ✓ | | Subtitle |
-| [kw3] | | | ✓ | Keyword Field |
+Generate a matrix based on the platform:
+
+**iOS Matrix:**
+| Keyword | Title | Subtitle | Keyword Field |
+|---------|-------|----------|---------------|
+| [kw1]   | ✓     |          |               |
+
+**Android Matrix:**
+| Keyword | Title | Short Desc | Full Desc (SEO) |
+|---------|-------|------------|-----------------|
+| [kw1]   | ✓     |            | ✓ (3-5x)        |
+
+### Example Prompts for Claude
+
+```
+# iOS Metadata
+Write metadata for my meditation app (id: 544007664) targeting US users.
+
+# Android Metadata
+Write metadata for my photo editor (package: com.adobe.psmobile) targeting BR users.
+Include a keyword-rich 4000-char description.
+```
 
 ### Before/After Comparison
 

@@ -86,11 +86,17 @@ Google Play indexes descriptions per language. Each locale is a fresh keyword op
 
 ## Keyword Research for Play Store
 
-Use Appeeky keyword tools, then adapt for Play:
+Use Appeeky keyword tools. **For Android apps, always use the package name (e.g., `com.example.app`) instead of a numerical ID.**
 
 ```bash
-GET /v1/keywords/metrics?keywords=meditation,mindfulness,sleep sounds&country=us
+# 1. Expand keywords
 GET /v1/keywords/suggestions?term=meditation&country=us
+
+# 2. Get metrics for potential targets
+GET /v1/keywords/metrics?keywords=meditation,mindfulness,sleep sounds&country=us
+
+# 3. Analyze competitor rankings (Use package name)
+GET /v1/apps/com.headspace.android/keywords?country=us
 ```
 
 **Play-specific considerations:**

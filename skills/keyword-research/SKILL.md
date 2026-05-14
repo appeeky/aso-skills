@@ -25,34 +25,27 @@ Start with the user's seed keywords and expand using multiple methods:
 
 **Apple Search Suggestions**
 - Use each seed keyword to get autocomplete suggestions
-- Try variations: "[keyword] app", "[keyword] for [audience]", "best [keyword]"
 - Note long-tail suggestions — these often have lower competition
 
 **Competitor Keywords**
 - Pull keyword rankings for top 3-5 competitors
 - Identify keywords competitors rank for that the user doesn't
-- Look for keywords where competitors rank poorly (opportunity)
 
 **Category Analysis**
 - What keywords do top apps in the category target?
-- Are there category-specific terms the user is missing?
 
-**Synonym & Related Terms**
-- Generate synonyms and related terms for each seed keyword
-- Consider how users actually describe the problem (not the solution)
-- Think about misspellings and abbreviations users might search
+### Phase 2: Evaluation (Platform Specific)
 
-### Phase 2: Keyword Evaluation
+#### iOS (Apple App Store)
+- **Primary Goal:** Title & Subtitle match.
+- **Hidden Keyword Field:** Use for secondary/long-tail terms. Comma-separated, no spaces.
+- **Focus:** Exact match ranking.
 
-For each keyword candidate, evaluate:
-
-| Signal | What to check | Why it matters |
-|--------|--------------|----------------|
-| **Search Volume** | Volume score (1-100) or traffic estimate | Higher volume = more potential impressions |
-| **Difficulty** | Competition score (1-100) | Lower difficulty = easier to rank |
-| **Relevance** | How closely it matches the app's function | Irrelevant traffic doesn't convert |
-| **Intent** | Is the searcher looking to download? | "how to edit photos" vs "photo editor app" |
-| **Current Rank** | Where the app currently ranks (if at all) | Easier to improve existing rank than start from zero |
+#### Android (Google Play Store)
+- **Primary Goal:** Semantic density in Full Description.
+- **Keyword Indexing:** Google indexes the **Title**, **Short Description**, and **Full Description**.
+- **Semantic Search:** Google's algorithm understands synonyms and related terms better than Apple.
+- **Focus:** Natural inclusion of keywords 3-5 times across the 4000-char description.
 
 ### Phase 3: Opportunity Scoring
 
@@ -98,7 +91,6 @@ Group keywords into strategic buckets:
 **Summary:**
 - Total keywords analyzed: [N]
 - High-opportunity keywords found: [N]
-- Estimated total monthly search volume: [N]
 
 **Top Keywords by Opportunity:**
 
@@ -106,12 +98,20 @@ Group keywords into strategic buckets:
 |---------|--------|------------|-----------|-------------|--------------|--------|
 | [keyword] | [1-100] | [1-100] | [1-100] | [score] | [rank or —] | Primary |
 
-**Keyword Strategy:**
+**Platform Strategy:**
 
+#### iOS (App Store)
 ```
 Title (30 chars):     [primary keyword 1] + [primary keyword 2]
 Subtitle (30 chars):  [secondary keywords]
 Keyword Field (100):  [remaining keywords, comma-separated]
+```
+
+#### Android (Google Play)
+```
+Title (30 chars):     [primary keyword]
+Short Desc (80):      [compelling sentence with 2-3 keywords]
+Full Desc Targets:    [List of 5-8 keywords to repeat 3-5x in the description]
 ```
 
 **Competitor Keyword Gap:**

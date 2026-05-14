@@ -36,34 +36,33 @@ Add to your Claude Code or Cursor MCP config:
 
 ### Get App Metadata
 
-Full iTunes metadata including title, description, rating, screenshots, and more.
+Full App Store or Google Play metadata including title, description, rating, screenshots, and more.
 
 ```bash
+# iOS (use Numerical App ID)
 GET /v1/apps/:id?country=us
+
+# Android (use Package Name)
+GET /v1/apps/:package_name?country=us
 ```
 
-**MCP:** `get_app(app_id, country)`
+**MCP:** `get_app(app_id_or_package, country)`
 
 **Use in skills:** `aso-audit`, `metadata-optimization`, `competitor-analysis`, `app-marketing-context`
 
-**Example:**
-```bash
-curl -H "X-API-Key: $KEY" \
-  "https://api.appeeky.com/v1/apps/544007664?country=us"
-```
+**Response Field Mapping:**
 
-**Response fields:**
-- `trackName` — App title
-- `description` — Full description
-- `averageUserRating` — Star rating
-- `userRatingCount` — Total ratings
-- `artworkUrl512` — App icon
-- `screenshotUrls` — iPhone screenshots
-- `ipadScreenshotUrls` — iPad screenshots
-- `primaryGenreName` — Category
-- `price` — Price (0 for free)
-- `version` — Current version
-- `releaseNotes` — What's New text
+| iOS Field (Apple) | Android Field (Google Play) | Description |
+|-------------------|-----------------------------|-------------|
+| `trackName` | `title` | The name of the app |
+| `description` | `description` | The full app description |
+| `artworkUrl512` | `icon` | High-res app icon URL |
+| `screenshotUrls` | `screenshots` | Phone screenshot URLs |
+| `averageUserRating`| `score` | Star rating (0-5) |
+| `userRatingCount` | `ratings` | Total number of ratings |
+| `primaryGenreName` | `category` | App category/genre |
+| `version` | `version` | Current version string |
+| `releaseNotes` | `recentChanges` | "What's New" text |
 
 ### App Intelligence Report
 

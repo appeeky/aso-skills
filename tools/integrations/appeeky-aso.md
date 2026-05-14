@@ -35,10 +35,13 @@ Comprehensive ASO health audit with a 0-100 score, 9-factor breakdown, and prior
 - High-impact recommendations (this week)
 - Strategic improvements (this month)
 
-**Example prompt for Claude:**
+**Example prompts for Claude:**
 ```
+# iOS Audit
 Run a full ASO audit for Headspace (id: 493145008) in the US market.
-Focus on keyword optimization opportunities.
+
+# Android Audit
+Run a full ASO audit for Spotify (package: com.spotify.music) in the UK.
 ```
 
 ### Validate Metadata
@@ -79,11 +82,14 @@ Generate optimized metadata suggestions based on target keywords and competitive
 - Character counts for each suggestion
 - Keyword coverage matrix
 
-**Example prompt for Claude:**
+**Example prompts for Claude:**
 ```
+# iOS Suggestions
 Suggest optimized metadata for my meditation app (id: 544007664).
-Target keywords: meditation, mindfulness, sleep, relaxation, breathing exercises.
-Market: US.
+
+# Android Suggestions
+Suggest optimized metadata for my fitness app (package: com.fitbit.FitbitMobile).
+Target keywords: workout, tracker, heart rate, weight loss.
 ```
 
 ### Find Keyword Opportunities
@@ -100,10 +106,14 @@ Discover untapped keywords with high search volume and low difficulty.
 - Whether the app currently ranks for it
 - Recommended action (add to title, subtitle, or keyword field)
 
-**Example prompt for Claude:**
+**Example prompts for Claude:**
 ```
+# iOS Opportunities
 Find keyword opportunities for Headspace (id: 493145008) in the US.
-Show me keywords with volume > 40 and difficulty < 50 that they're not ranking for.
+
+# Android Opportunities
+Find keyword opportunities for TikTok (package: com.zhiliaoapp.musically) in the BR market.
+Show keywords with volume > 60.
 ```
 
 ### Competitor ASO Report

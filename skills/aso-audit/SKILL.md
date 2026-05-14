@@ -47,25 +47,20 @@ Score each factor on a 0-10 scale. Calculate an overall ASO Score (weighted aver
 - 4-6: Missing primary keyword or poor balance
 - 0-3: Generic, no keywords, or truncated
 
-### 2. Subtitle (Weight: 15%) — iOS only
+### 2. Subtitle (iOS) / Short Description (Android) (Weight: 15%)
 
-| Check | What to look for |
-|-------|-----------------|
-| Keyword presence | Contains secondary keywords not in title? |
-| No repetition | Doesn't repeat title keywords? |
-| Value proposition | Communicates a benefit? |
-| Character usage | Using close to 30 characters? |
+| Platform | Field | What to look for |
+|----------|-------|-----------------|
+| **iOS** | Subtitle | Secondary keywords, benefit-driven, 30 chars |
+| **Android**| Short Description | **Highly indexed.** Packs primary keywords, 80 chars |
 
-### 3. Keyword Field (Weight: 15%) — iOS only
+### 3. Keyword Field (iOS Only) (Weight: 15%)
 
 | Check | What to look for |
 |-------|-----------------|
 | No repetition | No keywords repeated from title/subtitle? |
 | No spaces | Commas without spaces? |
-| Singular forms | Using singular (Apple indexes both forms)? |
 | Character usage | Using all 100 characters? |
-| Relevance | All keywords relevant to the app? |
-| No wasted words | No brand names, category names, or "app"? |
 
 ### 4. Description (Weight: 5% iOS / 15% Android)
 
@@ -139,6 +134,9 @@ Score each factor on a 0-10 scale. Calculate an overall ASO Score (weighted aver
 
 ### ASO Score Card
 
+Generate a score card based on the platform:
+
+**iOS Score Card:**
 ```
 Overall ASO Score: [X]/100
 
@@ -146,6 +144,21 @@ Title:              [X]/10  ████████░░
 Subtitle:           [X]/10  ██████░░░░
 Keyword Field:      [X]/10  ████░░░░░░
 Description:        [X]/10  ████████░░
+Screenshots:        [X]/10  ██████████
+Preview Video:      [X]/10  ██░░░░░░░░
+Ratings & Reviews:  [X]/10  ████████░░
+Icon:               [X]/10  ████████░░
+Keyword Rankings:   [X]/10  ██████░░░░
+Conversion Signals: [X]/10  ████░░░░░░
+```
+
+**Android Score Card:**
+```
+Overall ASO Score: [X]/100
+
+Title:              [X]/10  ████████░░
+Short Description:  [X]/10  ██████░░░░ (Critical)
+Full Description:   [X]/10  ████░░░░░░ (High Weight)
 Screenshots:        [X]/10  ██████████
 Preview Video:      [X]/10  ██░░░░░░░░
 Ratings & Reviews:  [X]/10  ████████░░
