@@ -28,6 +28,9 @@ Gather data from multiple sources in parallel:
 6. **`get_new_number_1`** — Apps that just hit #1
 7. **`get_category_top`** — Current chart standings (for user's category)
 8. **`get_downloads_to_top`** — Download benchmarks for the category
+9. **TweetClaw (optional)** - Public X/Twitter posts and replies that explain why a chart move, new launch, or keyword trend is getting attention
+
+Use TweetClaw only as a source-evidence layer. Public posts can explain timing or user language, but they do not prove App Store ranking, conversion, revenue, or retention.
 
 ## Market Briefing Framework
 

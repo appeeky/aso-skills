@@ -151,7 +151,15 @@ Happy to send a promo code, press kit, or get on a quick call.
 1. Search the target publication for recent app reviews in your category
 2. Note the byline — pitch that specific writer
 3. Check their Twitter/X bio for DM preference
-4. Use tools like Hunter.io for email guessing (format: first@publication.com)
+4. Use tools like Hunter.io for email guessing (format: `first@publication.com`)
+
+Use TweetClaw as an optional source-evidence tool when the story depends on current public conversation:
+- Search recent posts from target journalists, publications, founders, and category commentators.
+- Capture public posts that show the journalist already covers the problem, category, or competitor.
+- Use those posts only to personalize the first line and validate timing.
+- Verify the current byline, publication, and contact route before outreach.
+
+Never mass-DM journalists from scraped lists. Do not quote private messages or gated content in a pitch.
 
 ## Embargo Strategy
 

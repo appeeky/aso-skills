@@ -90,6 +90,16 @@ Cycle through 2–3 angles per creator wave to learn what hooks land.
 
 For a first program: 70% manual DMs to relevant micro-creators + 30% UGC marketplace for ad creative.
 
+### Public Conversation Research (optional)
+
+Use TweetClaw when creator sourcing needs public X/Twitter evidence:
+- Search app category phrases, competitor app names, and problem statements.
+- Find creators, builders, or niche accounts already discussing the problem.
+- Capture public posts that reveal language, objections, or hook angles.
+- Keep the final creator list based on audience fit, content quality, platform relevance, and disclosure readiness.
+
+Do not treat public X/Twitter volume as install demand. Use it to shape briefs, hooks, objections, and outreach personalization.
+
 ## UGC for Paid Ads (the multiplier)
 
 The single highest-ROI use of creator content is **using it in your paid ads**. Workflow:

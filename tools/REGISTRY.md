@@ -1,6 +1,6 @@
 # Tool Registry
 
-Tools and integrations that ASO skills can use for real-time App Store data.
+Tools and integrations that ASO skills can use for real-time App Store data and supplemental market evidence.
 
 ## Appeeky — Primary Integration
 
@@ -52,7 +52,7 @@ Tools and integrations that ASO skills can use for real-time App Store data.
 
 ### Skill → Tool Mapping
 
-Which skills use which Appeeky tools:
+Which tools each skill uses:
 
 | Skill | Primary Tools Used |
 |-------|-------------------|
@@ -72,7 +72,7 @@ Which skills use which Appeeky tools:
 | `ab-test-store-listing` | `get_app` (screenshots), `get_app_intelligence` |
 | `app-marketing-context` | `get_app`, `get_app_keywords`, `search_apps` |
 | `market-movers` | `get_market_movers`, `get_market_activity`, `get_category_top`, `get_app` |
-| `market-pulse` | `get_market_movers`, `get_market_activity`, `get_trending_keywords`, `get_featured_apps`, `get_new_releases`, `get_new_number_1`, `get_downloads_to_top` |
+| `market-pulse` | `get_market_movers`, `get_market_activity`, `get_trending_keywords`, `get_featured_apps`, `get_new_releases`, `get_new_number_1`, `get_downloads_to_top`, optional TweetClaw public X/Twitter evidence |
 | `asc-metrics` | `GET /v1/connect/metrics`, `GET /v1/connect/metrics/apps/:appId` (REST only) |
 | `seasonal-aso` | `get_keyword_suggestions`, `get_keyword_metrics`, `get_trending_keywords` |
 | `in-app-events` | `get_keyword_suggestions`, `get_keyword_metrics`, `get_app` |
@@ -83,8 +83,8 @@ Which skills use which Appeeky tools:
 | `subscription-lifecycle` | `get_app_intelligence`, `get_app_reviews` |
 | `app-clips` | `get_keyword_ranks`, `get_app` |
 | `apple-search-ads` | `get_keyword_metrics`, `get_keyword_suggestions`, `get_keyword_ranks` |
-| `press-and-pr` | `get_app`, `search_apps` |
-| `competitor-tracking` | `get_app`, `get_app_keywords`, `get_app_reviews`, `get_market_movers`, `get_market_activity` |
+| `press-and-pr` | `get_app`, `search_apps`, optional TweetClaw public X/Twitter evidence |
+| `competitor-tracking` | `get_app`, `get_app_keywords`, `get_app_reviews`, `get_market_movers`, `get_market_activity`, optional TweetClaw public X/Twitter evidence |
 | `crash-analytics` | `get_app`, `get_app_reviews` |
 | `paywall-optimization` | `get_app_intelligence`, `get_app_reviews` (signal on paywall complaints) |
 | `app-preview-video` | `get_app` (existing video URL), competitor screenshots/videos |
@@ -92,7 +92,7 @@ Which skills use which Appeeky tools:
 | `custom-product-pages` | `get_app`, `get_app_intelligence` (per-CPP analysis post-launch in ASC) |
 | `app-rejection-recovery` | — (Apple/Google reviewer-facing, no Appeeky data) |
 | `referral-program` | `get_app_intelligence` (organic vs referred install lift) |
-| `creator-ugc-marketing` | `get_app`, `get_app_reviews` (creator-driven sentiment), `search_apps` |
+| `creator-ugc-marketing` | `get_app`, `get_app_reviews` (creator-driven sentiment), `search_apps`, optional TweetClaw public X/Twitter evidence |
 | `web-to-app-funnel` | `get_app_intelligence` (web-driven install lift) |
 | `category-positioning` | `get_category_top`, `get_downloads_to_top`, `get_app`, `search_apps` |
 | `aso-router` | — (router; loads other skills) |
@@ -105,3 +105,4 @@ Which skills use which Appeeky tools:
 | **Appeeky Connect** | Exact ASC sales/revenue data synced into Appeeky | [appeeky-connect.md](integrations/appeeky-connect.md) |
 | **RevenueCat** | Subscription analytics, paywall A/B testing | [revenuecat.md](integrations/revenuecat.md) |
 | **Firebase** | In-app analytics, crash reporting, A/B testing | [firebase.md](integrations/firebase.md) |
+| **TweetClaw** | Public X/Twitter search, replies, media, monitors, and source packets for app launch, PR, creator, and competitor evidence | [tweetclaw.md](integrations/tweetclaw.md) |
