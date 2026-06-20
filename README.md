@@ -19,7 +19,11 @@ AI agent skills for App Store Optimization (ASO) and mobile app marketing. Built
 
 Powered by real App Store data via the [Appeeky API](https://docs.appeeky.com).
 
-A web version is also available, powered by AI chats and our MCP: [Appeeky Web](https://appeeky.com).
+Web, desktop, and mobile app platforms are also available, powered by AI chats and our MCP: [Appeeky Web](https://appeeky.com).
+
+ <a href="https://www.appeeky.com/desktop">
+<img width="1706" height="1204" alt="image" src="https://github.com/user-attachments/assets/6ce60216-fd3a-4e97-ab56-00d150f7947a" />
+  </a>
 
 ## Why This Exists
 
