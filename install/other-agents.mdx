@@ -83,7 +83,7 @@ ASO Skills is built on the open [Agent Skills standard](https://agentskills.io).
 
 Any AI assistant that reads `SKILL.md` files from a skills directory can use these skills, regardless of the platform. The standard is intentionally simple so that new tools can support it without custom integration work.
 
-```
+```text
 your-project/
 └── .agents/
     └── skills/
@@ -127,25 +127,25 @@ After copying the skills, open a chat or command input in your AI assistant and 
 
 <CardGroup cols={2}>
   <Card title="Router skill (any request)" icon="route">
-    ```
+    ```text
     /aso-skill Find the best keywords for a fitness app
     ```
     Routes your request to the right specialist skill automatically.
   </Card>
   <Card title="Direct skill invocation" icon="terminal">
-    ```
+    ```text
     /aso-audit
     ```
     Invokes the ASO audit skill directly. A structured scoring rubric response confirms the skill is loaded.
   </Card>
   <Card title="Keyword research" icon="key">
-    ```
+    ```text
     /keyword-research meditation app, US market
     ```
     Returns a tiered keyword list with volume and difficulty signals.
   </Card>
   <Card title="Market intelligence" icon="binoculars">
-    ```
+    ```text
     /market-movers Health & Fitness category
     ```
     Returns chart gainers, losers, and new entries with explanations.

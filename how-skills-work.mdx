@@ -1,5 +1,5 @@
 ---
-title: "How ASO Skills Work: The Complete Guide"
+title: "How ASO Skills Work: Skill Files, Data Pipeline & Chaining"
 sidebarTitle: "How Skills Work"
 description: "Learn what a skill file is, how the agent reads it, how live data flows through the pipeline, and how skills chain together for end-to-end ASO workflows."
 ---
@@ -54,7 +54,7 @@ Here is what happens from the moment you send a prompt to the moment you receive
 
 ### Example: aso-audit end-to-end
 
-```
+```text
 You: "Run an ASO audit for my app (id: 1617391485)"
 
 Agent:
@@ -72,9 +72,9 @@ Agent:
 
 ## The Router: Your Single Entry Point
 
-The router (`/aso-skill`) is its own specialist skill whose only job is dispatch. You never have to remember 30 skill names — just describe what you want in plain English.
+The router (`/aso-skill`) is its own specialist skill whose only job is dispatch. You never have to remember 30+ skill names — just describe what you want in plain English.
 
-```
+```text
 /aso-skill  →  routes any request to the right specialist skill automatically
 ```
 
@@ -96,7 +96,7 @@ If your request is genuinely ambiguous, the router asks one clarifying question 
 
 Skills are designed to be aware of each other. Each skill's output is built to feed naturally into the next skill's input. The most common chain in ASO looks like this:
 
-```
+```text
 aso-audit
   → flags weak spots (e.g. low keyword field score, keyword gap vs. competitors)
   → recommends keyword-research for gaps

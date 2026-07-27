@@ -136,7 +136,7 @@ After the skill runs, you receive four sections:
 
 The skill pulls live data from the Appeeky MCP Server using these tools:
 
-<CardGroup cols={3}>
+<CardGroup cols={2}>
   <Card title="aso_full_audit" icon="magnifying-glass-chart">
     Runs the full 10-factor audit and returns weighted scores with specific findings for each factor.
   </Card>
@@ -145,6 +145,9 @@ The skill pulls live data from the Appeeky MCP Server using these tools:
   </Card>
   <Card title="get_app_keywords" icon="key">
     Pulls your current keyword rankings so the audit can score your keyword coverage and spot gaps.
+  </Card>
+  <Card title="get_keyword_metrics" icon="chart-bar">
+    Returns search volume and difficulty scores for your target keywords, used to weight the keyword coverage findings in your score.
   </Card>
 </CardGroup>
 

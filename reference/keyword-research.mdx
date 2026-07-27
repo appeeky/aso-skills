@@ -1,5 +1,5 @@
 ---
-title: "Keyword Research — ASO Keyword Strategy"
+title: "Keyword Research Skill — App Store Keyword Strategy"
 sidebarTitle: "Keyword Research"
 description: "Discover high-value App Store keywords ranked by Opportunity Score and organized into primary, secondary, and long-tail tiers ready to implement."
 ---
@@ -58,14 +58,14 @@ The skill runs four phases to build your keyword strategy:
   Every keyword receives an Opportunity Score calculated as:
 
   ```
-  Opportunity = (Volume × 0.4) + ((100 − Difficulty) × 0.3) + (Relevance × 0.3)
+  Opportunity Score = Volume × (1 − Difficulty) × Relevance  [normalized 0–100]
   ```
 
-  This balances reach against achievability — a high-volume keyword you can't rank for scores lower than a moderate-volume keyword where you have a real shot.
+  All three inputs are on a 0–1 scale before multiplication: Volume and Difficulty are normalized from their raw 1–100 scores, and Relevance is your manual 0–1 assessment. This multiplicative formula means a keyword weak on any single dimension — very high difficulty, very low volume, or poor relevance — scores low overall, regardless of how strong the other two signals are.
 </Accordion>
 
 <Accordion title="Phase 4 — Keyword Grouping">
-  Keywords are sorted into four strategic tiers: **Primary** (3–5 keywords for your title and subtitle), **Secondary** (5–10 for subtitle and keyword field), **Long-tail** (10–20 for keyword field fill), and **Aspirational** (3–5 high-difficulty targets to track for future cycles).
+  Keywords are sorted into three strategic tiers: **Primary** (top 5–7 keywords by Opportunity Score — place in your title and subtitle), **Secondary** (keywords ranked 8–20 — target in subtitle and keyword field), and **Long-tail** (all remaining relevant keywords — fill the rest of your keyword field and rotate based on performance).
 </Accordion>
 
 ## Output
