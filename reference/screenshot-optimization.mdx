@@ -1,0 +1,61 @@
+---
+title: "Screenshot Optimization: App Store Creative Strategy"
+sidebarTitle: "Screenshots"
+description: "Design all 10 screenshot slots with benefit-driven captions, keyword-rich text overlays, and a competitor audit to maximize App Store conversion rate."
+---
+
+The `/screenshot-optimization` skill builds a complete screenshot strategy — from hook to call-to-action — covering all 10 App Store slots with design briefs, text overlay copy, layout guidance, and a side-by-side competitor audit.
+
+## Invoke
+
+```
+/screenshot-optimization
+```
+
+## What You Get
+
+- **10-slot screenshot plan** — per-slot brief with caption copy, screen to show, layout type, and visual focal point
+- **Text overlay copy** — benefit-driven headlines (4–6 words each) for every slot
+- **Design brief** — color palette, font recommendations, layout templates, and device frame guidance for your designer (or for DIY tools)
+- **Competitor screenshot audit** — structured comparison of your creative against up to 3 competitors
+
+## Example Prompts
+
+```
+"Create a screenshot strategy for my meditation app (id: 6447810428)"
+"My first screenshot isn't converting — give me 3 better hook options"
+"Audit my screenshots against Headspace and Calm"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_app` | Fetch your current screenshots, metadata, and rating |
+| `get_competitor_screenshots` | Pull competitor screenshot sets for the audit table |
+
+## Screenshot Slot Framework
+
+| Slot | Role | Goal |
+|------|------|------|
+| 1 | **Hook** | Answer "What does this do and why do I need it?" |
+| 2–3 | **Core value** | Show the two most compelling features |
+| 4–7 | **Feature showcase** | One benefit per slot with supporting UI |
+| 8–9 | **Trust & differentiation** | Social proof, awards, unique advantages |
+| 10 | **Call to action** | Recap + download trigger |
+
+<Note>
+  Apple's semantic search **indexes text visible in screenshots**. Use keyword-rich captions in your text overlays — they contribute to your app's discoverability in App Store Search, not just conversion.
+</Note>
+
+<Accordion title="What makes a high-converting first screenshot?">
+  The first screenshot must answer "What does this app do and why should I care?" in under 3 seconds. Proven patterns include: a benefit headline paired with your core UI screen, a before/after transformation, or social proof ("5M+ users") anchored to your main feature. Avoid welcome screens, login screens, or any screen that doesn't demonstrate immediate value.
+</Accordion>
+
+<Accordion title="Should I use device frames or go frameless?">
+  Both work — the key is consistency. Frameless (full-bleed UI) feels modern and shows more content. Device frames add context for utility apps where the "app on a phone" framing is part of the story. Test both using `/ab-test-store-listing` if your volume supports it.
+</Accordion>
+
+<Tip>
+  Always test your screenshots at thumbnail size (roughly 120×214px for portrait) — that's how they appear in search results. If your text overlay is unreadable at that size, increase your font size before publishing.
+</Tip>

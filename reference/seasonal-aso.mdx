@@ -1,0 +1,64 @@
+---
+title: "Seasonal ASO: Holiday & Trending Keyword Strategy"
+sidebarTitle: "Seasonal ASO"
+description: "Capitalize on holidays, seasonal events, and trending moments by updating your App Store metadata at the right time to capture high-intent keyword spikes."
+---
+
+The `/seasonal-aso` skill helps you identify, plan, and execute App Store metadata updates around calendar events, holidays, and viral trending moments — so you rank for high-volume seasonal keywords exactly when users are searching for them.
+
+## Invoke
+
+```
+/seasonal-aso
+```
+
+## What You Get
+
+- **Seasonal keyword calendar** — prioritized keyword list for your event with volume, difficulty, and relevance scores
+- **Metadata swap strategy** — which fields to change (keyword field, subtitle, promotional text) and what to keep evergreen
+- **Timing checklist** — day-by-day schedule counting back from the peak window
+- **Trending-moment tactics** — rapid-response playbook for non-calendar viral trends
+
+## Example Prompts
+
+```
+"What seasonal keywords should I add for Christmas? My app is a meal planner."
+"Help me plan a Back to School campaign for my study app (id: 1234567890)"
+"There's a trending fitness challenge going viral — how do I capitalize on it?"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_trending_keywords` | Spot keywords with recent volume spikes |
+| `get_keyword_suggestions` | Find seasonal keyword variations for your app category |
+| `get_keyword_metrics` | Validate volume and difficulty for candidate seasonal terms |
+
+<Note>
+  Metadata takes **1–3 days to index** after submission. Submit keyword and subtitle changes at least **5 days before** the event peak to account for review time. Update promotional text immediately — it goes live without a review.
+</Note>
+
+## Seasonal Calendar Reference
+
+| Event | Peak Window | Lead Time Needed |
+|-------|-------------|-----------------|
+| New Year | Dec 26 – Jan 7 | Submit by Dec 21 |
+| Valentine's Day | Feb 1–14 | Submit by Jan 27 |
+| Back to School | Jul 15 – Sep 10 | Submit by Jul 10 |
+| Halloween | Oct 1–31 | Submit by Sep 25 |
+| Christmas | Dec 1–26 | Submit by Nov 24 |
+
+## Seasonal vs Evergreen Trade-offs
+
+<Accordion title="When should I swap evergreen keywords for seasonal ones?">
+  Only replace keywords that are already **underperforming** — low rankings and low installs. Never sacrifice a high-ranking evergreen keyword for a seasonal speculation. The skill scores each swap and flags risky replacements automatically.
+</Accordion>
+
+<Accordion title="How do I handle non-calendar viral trends?">
+  For trending moments (news events, viral content, app store trends), use `get_trending_keywords` with a 3-day lookback window. Act within **24–48 hours** — trending windows are short. Only update promotional text (instant, no review required) and revert after the trend fades (typically 3–7 days).
+</Accordion>
+
+<Tip>
+  Promotional text (170 characters) is your fastest lever — it updates without App Review. Always update it for seasonal events even if you don't touch your keyword field or subtitle.
+</Tip>

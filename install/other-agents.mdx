@@ -1,0 +1,164 @@
+---
+title: "Install ASO Skills in Windsurf, Codex & Other Agents"
+sidebarTitle: "Other Agents"
+description: "Install ASO Skills into Windsurf, Codex, or any Agent Skills-compatible AI tool. One universal manual install works across every supported platform."
+---
+
+ASO Skills follows the open [Agent Skills standard](https://agentskills.io), which means any AI coding tool that reads `SKILL.md` files can use them — not just Cursor and Claude Code. Windsurf, Codex, and any other Agent Skills-compatible assistant work with the same universal install: clone the repository, then copy the `skills/` directory to the right folder for your tool.
+
+## Universal Manual Install
+
+The steps below work for every supported platform. The only thing that changes between tools is the destination directory.
+
+<Steps>
+  <Step title="Clone the ASO Skills repository">
+    Open your terminal and run:
+
+    ```bash
+    git clone https://github.com/eronred/aso-skills.git
+    ```
+  </Step>
+  <Step title="Create the skills directory for your tool">
+    Find the right directory for your AI assistant in the table below, then create it if it doesn't exist yet.
+
+    For **Windsurf**:
+    ```bash
+    mkdir -p .agents/skills
+    ```
+
+    For **Codex**:
+    ```bash
+    mkdir -p .codex/skills
+    ```
+
+    For any other **Agent Skills-compatible tool**:
+    ```bash
+    mkdir -p .agents/skills
+    ```
+  </Step>
+  <Step title="Copy the skills into place">
+    Replace `<skills-dir>` with the correct path for your platform (see step 2):
+
+    ```bash
+    cp -r aso-skills/skills/* <skills-dir>/
+    ```
+
+    For example, for Windsurf:
+    ```bash
+    cp -r aso-skills/skills/* .agents/skills/
+    ```
+
+    Or to install only specific skills:
+    ```bash
+    cp -r aso-skills/skills/aso-audit .agents/skills/
+    cp -r aso-skills/skills/keyword-research .agents/skills/
+    cp -r aso-skills/skills/market-movers .agents/skills/
+    ```
+  </Step>
+</Steps>
+
+---
+
+## Skills Directory by Platform
+
+Each Agent Skills-compatible tool looks for `SKILL.md` files in a specific directory. Use the correct path for your assistant:
+
+| Platform | Skills Directory | Install Status |
+|---|---|---|
+| **Cursor** | `.cursor/skills/` | Fully supported |
+| **Claude Code** | `.claude/skills/` | Fully supported |
+| **Windsurf** | `.agents/skills/` | Compatible |
+| **Codex** | `.codex/skills/` | Compatible |
+| **Any Agent Skills tool** | `.agents/skills/` | Compatible |
+
+<Note>
+  For Cursor and Claude Code, dedicated installation guides cover faster methods — see [Install for Cursor](/install/cursor) and [Install for Claude Code](/install/claude-code).
+</Note>
+
+---
+
+## The Agent Skills Standard
+
+ASO Skills is built on the open [Agent Skills standard](https://agentskills.io). Each skill is a directory containing a `SKILL.md` file — a structured document that gives your AI agent a complete expert framework: the methodology, scoring rubrics, decision trees, and output templates for that ASO task.
+
+Any AI assistant that reads `SKILL.md` files from a skills directory can use these skills, regardless of the platform. The standard is intentionally simple so that new tools can support it without custom integration work.
+
+```
+your-project/
+└── .agents/
+    └── skills/
+        ├── aso-audit/
+        │   └── SKILL.md
+        ├── keyword-research/
+        │   └── SKILL.md
+        ├── market-movers/
+        │   └── SKILL.md
+        └── ...
+```
+
+Skills can also reference each other — for example, `aso-audit` may recommend following up with `keyword-research`, which feeds into `metadata-optimization`. The agent orchestrates this automatically as long as all referenced skills are present in the directory.
+
+---
+
+## Optional: Connect the Appeeky MCP Server
+
+Skills work out of the box with built-in expert ASO frameworks and general knowledge. For real-time App Store data — live keyword volumes, competitor metadata, download estimates, and chart movements — connect the Appeeky MCP Server.
+
+Add the following to your agent's MCP configuration file (the exact filename varies by tool — check your assistant's documentation):
+
+```json
+{
+  "mcpServers": {
+    "appeeky": {
+      "url": "https://mcp.appeeky.com/mcp",
+      "headers": { "Authorization": "Bearer apk_your_key_here" }
+    }
+  }
+}
+```
+
+Replace `apk_your_key_here` with your Appeeky API key. See the [Appeeky MCP guide](/guides/appeeky-mcp) for full setup instructions.
+
+---
+
+## Testing Your Installation
+
+After copying the skills, open a chat or command input in your AI assistant and try one of these prompts:
+
+<CardGroup cols={2}>
+  <Card title="Router skill (any request)" icon="route">
+    ```
+    /aso-skill Find the best keywords for a fitness app
+    ```
+    Routes your request to the right specialist skill automatically.
+  </Card>
+  <Card title="Direct skill invocation" icon="terminal">
+    ```
+    /aso-audit
+    ```
+    Invokes the ASO audit skill directly. A structured scoring rubric response confirms the skill is loaded.
+  </Card>
+  <Card title="Keyword research" icon="key">
+    ```
+    /keyword-research meditation app, US market
+    ```
+    Returns a tiered keyword list with volume and difficulty signals.
+  </Card>
+  <Card title="Market intelligence" icon="binoculars">
+    ```
+    /market-movers Health & Fitness category
+    ```
+    Returns chart gainers, losers, and new entries with explanations.
+  </Card>
+</CardGroup>
+
+If your agent returns a structured, framework-driven response, the installation is working correctly. If it gives a generic answer, confirm that `SKILL.md` files are present in the target directory by running:
+
+```bash
+ls .agents/skills/aso-audit/
+# Expected output: SKILL.md
+```
+
+<Tip>
+  If your AI tool doesn't recognize slash commands, try asking naturally: _"Use the aso-audit skill to evaluate my app listing"_. Tools that read `SKILL.md` files will load the framework even without explicit slash-command support.
+</Tip>

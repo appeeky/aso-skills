@@ -1,0 +1,9 @@
+# Exclude source skill SKILL.md files from documentation build
+skills/*/
+tools/
+
+# Exclude other source files
+AGENTS.md
+CLAUDE.md
+validate-skills.sh
+cover.png

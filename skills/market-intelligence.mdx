@@ -1,0 +1,227 @@
+---
+title: "Market Intelligence: App Store Movers & Pulse"
+sidebarTitle: "Market Intelligence"
+description: "Track App Store chart movements, spot trending keywords, and get a full market briefing for any category — all from your AI agent."
+---
+
+Market intelligence tells you what's happening in the App Store *right now* — which apps are climbing, which are falling, what keywords are spiking, and what Apple is featuring. Two skills power this view: **Market Movers** for focused chart-rank analysis, and **Market Pulse** for a complete market briefing that combines movers, keywords, featuring, and new launches in a single snapshot. Use them together to stay a step ahead of your competitors.
+
+<Tabs>
+  <Tab title="Market Movers">
+
+    ## Track Chart Gainers, Losers & New Entries
+
+    Market Movers zooms in on chart rank changes — who's rising fast, who's slipping, which apps just broke into the top 100, and which dropped out. For each significant movement it explains *why* the shift likely happened (viral moment, Apple featuring, ad campaign, seasonal spike) and what you can learn from it.
+
+    **Invoke:** `/market-movers`
+
+    ### What It Covers
+
+    <CardGroup cols={2}>
+      <Card title="Top Gainers" icon="arrow-trend-up">
+        Apps with the biggest positive rank movements, with analysis of what's driving the surge and whether the gain is likely to hold.
+      </Card>
+      <Card title="Top Losers" icon="arrow-trend-down">
+        Apps shedding ranks fast — and whether each drop signals a competitive opportunity opening up for you.
+      </Card>
+      <Card title="New Entries" icon="sparkles">
+        Apps that entered the top 100 for the first time. Understand their launch strategy and whether they compete in your category.
+      </Card>
+      <Card title="Dropped Out" icon="circle-minus">
+        Apps that fell below the top 100 — useful for spotting gaps a well-timed push could fill.
+      </Card>
+    </CardGroup>
+
+    ### How to Use It
+
+    <Steps>
+      <Step title="Invoke the skill">
+        Type `/market-movers` in your AI agent (Cursor, Claude Code, etc.).
+      </Step>
+      <Step title="Set your scope">
+        The skill asks for chart type (top-free, top-paid, or top-grossing), category, and country. Defaults to top-free / All Categories / US if you skip these.
+      </Step>
+      <Step title="Choose your view">
+        Ask for a quick summary (3–5 bullet headline), a detailed report with full tables, or an alert-style digest you can share with your team.
+      </Step>
+      <Step title="Act on the insights">
+        The skill surfaces an **Immediate Opportunity**, **Threat Assessment**, **Timing Insight**, and **Strategy Takeaway** tailored to your app based on what it finds in the data.
+      </Step>
+    </Steps>
+
+    ### Example Prompt
+
+    ```text
+    What apps are rising in the free charts right now?
+    Show me top gainers in Games and any new entries.
+    ```
+
+    ### Output Format
+
+    The skill produces three formats on request:
+
+    <Accordion title="Quick Summary (default)">
+      Three to five bullet points covering the most important movements and their implications — perfect for a daily check-in.
+
+      ```text
+      🟢 GAINERS: Duolingo +45, Headspace +23, BeReal +18
+      🔴 LOSERS: App D -32, App E -19
+      🆕 NEW: App F entered at #7, App G at #34
+      ⬇️ OUT: App H dropped from #89
+      ```
+    </Accordion>
+
+    <Accordion title="Detailed Report">
+      Full tables for gainers, losers, new entries, and exits — with per-app analysis of likely drivers, sustainability of the move, and category-level volatility stats.
+    </Accordion>
+
+    <Accordion title="Recommendations Table">
+      A prioritised action table (Priority → Action → Why → Expected Impact) you can paste directly into your sprint planning or share with your growth team.
+    </Accordion>
+
+    ### MCP Tools Used
+
+    When the [Appeeky MCP Server](https://docs.appeeky.com/mcp) is connected, the skill pulls live data via:
+
+    | Tool | What It Fetches |
+    |------|----------------|
+    | `get_market_movers` | Top gainers, losers, new entries, and apps that dropped out |
+    | `get_market_activity` | Chronological feed of all significant chart movements |
+    | `get_category_top` | Current chart standings for context and benchmarking |
+
+    <Note>
+      Without the Appeeky MCP Server connected, the skill uses your app's context file and general ASO knowledge to provide frameworks and guidance. Connect Appeeky for live chart data.
+    </Note>
+
+    ### Related Skills
+
+    - **Market Pulse** (below) — combine movers with keywords, featuring, and new launches
+    - [`/competitor-analysis`](/reference/competitor-analysis) — deep-dive any app spotted in the movers list
+    - [`/app-launch`](/skills/app-launch) — use market timing insights to pick your launch window
+
+    <Card title="Full Market Movers Reference" icon="book" href="/reference/market-movers">
+      See the complete skill specification including all analysis frameworks, output templates, and category-specific patterns.
+    </Card>
+
+  </Tab>
+  <Tab title="Market Pulse">
+
+    ## Your Full App Store Market Briefing
+
+    Market Pulse aggregates every major signal into a single view: chart movements, trending keywords, Apple featuring, new launches, and download benchmarks. Run it weekly to stay current on your category, or daily during a launch or competitive surge.
+
+    **Invoke:** `/market-pulse`
+
+    ### What It Covers
+
+    <CardGroup cols={2}>
+      <Card title="Chart Dynamics" icon="chart-line">
+        Top gainers and losers, new entries, and — if you have an app — your exact position, nearest rivals, and downloads needed to move up ten spots.
+      </Card>
+      <Card title="Trending Keywords" icon="magnifying-glass-chart">
+        Keywords with rising search volume, tagged by growth rate, difficulty, and relevance to your category. Seasonal and event-driven trends are called out.
+      </Card>
+      <Card title="Apple Featuring" icon="star">
+        App of the Day, Game of the Day, and active editorial collections — plus a read on whether Apple's current theme is a fit for your app.
+      </Card>
+      <Card title="New Launches" icon="rocket">
+        Recent releases in your category with their current rank, rating, and days since launch — so you catch emerging threats early.
+      </Card>
+    </CardGroup>
+
+    ### How to Use It
+
+    <Steps>
+      <Step title="Invoke the skill">
+        Type `/market-pulse` in your AI agent.
+      </Step>
+      <Step title="Set your scope">
+        Choose entire App Store or a specific category, your country (default: US), and your preferred format — quick briefing, detailed weekly report, or competitive focus.
+      </Step>
+      <Step title="Review the headlines">
+        The skill leads with 3–5 headline events: the most significant movement, any featuring impact, keyword shifts, and new threats or opportunities.
+      </Step>
+      <Step title="Read your category health check">
+        Chart volatility, new entrant count (last 7 days), average top-10 rating, and download threshold give you a quick read on how competitive the moment is.
+      </Step>
+      <Step title="Run it weekly">
+        Compare movers week-over-week, track which trending keywords sustained growth, and monitor whether featuring patterns forecast future trends.
+      </Step>
+    </Steps>
+
+    ### Example Prompt
+
+    ```text
+    Give me a full market pulse for the Health & Fitness category —
+    include chart movers, trending keywords, and featured apps.
+    ```
+
+    ### Output Formats
+
+    <Accordion title="Quick Briefing (default)">
+      A scannable digest with headlines, chart movers, trending keywords, today's featuring, and three actionable takeaways — one opportunity, one threat, one tactical next step.
+
+      ```markdown
+      ## App Store Pulse — [Date]
+
+      ### 🔥 Headlines
+      - New social app enters top 5 free
+      - Apple featuring Health & Fitness apps this week
+      - "AI photo editor" search volume surging +340%
+
+      ### 📊 Chart Movers
+      Top Gainers: Headspace +23, Calm +11
+      Top Losers: App D -32
+      New: App F entered at #7
+
+      ### 📈 Trending
+      Keywords rising: "meditation for sleep" (+180%), "habit tracker" (+95%)
+
+      ### ⭐ Featured Today
+      App of the Day: [App]
+      Theme: Mindfulness & Wellness
+
+      ### 💡 What This Means for You
+      - Opportunity: competitor dropping — push keyword spend now
+      - Watch: new entrant App F targeting your core keywords
+      - Next step: submit for editorial featuring this week
+      ```
+    </Accordion>
+
+    <Accordion title="Detailed Weekly Report">
+      All sections expanded with full data tables, competitor tracking across chart and keyword dimensions, and a strategic recommendation set for the week ahead.
+    </Accordion>
+
+    <Accordion title="Competitive Focus">
+      The entire briefing filtered through your competitive landscape — how competitors moved in charts, which of their keywords are trending, whether any are being featured, and new competitive launches to watch.
+    </Accordion>
+
+    ### MCP Tools Used
+
+    When the [Appeeky MCP Server](https://docs.appeeky.com/mcp) is connected, the skill pulls live data via:
+
+    | Tool | What It Fetches |
+    |------|----------------|
+    | `get_market_movers` | Chart gainers, losers, new entries, and exits |
+    | `get_market_activity` | All significant chart movements in chronological order |
+    | `get_trending_keywords` | Keywords with rising search volume and growth rates |
+    | `get_featured_apps` | What Apple is featuring today across all editorial slots |
+    | `get_new_releases` | Recent app launches with rank, rating, and developer info |
+
+    <Tip>
+      Run Market Pulse on the same day each week and compare snapshots. The delta — which keywords *stayed* trending, which movers *held* their gains — is often more valuable than any single snapshot.
+    </Tip>
+
+    ### Related Skills
+
+    - **Market Movers** (above) — focus purely on chart rank changes
+    - [`/keyword-research`](/reference/keyword-research) — explore any trending keyword in depth
+    - [`/app-store-featured`](/reference/app-store-featured) — build a strategy to get featured based on current patterns
+    - [`/ua-campaign`](/reference/ua-campaign) — adjust paid spend based on category benchmarks from the pulse
+
+    <Card title="Full Market Pulse Reference" icon="book" href="/reference/market-pulse">
+      See the complete skill specification including all briefing formats, category health indicators, and recurring-use guidance.
+    </Card>
+
+  </Tab>
+</Tabs>

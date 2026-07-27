@@ -1,0 +1,163 @@
+---
+title: "Market Pulse — Full App Store Market Briefing"
+sidebarTitle: "Market Pulse"
+description: "Get a complete App Store market briefing combining chart movements, trending keywords, featured apps, and new launches in a single structured report."
+---
+
+The Market Pulse skill aggregates multiple data streams — chart movements, trending keywords, Apple featuring activity, new launches, and category health metrics — into a single market briefing you can read in five minutes. Think of it as your weekly App Store newspaper: everything significant that happened, what it means, and what you should do about it.
+
+## Invoke
+
+```
+/market-pulse
+```
+
+You can also describe your goal naturally and let the router handle it:
+
+```
+/aso-skill  Give me a market briefing for the Health & Fitness category
+/aso-skill  What's happening on the App Store this week?
+/aso-skill  Weekly market overview for the Productivity category in the US
+```
+
+<Note>
+  Market Pulse is the widest-angle view in the library. For a focused drill-down on chart rank changes only, use [`/market-movers`](/reference/market-movers). For keyword trends only, use [`/keyword-research`](/reference/keyword-research).
+</Note>
+
+## Inputs
+
+<ParamField path="category" type="string" default="All">
+  The App Store category to scope the briefing. Omit for a broad cross-category overview, or specify a category (e.g. `Games`, `Finance`, `Productivity`) to get a briefing focused on your competitive space.
+</ParamField>
+
+<ParamField path="country" type="string" default="US">
+  The country market for the briefing. Featuring, chart dynamics, and trending keywords all vary by country.
+</ParamField>
+
+<ParamField path="format" type="string" default="quick briefing">
+  `quick briefing` returns the headline summary format (default). `detailed report` expands every section with full data tables. `competitive focus` filters the briefing through your competitive landscape from `app-marketing-context.md`.
+</ParamField>
+
+## Output
+
+### Quick Briefing (Default)
+
+A structured five-section briefing you can scan in minutes:
+
+```markdown
+## App Store Pulse — January 15, 2025
+
+### 🔥 Headlines
+- Calm surged +45 in Health & Fitness following Apple's "New Year" feature
+- "AI habit tracker" search volume is up 340% week-over-week
+- Three new meditation apps launched this week — one entered top 50
+
+### 📊 Chart Movers
+Top Gainers: Calm +45, Streaks +23, AutoSleep +18
+Top Losers:  Sleep Cycle −28, Pillow −14
+New:         NovaSleep entered at #34, Breathwork AI at #67
+Out:         Relax Melodies dropped from #89
+
+### 📈 Trending
+Keywords rising: "AI habit tracker" (+340%), "sleep quality" (+85%),
+                 "morning routine app" (+62%)
+
+### ⭐ Featured Today
+App of the Day:  Endel
+Game of the Day: Alto's Odyssey
+Theme:           "New Year, New You" — Health & Fitness collection
+
+### 💡 What This Means for You
+- Opportunity: "AI habit tracker" is surging — add it to your keyword field now
+- Watch:       NovaSleep entered top 50 in your category — monitor weekly
+- Threat:      Apple is featuring competitors in your category this week
+```
+
+### Detailed Report
+
+Expands every section with full data tables:
+
+**Chart Dynamics** — Full gainers and losers tables with rank change, current/previous position, rating, and likely driver analysis for each significant movement.
+
+**Trending Keywords** — Full keyword table with volume, growth percentage, difficulty, and relevance to your category:
+
+| Keyword | Growth | Volume | Difficulty | Relevance |
+|---|---|---|---|---|
+| AI habit tracker | +340% | 61 | 38 | High |
+| sleep quality app | +85% | 54 | 44 | High |
+| morning routine | +62% | 47 | 31 | Medium |
+
+**Apple Featuring** — A table of every featured placement this week, including App of the Day, Game of the Day, and named editorial collections, with notes on whether any competitor is being featured and what theme Apple seems to be running.
+
+**New Launches & Breakouts** — Recent releases in your category with developer name, days since launch, current rank, and rating.
+
+**Category Health Check** — A snapshot of your category's competitive dynamics:
+
+| Indicator | Status | Trend |
+|---|---|---|
+| Chart volatility | High | ↑ |
+| New entrants (7 days) | 3 | → |
+| Average top-10 rating | 4.7 | → |
+| Downloads to reach top 10 | ~2,400/day | ↓ |
+| Keyword competition | Medium | ↑ |
+
+**Your App's Position** — If you've run `/app-marketing-context` or provide an App ID:
+
+| Metric | Value | Change |
+|---|---|---|
+| Current rank | #47 | +3 |
+| Downloads to maintain rank | ~380/day | |
+| Downloads to move up 10 | ~650/day | |
+| Nearest competitor above | NovaSleep at #34 | |
+| Nearest competitor below | MindfulMe at #58 | |
+
+### Competitive Focus Format
+
+The briefing is filtered through your competitive landscape — highlighting only the movers, keywords, and featured apps that directly affect your category position. Ideal for weekly review meetings or sharing with a team.
+
+## Example Prompts
+
+```
+/market-pulse
+→ Category: Health & Fitness, Country: US, Format: quick briefing
+
+Give me a detailed weekly market report for Productivity apps in the UK
+
+What's Apple featuring this week, and does any of it affect my meditation app?
+
+Run a competitive-focus market pulse for my app (id: 1617391485)
+```
+
+## MCP Tools Used
+
+Market Pulse pulls from more data sources than any other skill in the library:
+
+| Tool | What It Fetches |
+|---|---|
+| `get_market_movers` | Chart gainers, losers, new entries, and exits |
+| `get_market_activity` | Chronological feed of all significant chart movements |
+| `get_trending_keywords` | Keywords with rising search volume and growth rates |
+| `get_featured_apps` | Current App of the Day, Game of the Day, and editorial collections |
+| `get_new_releases` | Recent app launches in the selected category |
+| `get_new_number_1` | Apps that just hit the #1 position in any category |
+
+## Tips
+
+<Tip>
+  **Run Market Pulse weekly on the same day.** Consistency turns snapshots into trends. After four weeks, you'll start seeing patterns — which days Apple updates featuring, how volatile your category is around weekends, which seasonal keywords reliably spike. That pattern knowledge is hard to build from one-off checks.
+</Tip>
+
+<Tip>
+  **Act on trending keywords within 24–48 hours.** A keyword surging +300% this week may peak and flatten in two weeks. The opportunity window for early movers — apps that add the keyword to their field before competition catches up — is narrow. Set a rule: if a trending keyword is relevant and has low difficulty, add it to your keyword field the same day you see it.
+</Tip>
+
+<Tip>
+  **Use the featuring data to inform your own pitch.** The featuring section shows you what themes Apple is running this week. If you see a collection called "New Year, New You" and your app fits, that's your cue to submit an In-App Event or reach out to an Apple editorial contact through App Store Connect. Featuring pitches are most effective when they align with Apple's current editorial direction.
+</Tip>
+
+## Related Skills
+
+- [`/market-movers`](/reference/market-movers) — Focused drill-down on chart rank changes only
+- [`/keyword-research`](/reference/keyword-research) — Explore any trending keywords surfaced here in more depth
+- [`/competitor-analysis`](/reference/competitor-analysis) — Deep dive on specific competitors you spot in the briefing
+- [`/app-marketing-context`](/reference/app-marketing-context) — Set up your app context to get a competitive-focus briefing automatically

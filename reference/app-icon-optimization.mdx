@@ -1,0 +1,61 @@
+---
+title: "App Icon Optimization: Design, Test & Convert"
+sidebarTitle: "Icon Optimization"
+description: "Audit your app icon, analyze category visual patterns, brief a designer with tested principles, and set up A/B tests via PPO or Play Experiments."
+---
+
+The `/app-icon-optimization` skill audits your current icon, analyzes how your category's top apps look, identifies differentiation opportunities, and produces a designer-ready brief — plus a step-by-step A/B testing plan using Apple Product Page Optimization or Google Play Experiments.
+
+## Invoke
+
+```
+/app-icon-optimization
+```
+
+## What You Get
+
+- **Icon audit score** — rated across clarity at 60×60px, color contrast, category differentiation, simplicity, and brand alignment
+- **Category differentiation analysis** — visual map of how your top 20 competitors look so you can stand out
+- **Designer brief** — brand colors, mood, reference icons, required deliverables, and test-size mockup requirements
+- **A/B testing setup guide** — step-by-step for Apple PPO (up to 3 variants) and Google Play Experiments
+
+## Example Prompts
+
+```
+"Audit my app icon and compare it to the top 10 productivity apps"
+"Brief a designer to create 3 icon variants for an A/B test"
+"My icon looks identical to my competitors — help me differentiate"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_app` | Fetch your current icon and metadata for the audit |
+| `get_category_screenshots` | Pull competitor icons and creative from your category |
+
+## Icon Design Principles
+
+| Principle | Rule |
+|-----------|------|
+| **Simplicity** | Maximum 2 elements — detail disappears at 60×60px |
+| **Color contrast** | Works on both white (light mode) and dark backgrounds |
+| **Recognizable mark** | Describable in 3 words or fewer |
+| **No text** | Illegible at small sizes; Apple discourages it |
+| **Category differentiation** | Visually distinct from your top 20 competitors |
+
+<Note>
+  Your icon appears in **every App Store search result** — it's the very first conversion point, before users read your title, see your rating, or view a single screenshot. A strong icon can lift tap-through rate by 20–40% with no other changes to your listing.
+</Note>
+
+<Accordion title="How do I set up an icon A/B test on iOS?">
+  Go to **App Store Connect → Your App → Product Page Optimization → Create Test**. Upload up to 3 icon variants, set traffic allocation (20–33% per variant), and run for a minimum of 7 days. The primary metric is install conversion rate (impressions → installs). You need at least 1,000 impressions per variant for a reliable signal.
+</Accordion>
+
+<Accordion title="What's the best thing to test first?">
+  Test one variable at a time: color scheme (same mark, three background colors), mark style (flat vs illustrated vs 3D), or dark vs light background. Avoid testing subtle variations — the difference needs to be significant enough to detect statistically. Start with the change you hypothesize will have the biggest visual impact on your category page.
+</Accordion>
+
+<Tip>
+  Before finalizing any icon design, export it at **60×60px** and view it in a mocked-up App Store search results row alongside your top competitors. This is the exact context users see — and it's the only quality gate that matters.
+</Tip>

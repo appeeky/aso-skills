@@ -1,0 +1,80 @@
+---
+title: "App Analytics: KPIs, Events & Dashboard Setup"
+sidebarTitle: "App Analytics"
+description: "Build an event tracking plan, configure analytics dashboards, and establish a KPI framework with category benchmarks for downloads, retention, ARPU, and LTV."
+---
+
+The `/app-analytics` skill helps you define what to measure, how to measure it, and how to interpret the results — from writing a complete event tracking plan with naming conventions to setting up executive and funnel dashboards benchmarked against your category.
+
+## Invoke
+
+```
+/app-analytics
+```
+
+## What You Get
+
+- **Event tracking plan** — complete list of events to implement with naming conventions, trigger conditions, and properties to capture
+- **Analytics dashboard setup** — executive dashboard (weekly), funnel dashboard (daily), and cohort dashboard (monthly) with the exact metrics for each
+- **KPI framework** — primary and secondary KPIs with category benchmarks for Downloads, Day-1/7/30 retention, ARPU, LTV, and ratings
+- **Analytics stack recommendation** — which tools to use (App Store Connect, Firebase, Mixpanel/Amplitude, RevenueCat, Adjust/AppsFlyer) based on your needs and budget
+
+## Example Prompts
+
+```
+"Build a complete analytics tracking plan for my habit tracker app"
+"My Day-30 retention is 4% — is that good for a productivity app?"
+"Set up my analytics dashboards — I'm using Firebase and RevenueCat"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_app_intelligence` | Benchmark category KPIs and download estimates |
+| `get_country_rankings` | Identify top markets for country-level dashboard segmentation |
+
+## Core KPI Framework
+
+### Acquisition
+
+| Metric | Formula | Benchmark |
+|--------|---------|-----------|
+| Impressions | — | Visibility signal |
+| Tap-Through Rate | Taps ÷ Impressions | > 5% (organic search) |
+| Conversion Rate | Downloads ÷ Page Views | > 30% (strong) |
+| Organic % | Organic ÷ Total Installs | Health of ASO |
+
+### Retention
+
+| Metric | All Apps Average | Good |
+|--------|----------------|------|
+| Day 1 retention | 25–30% | > 35% |
+| Day 7 retention | 10–15% | > 20% |
+| Day 30 retention | 4–6% | > 10% |
+| DAU/MAU (stickiness) | — | > 20% |
+
+### Revenue
+
+| Metric | Formula | Target |
+|--------|---------|--------|
+| ARPU | Revenue ÷ All Users | Category-dependent |
+| Trial-to-Paid | Paid ÷ Trial Starts | 40–60% |
+| LTV | ARPU × Avg Lifetime | > 3× CAC |
+| Churn Rate | Lost MRR ÷ Start MRR | < 5% monthly |
+
+<Note>
+  **App Store Connect analytics are free and first-party** — they should be your starting point before any third-party tool. The metrics available include impressions, product page views, downloads, conversion rate, proceeds, sessions, active devices, retention, and crash rate. Connect an Appeeky account for deeper benchmarking against category norms.
+</Note>
+
+<Accordion title="What events should I track as a minimum?">
+  At minimum, implement: `onboarding_completed`, your primary core action (e.g., `workout_completed`, `budget_created`), `paywall_viewed`, `trial_started`, `purchase_completed`, and `subscription_cancelled`. These six events — combined with App Store Connect data — cover the full acquisition-to-revenue funnel and let you diagnose most growth problems.
+</Accordion>
+
+<Accordion title="What analytics stack should I use?">
+  Start with **App Store Connect** (free, first-party) and **Firebase** (free, in-app events and retention). Add **RevenueCat** if you have subscriptions — it's the best-in-class tool for subscription analytics and paywall testing. Add **Adjust or AppsFlyer** only when you're running paid UA campaigns and need SKAdNetwork attribution. Don't over-instrument early — clean simple tracking beats complex incomplete tracking every time.
+</Accordion>
+
+<Tip>
+  Define your **activation event** — the single action that, when completed in session 1, most strongly predicts long-term retention. Use cohort analysis to find it, then redesign your onboarding to drive every new user toward that event. This one change often delivers more retention improvement than any push notification or re-engagement campaign.
+</Tip>

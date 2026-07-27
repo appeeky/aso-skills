@@ -1,0 +1,176 @@
+---
+title: "Install ASO Skills in Claude Code"
+sidebarTitle: "Claude Code"
+description: "Install all 30+ ASO Skills into Claude Code with one npx command, install only the skills you need, or clone the repo manually for full control."
+---
+
+Claude Code supports ASO Skills through the Agent Skills standard, meaning you can install the full collection with one command, cherry-pick only the skills you need, or clone the repository and copy files manually. The `npx skills add` method is the fastest path and works in any Claude Code project directory.
+
+## Method 1: Install All Skills (Recommended)
+
+Run this command in your project root to pull down the complete ASO Skills collection:
+
+```bash
+npx skills add eronred/aso-skills
+```
+
+This fetches all 30+ skills from GitHub and places them in `.claude/skills/` automatically. No configuration file changes required.
+
+---
+
+## Method 2: Install Specific Skills
+
+If you only need a subset of skills — useful for keeping your context lean or focusing on a single workflow — pass the `--skill` flag with the skill names you want:
+
+```bash
+npx skills add eronred/aso-skills --skill aso-audit keyword-research market-movers
+```
+
+You can install any combination of available skills in a single command. Here are some common bundles:
+
+<CardGroup cols={2}>
+  <Card title="ASO Core Bundle" icon="magnifying-glass-chart">
+    ```bash
+    npx skills add eronred/aso-skills \
+      --skill aso-audit \
+             keyword-research \
+             metadata-optimization \
+             competitor-analysis
+    ```
+  </Card>
+  <Card title="Market Intelligence Bundle" icon="binoculars">
+    ```bash
+    npx skills add eronred/aso-skills \
+      --skill market-movers \
+             market-pulse \
+             competitor-tracking \
+             seasonal-aso
+    ```
+  </Card>
+  <Card title="Growth Bundle" icon="rocket">
+    ```bash
+    npx skills add eronred/aso-skills \
+      --skill app-launch \
+             ua-campaign \
+             apple-search-ads \
+             in-app-events
+    ```
+  </Card>
+  <Card title="Revenue Bundle" icon="dollar-sign">
+    ```bash
+    npx skills add eronred/aso-skills \
+      --skill monetization-strategy \
+             paywall-optimization \
+             subscription-lifecycle \
+             retention-optimization
+    ```
+  </Card>
+</CardGroup>
+
+<Tip>
+  Not sure which skill you need? Install `aso-router` — it reads any natural-language ASO request and routes to the right specialist skill automatically, so you never need to remember individual names.
+</Tip>
+
+---
+
+## Method 3: Manual Clone and Copy
+
+Use this method when you want version control over your skills, need to modify them locally, or are working in an environment without `npx`.
+
+<Steps>
+  <Step title="Clone the repository">
+    ```bash
+    git clone https://github.com/eronred/aso-skills.git
+    ```
+  </Step>
+  <Step title="Create the Claude skills directory (if needed)">
+    ```bash
+    mkdir -p .claude/skills
+    ```
+  </Step>
+  <Step title="Copy all skills into place">
+    ```bash
+    cp -r aso-skills/skills/* .claude/skills/
+    ```
+
+    To install only specific skills, copy individual directories:
+
+    ```bash
+    cp -r aso-skills/skills/aso-audit .claude/skills/
+    cp -r aso-skills/skills/keyword-research .claude/skills/
+    ```
+  </Step>
+</Steps>
+
+---
+
+## Verify the Installation
+
+Open the Claude Code terminal in your project and invoke a skill directly:
+
+```
+/aso-audit
+```
+
+Or use the router for any free-form ASO question:
+
+```
+/aso-skill  Find the best keywords for a meditation app
+```
+
+A successful install returns a structured response following the skill's framework — a scoring rubric for `/aso-audit`, a keyword table for `/keyword-research`, and so on. If Claude responds with a generic answer instead, see the troubleshooting section below.
+
+---
+
+## Optional: Connect the Appeeky MCP Server
+
+Skills work immediately after installation using built-in expert frameworks. Connect the Appeeky MCP Server to unlock real-time data: live keyword volumes, competitor metadata, download estimates, chart positions, and trending keywords.
+
+Add the MCP server to your Claude Code configuration:
+
+```json
+{
+  "mcpServers": {
+    "appeeky": {
+      "url": "https://mcp.appeeky.com/mcp",
+      "headers": { "Authorization": "Bearer apk_your_key_here" }
+    }
+  }
+}
+```
+
+<Note>
+  **Claude Code vs Claude Desktop:** Claude Code connects to MCP servers using an API key in the `Authorization` header (as shown above). Claude Desktop uses OAuth for MCP authentication — the connection flow is different. If you're using Claude Desktop, follow the OAuth setup in the [Appeeky MCP guide](/guides/appeeky-mcp) instead.
+</Note>
+
+Replace `apk_your_key_here` with your Appeeky API key. Full setup instructions and API key generation are covered in the [Appeeky MCP guide](/guides/appeeky-mcp).
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="npx skills add fails or is not recognized">
+    Ensure you have Node.js 18+ installed. Run `node --version` to check. If `npx skills` isn't found, the Agent Skills CLI may not be installed — check that `npx` can reach the registry and try again, or fall back to the manual clone-and-copy method.
+  </Accordion>
+  <Accordion title="Skills installed but /aso-audit doesn't respond correctly">
+    Confirm the skill files are in `.claude/skills/` inside your project root. Run `ls .claude/skills/` — you should see a directory named `aso-audit` containing a `SKILL.md` file. If the directory is empty or missing, re-run the install command from the project root.
+  </Accordion>
+  <Accordion title="Agent gives generic ASO advice instead of following the skill">
+    Invoke skills using the slash command prefix (e.g., `/aso-audit`) to explicitly load the skill file. Free-form questions without the slash prefix may not trigger skill loading in all Claude Code versions. The `/aso-skill` router is a reliable fallback for any natural-language request.
+  </Accordion>
+  <Accordion title="How do I update skills to the latest version?">
+    For `npx` installs, re-run the original install command — it overwrites existing files with the latest versions:
+
+    ```bash
+    npx skills add eronred/aso-skills
+    ```
+
+    For manual installs, pull the latest changes and re-copy:
+
+    ```bash
+    cd aso-skills && git pull
+    cp -r skills/* ../.claude/skills/
+    ```
+  </Accordion>
+</AccordionGroup>

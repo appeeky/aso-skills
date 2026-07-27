@@ -1,0 +1,192 @@
+---
+title: "Quickstart: Install ASO Skills in 2 Minutes"
+sidebarTitle: "Quickstart"
+description: "Install ASO Skills into Cursor or Claude Code, optionally connect live App Store data, and run your first ASO audit in under two minutes."
+---
+
+You can go from zero to a full ASO audit in about two minutes. Pick your editor below, follow the steps, and then try one of the example prompts at the bottom of this page. No API key is required to get started — you can add live data later.
+
+## Prerequisites
+
+Before you begin, make sure you have one of the following installed:
+
+- **Cursor** — [cursor.com](https://cursor.com) (v0.40 or later recommended)
+- **Claude Code** — [docs.anthropic.com/claude-code](https://docs.anthropic.com/claude-code)
+
+That's it. ASO Skills works out of the box with the AI assistant built into both editors.
+
+---
+
+## Step 1 — Install ASO Skills
+
+<Tabs>
+  <Tab title="Cursor">
+    <Steps>
+      <Step title="Open Cursor Settings">
+        Press `Cmd+Shift+J` (macOS) or `Ctrl+Shift+J` (Windows/Linux) to open the Settings panel.
+      </Step>
+      <Step title="Navigate to Rules">
+        In the Settings panel, click **Rules** in the left sidebar.
+      </Step>
+      <Step title="Add a Remote Rule">
+        Click **Add Rule**, then select **Remote Rule (GitHub)** from the dropdown.
+      </Step>
+      <Step title="Paste the Repository URL">
+        Paste the following URL and confirm:
+
+        ```
+        https://github.com/eronred/aso-skills
+        ```
+
+        Cursor will fetch all skills from the repository and make them available to your AI agent immediately.
+      </Step>
+    </Steps>
+
+    <Tip>
+      You can also install skills at the project level (so teammates get them too) by running this command in your project root:
+
+      ```bash
+      git clone https://github.com/eronred/aso-skills.git && cp -r aso-skills/skills/* .cursor/skills/
+      ```
+    </Tip>
+  </Tab>
+  <Tab title="Claude Code">
+    <Steps>
+      <Step title="Open your terminal">
+        Open a terminal in your project directory or anywhere on your machine.
+      </Step>
+      <Step title="Run the install command">
+        ```bash
+        npx skills add eronred/aso-skills
+        ```
+
+        This fetches all skills and installs them into `.claude/skills/` in the current directory.
+      </Step>
+      <Step title="Verify the installation">
+        You should see a confirmation message listing the installed skills. Open Claude Code — the skills are now available to your agent.
+      </Step>
+    </Steps>
+
+    <Tip>
+      To install only specific skills rather than the full library, use the `--skill` flag:
+
+      ```bash
+      npx skills add eronred/aso-skills --skill aso-audit keyword-research
+      ```
+    </Tip>
+  </Tab>
+  <Tab title="Manual / Any Agent">
+    <Steps>
+      <Step title="Clone the repository">
+        ```bash
+        git clone https://github.com/eronred/aso-skills.git
+        ```
+      </Step>
+      <Step title="Copy skills to your agent's directory">
+        Copy the skills into whichever directory your agent reads from:
+
+        ```bash
+        # Cursor
+        cp -r aso-skills/skills/* .cursor/skills/
+
+        # Claude Code
+        cp -r aso-skills/skills/* .claude/skills/
+
+        # Any Agent Skills-compatible tool
+        cp -r aso-skills/skills/* .agents/skills/
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+---
+
+## Step 2 — Connect Live App Store Data (Recommended)
+
+Skills work immediately without any API connection — they'll use their built-in frameworks and your own app data. But connecting the Appeeky MCP Server unlocks real-time keyword rankings, competitor metadata, download estimates, and trending terms.
+
+<Note>
+  This step is optional. You can skip it and still get expert ASO guidance. Come back here when you're ready for live data.
+</Note>
+
+Add the following to your MCP configuration file (`~/.cursor/mcp.json` for Cursor, or your Claude Code MCP config):
+
+```json
+{
+  "mcpServers": {
+    "appeeky": {
+      "url": "https://mcp.appeeky.com/mcp",
+      "headers": { "Authorization": "Bearer apk_your_key_here" }
+    }
+  }
+}
+```
+
+Replace `apk_your_key_here` with your Appeeky API key. Get one at [appeeky.com](https://appeeky.com). See the [Appeeky MCP guide](/guides/appeeky-mcp) for full setup instructions.
+
+---
+
+## Step 3 — Run Your First Skill
+
+You're ready to go. Open a chat with your AI agent and try one of these prompts:
+
+<CodeGroup>
+
+```text Full ASO Audit
+Run an ASO audit for my app (id: 1617391485)
+```
+
+```text Keyword Research
+Find the best keywords for a meditation app
+```
+
+```text Metadata Optimization
+Optimize my App Store title and subtitle
+```
+
+```text Market Intelligence
+What apps are rising in the charts right now?
+```
+
+```text Competitor Research
+Analyze my competitors' keyword strategy
+```
+
+</CodeGroup>
+
+<Tip>
+  Not sure which skill to use? Just describe what you want in plain English and invoke the router:
+
+  ```text
+  /aso-skill I want to grow my fitness app's organic downloads
+  ```
+
+  The router reads your request and dispatches it to the right specialist skill automatically.
+</Tip>
+
+---
+
+## What to Expect
+
+When you run the audit prompt above, your agent will:
+
+1. Load the `aso-audit` skill framework (scoring rubric, 10 audit factors, output template)
+2. Call the Appeeky MCP to fetch live metadata, keyword rankings, and competitor data for app `1617391485`
+3. Score each factor on a 0–10 scale and compute a weighted overall ASO Score
+4. Return a **Score Card**, **Quick Wins** (act today), **High-Impact Changes** (this week), and **Strategic Recommendations** (this month)
+
+If you haven't connected the MCP Server yet, the agent will ask you to paste your current metadata and work from there — you'll still get a full, structured audit.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="How Skills Work" icon="book-open" href="/how-skills-work">
+    Understand the skill → data → output pipeline and how skills chain together.
+  </Card>
+  <Card title="Appeeky MCP Setup" icon="plug" href="/guides/appeeky-mcp">
+    Connect live App Store data for real-time keyword rankings and competitor intelligence.
+  </Card>
+</CardGroup>

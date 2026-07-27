@@ -1,0 +1,200 @@
+---
+title: "Metadata Optimization: Write App Store Copy That Ranks"
+sidebarTitle: "Metadata"
+description: "Write optimized titles, subtitles, keyword fields, and descriptions for iOS and Android — with 3 A/B-testable variants and built-in character validation."
+---
+
+The Metadata Optimization skill writes your App Store and Google Play copy from scratch — or rewrites what you have — to maximize both search ranking and conversion. It produces three variants of every field (Conservative, Balanced, and Aggressive) so you can A/B test and find what works for your specific audience, and it validates every character count before you submit. No more hitting the 30-character limit mid-word.
+
+## What you need before you start
+
+- **App ID** — to fetch your current metadata and see what you're working with
+- **Target keywords** — ideally from a `/keyword-research` run first
+- **Platform** — iOS, Android, or both
+- **Target country** — defaults to US if not specified
+
+<Tip>
+  Run `/keyword-research` before this skill for best results. Metadata optimization without a keyword strategy is guesswork — you need to know which keywords to target before you can write copy that ranks for them.
+</Tip>
+
+## How to invoke the skill
+
+```text
+/metadata-optimization
+```
+
+Or describe your specific need:
+
+```text
+"Optimize my App Store title and subtitle for keywords: meditation, mindfulness, sleep"
+```
+
+```text
+"Write 3 variants of my app description"
+```
+
+```text
+"I have 47 characters left in my keyword field — what should I add?"
+```
+
+## Platform field reference
+
+The skill handles iOS and Android separately because the fields — and their impact on ranking — are fundamentally different.
+
+<Tabs>
+  <Tab title="iOS (App Store)">
+    | Field | Character Limit | Indexed for Search? | Notes |
+    |-------|----------------|--------------------:|-------|
+    | Title | 30 chars | ✅ Yes | Highest keyword weight |
+    | Subtitle | 30 chars | ✅ Yes | Second highest weight |
+    | Keyword Field | 100 chars | ✅ Yes | Hidden from users, comma-separated |
+    | Description | 4,000 chars | ❌ No | Conversion only — not a ranking signal |
+    | Promotional Text | 170 chars | ❌ No | Can change without App Review |
+    | What's New | 4,000 chars | ❌ No | Shown on update screen |
+
+    <Note>
+      On iOS, your description has **zero impact on search ranking**. Every character of keyword effort belongs in your title, subtitle, and keyword field. Use the description purely to convert browsers into downloaders.
+    </Note>
+  </Tab>
+  <Tab title="Android (Google Play)">
+    | Field | Character Limit | Indexed for Search? | Notes |
+    |-------|----------------|--------------------:|-------|
+    | Title | 30 chars | ✅ Yes | Highest keyword weight |
+    | Short Description | 80 chars | ✅ Yes | Visible on the listing page |
+    | Full Description | 4,000 chars | ✅ Yes | Keyword density matters here |
+
+    <Note>
+      On Android, Google indexes your **full description**. Natural keyword density throughout the text (aim for 2–3% for primary keywords) directly influences your search ranking. This is a major difference from iOS.
+    </Note>
+  </Tab>
+</Tabs>
+
+## How each field is optimized
+
+<Steps>
+  <Step title="Title">
+    Your title carries the most algorithmic weight on both platforms. The skill uses proven structural formulas to balance your brand name with your primary keyword:
+
+    ```text
+    [Brand] - [Primary Keyword]     → "Calm - Sleep & Meditation"
+    [Brand]: [Benefit Phrase]       → "Duolingo: Language Lessons"
+    [Primary Keyword] [Brand]       → "Headspace: Mindful Meditation"
+    ```
+
+    Lead with your brand if it's well-known and drives its own search traffic. Lead with the keyword if your brand name doesn't yet pull its own audience. Either way, the skill uses the full 30 characters and avoids special characters (™, ®) that eat space without adding ranking value.
+
+    You receive **3 title options** with character counts and the keywords each covers.
+  </Step>
+
+  <Step title="Subtitle (iOS)">
+    The subtitle is your second-highest-ranked field — and one of the most frequently wasted. The skill ensures it adds secondary keywords that are completely absent from your title (every repeated word is a wasted indexing slot), conveys a clear user benefit, and fills the full 30 characters.
+
+    You receive **3 subtitle options** with character counts and rationale for each approach.
+  </Step>
+
+  <Step title="Keyword Field (iOS)">
+    100 characters of hidden-but-indexed space. The skill applies strict rules to maximize coverage:
+
+    - Comma-separated with **no spaces** after commas — every space is a wasted character
+    - **No repetition** of words from title or subtitle
+    - **Singular forms only** — Apple indexes both, so singular covers plural for free
+    - No app name, category name, "app", or "free"
+    - No competitor brand names (policy violation)
+    - Keywords ordered by volume × relevance
+
+    ```text
+    breathing,focus,anxiety,stress,relax,guided,yoga,wellness,nap,calm
+    Characters used: 67/100
+    ```
+
+    The output always includes a character count so you know exactly how much space remains to fill.
+  </Step>
+
+  <Step title="Description">
+    The approach differs by platform:
+
+    **iOS** — Pure conversion copy, structured to maximize the "above the fold" hook:
+
+    1. **Hook (first 3 lines)** — everything visible before the user taps "more"; make every word earn its place
+    2. **Social proof** — awards, press mentions, user count, or rating
+    3. **Key features** — 4–6 bullets framed as benefits ("Sleep better tonight") not features ("White noise generator")
+    4. **How it works** — a simple 3-step explanation
+    5. **User testimonial** — a real quote that builds trust
+    6. **Call to action** — a clear, direct prompt to download
+
+    **Android** — Same structure, plus natural keyword distribution throughout at 2–3% density, with keywords front-loaded in the first paragraph where Google weights them most.
+  </Step>
+</Steps>
+
+## The 3-variant system
+
+For every field, you receive three variants — not just one recommendation — so you can A/B test rather than guess:
+
+<CardGroup cols={3}>
+  <Card title="Conservative" icon="shield">
+    Brand-forward with a single primary keyword. Lower risk, easier to approve internally. Best if you have strong brand recognition you want to protect.
+  </Card>
+  <Card title="Balanced" icon="scale-balanced">
+    Equal weight on brand and keywords. The default recommendation for most apps — readable and well-optimized without feeling like keyword spam.
+  </Card>
+  <Card title="Aggressive" icon="bolt">
+    Maximum keyword density within readability limits. Best for new apps with no brand recognition that need to fight for visibility on search terms.
+  </Card>
+</CardGroup>
+
+Each variant includes:
+- **Character count** — `[X]/[limit]` so you always know where you stand
+- **Keywords covered** — which target keywords appear in this variant
+- **Rationale** — why this angle works and what situation it's best suited to
+
+## What the output looks like
+
+After generating your metadata, the skill produces a Keyword Coverage Matrix showing exactly which keywords appear where, so you can verify there's no repetition and no gaps:
+
+```text
+Keyword              Title    Subtitle   Keyword Field   Coverage
+meditation             ✓                               → Title
+mindfulness                     ✓                      → Subtitle
+sleep                  ✓                               → Title
+breathing                                  ✓           → Keyword Field
+anxiety                                    ✓           → Keyword Field
+focus                                      ✓           → Keyword Field
+```
+
+And a Before/After Comparison table showing your current metadata alongside the recommended version and the improvement — number of keywords covered, character utilization, estimated indexing gain.
+
+## Common mistakes the skill catches
+
+<Warning>
+  These are the most common metadata errors that silently kill your rankings. The skill flags every one of them:
+
+  - **Repeating keywords** across title, subtitle, and keyword field (wastes indexing budget)
+  - **Plural forms** in the keyword field (wastes characters — Apple indexes both forms automatically)
+  - **Spaces after commas** in the keyword field (each space is a character you could use for a keyword)
+  - **Brand name in keyword field** (Apple already indexes your brand from the title)
+  - **Keyword stuffing** that makes copy unreadable (hurts conversion even if it doesn't hurt ranking)
+  - **Unused characters** — not filling your title, subtitle, or keyword field to capacity
+  - **Descriptions starting with "Welcome to..."** — the weakest possible hook
+</Warning>
+
+## MCP tools used
+
+<CardGroup cols={3}>
+  <Card title="aso_validate_metadata" icon="circle-check">
+    Checks your metadata against App Store and Google Play rules — character limits, policy violations, repetition — before you submit.
+  </Card>
+  <Card title="aso_suggest_metadata" icon="wand-magic-sparkles">
+    Generates keyword-optimized copy variants based on your app data and target keyword set.
+  </Card>
+  <Card title="get_app" icon="mobile">
+    Fetches your current live metadata so the skill can show you a before/after comparison and avoid repeating what's already working.
+  </Card>
+</CardGroup>
+
+## Related skills
+
+- `/keyword-research` — Run this first to identify the keywords you should be targeting
+- `/aso-audit` — Audit your listing before and after metadata changes to measure improvement
+- `/competitor-analysis` — See how your competitors write their metadata and find positioning angles they're missing
+
+For the full parameter reference and advanced options, see the [Metadata Optimization reference](/reference/metadata-optimization).

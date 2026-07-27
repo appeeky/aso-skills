@@ -1,0 +1,169 @@
+---
+title: "Metadata Optimization — ASO Copywriting"
+sidebarTitle: "Metadata"
+description: "Generate 3 optimized variants of your title, subtitle, keyword field, and description for iOS and Android with character counts and keyword coverage maps."
+---
+
+The Metadata Optimization skill writes App Store copy that does two things at once: ranks for your target keywords and converts browsers into downloads. You get three variants per metadata field — each with a character count, a list of keywords covered, and a rationale — so you can choose the version that fits your brand or run A/B tests across all three.
+
+## Invoke
+
+```
+/metadata-optimization
+```
+
+You can also describe your goal naturally and let the router handle it:
+
+```
+/aso-skill  Optimize my App Store title and subtitle for "habit tracker"
+/aso-skill  Write a keyword field for my iOS productivity app
+/aso-skill  Rewrite my Google Play description to rank better
+```
+
+<Note>
+  Run `/keyword-research` before this skill if you don't yet have a target keyword list. Metadata Optimization needs keywords to optimize *for* — the more specific your keyword input, the better the output.
+</Note>
+
+## Inputs
+
+<ParamField path="app_id" type="string">
+  Your Apple numeric App ID or Google Play package name. If provided, the skill fetches your current metadata and produces a before/after comparison alongside the new variants.
+</ParamField>
+
+<ParamField path="current_metadata" type="string">
+  If you don't have an App ID handy, paste your current title, subtitle, keyword field, and description directly. The skill will analyze what you have and improve it.
+</ParamField>
+
+<ParamField path="target_keywords" type="array" required>
+  The keywords you want your metadata to rank for, in priority order. Ideally the output of a `/keyword-research` session. Example: `["habit tracker", "daily routine", "streak", "goal planner"]`.
+</ParamField>
+
+<ParamField path="platform" type="string" default="iOS">
+  `iOS`, `Android`, or `Both`. The skill applies platform-specific character limits and field structures for each.
+</ParamField>
+
+<ParamField path="target_country" type="string" default="US">
+  The primary market you're writing for. Influences keyword prioritization and tone.
+</ParamField>
+
+## Platform Character Limits
+
+<Tabs>
+  <Tab title="iOS (App Store)">
+    | Field | Limit | Indexed for Search? | Notes |
+    |---|---|---|---|
+    | Title | 30 chars | ✅ Yes | Highest keyword weight |
+    | Subtitle | 30 chars | ✅ Yes | Second-highest weight |
+    | Keyword Field | 100 chars | ✅ Yes | Hidden; comma-separated, no spaces |
+    | Description | 4,000 chars | ❌ No | Conversion only |
+    | Promotional Text | 170 chars | ❌ No | Changeable without review |
+
+    <Warning>
+      The iOS Description is **not indexed for search**. Every character should serve conversion, not keyword density. Focus on a compelling hook in the first 170 characters — that's all users see before tapping "more".
+    </Warning>
+  </Tab>
+  <Tab title="Android (Google Play)">
+    | Field | Limit | Indexed for Search? | Notes |
+    |---|---|---|---|
+    | Title | 30 chars | ✅ Yes | Highest keyword weight |
+    | Short Description | 80 chars | ✅ Yes | Visible on the listing card |
+    | Full Description | 4,000 chars | ✅ Yes | Keyword density matters |
+
+    <Warning>
+      The Google Play Full Description **is indexed for search**. Include your target keywords naturally throughout the text at roughly 2–3% density. Avoid keyword stuffing — Google penalizes it and users notice it.
+    </Warning>
+  </Tab>
+</Tabs>
+
+## Output
+
+### Metadata Package
+
+For every field, you receive three numbered variants. Each variant includes:
+
+- The copy itself
+- Character count (e.g. `28/30`)
+- Keywords covered
+- A brief rationale explaining the positioning angle
+
+**Example — iOS Title Variants:**
+
+```
+Option 1: Habit Tracker — Daily Routine   (28/30)
+Keywords: habit tracker, daily routine
+Rationale: Leads with the highest-volume keyword; "Daily Routine"
+           adds a secondary keyword and reinforces the use case.
+
+Option 2: Habitly: Streak & Goal Tracker  (30/30)
+Keywords: streak, goal tracker
+Rationale: Brand-forward for users searching by name; captures
+           "streak" and "goal tracker" as secondary keywords.
+
+Option 3: Daily Habits & Routine Builder  (30/30)
+Keywords: daily habits, routine builder
+Rationale: Targets plural variant naturally; positions as
+           a builder tool, appealing to more intent-driven searches.
+```
+
+### Keyword Coverage Matrix
+
+A table showing which keyword lands in which field, so you can confirm nothing is repeated and no keyword is left uncovered:
+
+| Keyword | Title | Subtitle | Keyword Field | Coverage |
+|---|---|---|---|---|
+| habit tracker | ✅ | | | Title |
+| daily routine | ✅ | | | Title |
+| streak | | ✅ | | Subtitle |
+| goal planner | | ✅ | | Subtitle |
+| reminder | | | ✅ | Keyword Field |
+| journal | | | ✅ | Keyword Field |
+
+### Before/After Comparison
+
+| Field | Current | Recommended | Improvement |
+|---|---|---|---|
+| Title | My Habits App | Habit Tracker — Daily Routine | +2 keywords |
+| Subtitle | Track your goals | Streak & Goal Planner | +2 keywords, full chars |
+| Keyword Field (iOS) | habits,goals,tasks | routine,streak,reminder,planner,... | +6 keywords, +44 chars used |
+
+## Example Prompts
+
+```
+/metadata-optimization
+→ App ID: 1617391485, Keywords: habit tracker, streak, routine, goal, reminder
+
+Optimize my iOS metadata for the keywords: meditation, sleep, mindfulness, calm, relax
+
+Rewrite my Google Play title and short description to rank for "language learning"
+
+I have no App ID yet — here's my current title: "My Fitness App". Improve it for keywords: workout tracker, gym log, exercise planner
+```
+
+## MCP Tools Used
+
+| Tool | What It Fetches |
+|---|---|
+| `aso_validate_metadata` | Checks proposed metadata for rule violations, character overruns, and keyword repetition |
+| `aso_suggest_metadata` | Generates keyword-optimized metadata variants based on target keywords and app context |
+| `get_app` | Fetches current metadata for before/after comparison |
+
+## Tips
+
+<Tip>
+  **No spaces after commas in the keyword field.** Every character counts in your 100-character budget. `tracker,reminder,journal` uses 3 fewer characters than `tracker, reminder, journal` — enough for one extra keyword.
+</Tip>
+
+<Tip>
+  **Don't include your app name, category name, or the word "app" in the keyword field.** Apple already knows your category and app name. Those characters are wasted. Use them for keywords that add new indexing coverage.
+</Tip>
+
+<Tip>
+  **Test all three variants.** Use Apple's built-in product page optimization (or a third-party tool) to A/B test your title and subtitle variants. The skill gives you three options designed to test different keyword angles — small copy differences can produce surprising conversion differences.
+</Tip>
+
+## Related Skills
+
+- [`/keyword-research`](/reference/keyword-research) — Run this first to build your target keyword list
+- [`/aso-audit`](/reference/aso-audit) — Broader audit that surfaces which fields need improvement most urgently
+- [`/competitor-analysis`](/reference/competitor-analysis) — See how competitors write their metadata before you write yours
+- [`/ab-test-store-listing`](/reference/skills-overview) — Design and interpret A/B tests for the variants this skill produces

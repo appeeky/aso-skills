@@ -1,0 +1,185 @@
+---
+title: "Competitor Analysis: Find Gaps and Outrank Your Rivals"
+sidebarTitle: "Competitor Analysis"
+description: "Reveal keyword gaps, tear down competitor creatives, map your competitive position, and get specific actions to exploit what rivals are missing."
+---
+
+The Competitor Analysis skill gives you a complete picture of what your top competitors are doing in the App Store — and where they're leaving opportunities on the table. You'll see every keyword they rank for that you don't, a detailed breakdown of their screenshot and creative strategy, a visual positioning map of the competitive landscape, and a prioritized list of specific moves you can make to pull ahead. Stop reacting to competitors and start getting ahead of them.
+
+## What you need before you start
+
+- **Your App ID** — Apple numeric ID or Google Play package name
+- **Competitor App IDs** — up to 3–5 competitors; if you're not sure who to analyze, the skill can identify them for you
+- **Target country** — defaults to US if not specified
+- **Focus area** — keyword gaps, creative strategy, positioning, or a full analysis across all dimensions
+
+<Note>
+  If you have an `app-marketing-context.md` file in your project, the skill reads it first for any known competitors and strategic context before pulling live data. This saves you from having to re-enter information you've already documented.
+</Note>
+
+## How to invoke the skill
+
+```text
+/competitor-analysis
+```
+
+Or describe exactly what you want to know:
+
+```text
+"Compare my app (id: 493145008) against Calm (id: 571800810)"
+```
+
+```text
+"Where am I falling behind on keywords and creative?"
+```
+
+```text
+"What keywords is my top competitor ranking for that I'm missing?"
+```
+
+## Finding the right competitors to analyze
+
+If you don't know which competitors to analyze, the skill identifies them for you using four methods:
+
+<CardGroup cols={2}>
+  <Card title="Category Chart" icon="chart-bar">
+    The top-ranked apps in your category — these are the apps most users will compare you against.
+  </Card>
+  <Card title="Keyword Overlap" icon="tags">
+    Apps that rank for the same keywords you're targeting. These are your true search competitors, even if they're in a slightly different category.
+  </Card>
+  <Card title="Similar Apps" icon="layer-group">
+    Apps that appear in the "You Might Also Like" section on your listing, which Apple surfaces based on behavioral overlap.
+  </Card>
+  <Card title="User Alternatives" icon="people-group">
+    What your users would switch to if your app disappeared. Ask yourself this — or look at review patterns where users mention alternatives.
+  </Card>
+</CardGroup>
+
+The ideal competitor set to analyze: **2 direct competitors** at roughly your scale, **1–2 aspirational competitors** (larger, established apps you want to catch), and **1 emerging competitor** that's growing fast and could threaten your position.
+
+## What the analysis covers
+
+<Tabs>
+  <Tab title="Keyword Gap Analysis">
+    The most actionable output in the entire analysis. The skill compares your keyword rankings against every competitor's rankings and surfaces three lists:
+
+    **Keywords competitors rank for that you don't** — sorted by volume so you can attack the highest-impact gaps first:
+
+    | Keyword | Volume | Difficulty | Comp 1 Rank | Comp 2 Rank | Your Rank | Priority |
+    |---------|--------|------------|:-----------:|:-----------:|:---------:|----------|
+    | sleep sounds | 88 | 72 | 3 | 7 | — | High |
+    | white noise app | 74 | 61 | 5 | 12 | — | High |
+    | bedtime stories | 68 | 55 | 4 | — | — | Medium |
+
+    **Keywords where you're outranked** — opportunities to defend or improve existing positions, ranked by the size of the gap and effort to close it.
+
+    **Your unique keyword advantages** — terms you rank for that competitors don't. These are your moat. Protect them by keeping your target keywords in your title and subtitle.
+  </Tab>
+
+  <Tab title="Creative Teardown">
+    A systematic breakdown of how competitors present their app visually — and what you can steal or outdo.
+
+    **Screenshots** — how many of the 10 slots they fill, what their first screenshot leads with (the hook that either earns the scroll or loses the user), whether they use text overlays and what benefit language they use, which features they prioritize, design language (dark/light, device frames, lifestyle imagery), and orientation (portrait vs landscape).
+
+    **App Preview Video** — whether they have one, what the first-three-second hook is, runtime, and whether it's watchable with sound off.
+
+    **Icon** — color scheme, style, how it stands out (or doesn't) in a search result row.
+
+    <Tip>
+      Pay special attention to the *first screenshot* of your top competitor. It's the single most A/B-tested creative asset in their store listing — if a large app is using a specific hook, there's a good chance it's winning.
+    </Tip>
+  </Tab>
+
+  <Tab title="Ratings & Reviews">
+    A comparison table of rating averages, total review counts, and recent trends — plus an analysis of what users love and hate about each competitor.
+
+    | Metric | Your App | Comp 1 | Comp 2 | Comp 3 |
+    |--------|:--------:|:------:|:------:|:------:|
+    | Rating | 4.3 | 4.8 | 4.6 | 4.1 |
+    | Total reviews | 12K | 890K | 340K | 28K |
+    | 30-day trend | → | ↑ | → | ↓ |
+    | Dev responds? | No | Yes | Yes | No |
+
+    The most valuable insight here isn't the ratings — it's the **top complaints** in competitor reviews. Every complaint is a feature gap. If thousands of users are leaving 2-star reviews for Calm saying "I wish it had offline mode", and you have offline mode, that's a competitive advantage worth putting front and center in your screenshots and description.
+  </Tab>
+
+  <Tab title="Growth Signals">
+    A look at how competitors are growing — or not — and what tactics they're using to accelerate:
+
+    | Signal | Your App | Comp 1 | Comp 2 | Comp 3 |
+    |--------|----------|--------|--------|--------|
+    | Category chart position | | | | |
+    | Estimated downloads/mo | | | | |
+    | Estimated revenue/mo | | | | |
+    | Update frequency | | | | |
+    | Using In-App Events? | | | | |
+    | Custom Product Pages? | | | | |
+    | Running Search Ads? | | | | |
+
+    If a competitor is running In-App Events and you're not, they're getting free promotional placement in the Today tab and search results that you're leaving to them.
+  </Tab>
+</Tabs>
+
+## What the output looks like
+
+<Steps>
+  <Step title="Executive Summary">
+    A two-to-three paragraph read on the overall competitive landscape: who's winning and why, where you stand, and the two or three highest-leverage opportunities available to you right now.
+  </Step>
+
+  <Step title="Competitive Position Map">
+    A visual map plotting you and your competitors across two dimensions — typically visibility (keyword ranking breadth) vs ratings — so you can see your position at a glance:
+
+    ```text
+                        HIGH VISIBILITY
+                             │
+                Comp 1 ●     │     ● Comp 2
+                             │
+       LOW ──────────────────┼────────────────── HIGH
+       RATINGS               │               RATINGS
+                             │
+                      You ●  │
+                             │
+                        LOW VISIBILITY
+    ```
+
+    Your goal is to move toward the top-right quadrant. The map shows you exactly how far you have to travel and who you're racing against.
+  </Step>
+
+  <Step title="Top Opportunities">
+    Five specific, actionable opportunities ranked by how quickly you can capture them:
+
+    1. **Quick Win** — something you can ship this week (e.g., add a high-volume keyword your competitors rank for that fits naturally in your subtitle)
+    2. **Keyword Gap** — the specific keywords with the best volume/difficulty ratio that competitors rank for and you don't
+    3. **Creative Edge** — one screenshot or video improvement based on the creative teardown
+    4. **Feature Gap** — something users are complaining about in competitor reviews that you already have or could build
+    5. **Market Gap** — an underserved audience segment, country, or use case that nobody is aggressively targeting
+  </Step>
+
+  <Step title="Threats to Monitor">
+    Competitor moves to watch over the next 30–90 days: a competitor accelerating their keyword coverage, an emerging app gaining fast momentum, or a market trend that could shift search behavior in your category.
+  </Step>
+</Steps>
+
+## MCP tools used
+
+<CardGroup cols={3}>
+  <Card title="aso_competitor_report" icon="users">
+    Generates a full multi-competitor ASO report covering metadata, rankings, creative, and ratings for all apps in the comparison set.
+  </Card>
+  <Card title="compare_keywords" icon="code-compare">
+    Side-by-side keyword ranking comparison across your app and each competitor, surfacing gaps, overlaps, and position differences.
+  </Card>
+  <Card title="get_app_intelligence" icon="brain">
+    Pulls estimated download and revenue data for each competitor so you can understand their growth trajectory and relative scale.
+  </Card>
+</CardGroup>
+
+## Related skills
+
+- `/keyword-research` — Dig into the specific keyword gaps the analysis identifies and build a targeting strategy
+- `/metadata-optimization` — Implement competitive insights into your title, subtitle, and keyword field
+- `/aso-audit` — Audit your own listing with full competitive context to see how your score compares
+
+For the full parameter reference and advanced options, see the [Competitor Analysis reference](/reference/competitor-analysis).

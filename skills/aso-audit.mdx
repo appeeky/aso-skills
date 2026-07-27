@@ -1,0 +1,161 @@
+---
+title: "ASO Audit: Score & Fix Your App Store Listing Fast"
+sidebarTitle: "ASO Audit"
+description: "Score your App Store listing across 10 weighted factors, surface problems hurting your ranking, and get a prioritized fix list — in one command."
+---
+
+The ASO Audit skill gives you a clear, numbered score (0–100) for your App Store or Google Play listing, breaks that score into 10 weighted factors, and hands you a three-tier action plan: quick wins you can ship today, high-impact changes for this week, and strategic moves for this month. Instead of guessing why your app isn't ranking, you get a data-backed diagnosis with specific steps to fix it.
+
+## What you need before you start
+
+- **App ID** — Apple's numeric ID (e.g. `570060128`) or your Google Play package name (e.g. `com.example.app`)
+- **Target country** — defaults to US if not specified
+- **Platform** — iOS, Android, or both
+
+<Note>
+  If you have an `app-marketing-context.md` file in your project, the skill reads it automatically for positioning context, target audience, and known competitors before pulling live data.
+</Note>
+
+## How to invoke the skill
+
+Type any of these directly into your AI agent (Cursor, Claude Code, etc.):
+
+```text
+/aso-audit
+```
+
+Or describe your goal naturally — the skill activates whenever you ask about auditing, scoring, or diagnosing your listing:
+
+```text
+"Run a full ASO audit on my app (id: 570060128)"
+```
+
+```text
+"What's my ASO score and what should I improve first?"
+```
+
+```text
+"Audit both my iOS and Android listings"
+```
+
+## The 10 audit factors
+
+Every factor is scored 0–10 and rolled into an overall weighted ASO Score. The weights reflect how strongly each factor influences search ranking and conversion in the App Store algorithm.
+
+<AccordionGroup>
+  <Accordion title="1. Title — 20% weight">
+    The single most important ranking signal. The skill checks whether your primary keyword appears naturally, how close you are to the 30-character limit, whether your brand name adds value or wastes space, and whether the title reads naturally to a human rather than being keyword-stuffed.
+
+    | Score | Meaning |
+    |-------|---------|
+    | 9–10 | Primary keyword + brand, natural language, full character usage |
+    | 7–8 | Has a keyword but room to optimize |
+    | 4–6 | Missing primary keyword or poor brand/keyword balance |
+    | 0–3 | Generic, no keywords, or truncated in search results |
+  </Accordion>
+
+  <Accordion title="2. Subtitle — 15% weight (iOS)">
+    Your subtitle is the second-highest-weighted field Apple indexes. The audit checks that it contains secondary keywords absent from your title (no duplication wastes indexing budget), communicates a clear user benefit, and uses the full 30 characters.
+  </Accordion>
+
+  <Accordion title="3. Keyword Field — 15% weight (iOS)">
+    Hidden from users but fully indexed by Apple. The skill checks for the most common mistakes: repeated words from your title or subtitle, spaces after commas (each character counts), plural forms (Apple indexes both — use singular to save space), unused characters out of 100, irrelevant keywords, and wasteful terms like "app", "free", or your category name.
+  </Accordion>
+
+  <Accordion title="4. Description — 5% iOS / 15% Android">
+    On iOS, the description doesn't affect search ranking — it's a pure conversion tool. On Android, Google indexes the full text, so keyword density matters. The audit evaluates your first three lines (visible before "more"), benefit-led writing vs feature-led, formatting with line breaks and bullets, your closing call to action, and any social proof you include.
+  </Accordion>
+
+  <Accordion title="5. Screenshots — 15% weight">
+    Screenshots are often the first thing a user sees and the biggest driver of tap-through conversion. The audit checks how many of the 10 slots you're using, whether your three most compelling features lead, whether text overlays are readable and benefit-driven, visual consistency across the set, localization for your target market, and whether you're using modern device frames.
+  </Accordion>
+
+  <Accordion title="6. App Preview Video — 5% weight">
+    An app preview video can significantly lift conversion when done well. The audit checks whether you have one at all, whether there's a hook in the first three seconds, whether the runtime sits in the 15–30 second sweet spot, and whether captions make it watchable with sound off.
+  </Accordion>
+
+  <Accordion title="7. Ratings & Reviews — 15% weight">
+    Both stores use ratings as a ranking signal, and users use them as a trust signal. The skill checks your average rating (4.5+ is the target), total review count relative to your category, whether recent reviews show a positive trend, whether you respond to negative reviews, and whether you're prompting for ratings at the right moments in your app.
+  </Accordion>
+
+  <Accordion title="8. Icon — 5% weight">
+    Your icon appears in every search result alongside competitors. The audit assesses distinctiveness at small sizes, simplicity, category fit, and whether you're using text (which becomes unreadable at thumbnail scale).
+  </Accordion>
+
+  <Accordion title="9. Keyword Rankings — 10% weight">
+    The audit pulls your current ranking positions via the Appeeky MCP and checks how many target keywords you appear in the top 10 for, your overall keyword coverage, whether your rankings are trending up or down, and which keywords your competitors rank for that you don't.
+  </Accordion>
+
+  <Accordion title="10. Conversion Signals — 5% weight">
+    App Store features that many developers overlook. The audit checks whether you're using Promotional Text for timely messaging (changeable without review), whether your "What's New" notes are informative, whether you're leveraging In-App Events for visibility boosts, and whether you have Custom Product Pages for different audience segments.
+  </Accordion>
+</AccordionGroup>
+
+## What the output looks like
+
+After the skill runs, you receive four sections:
+
+<Steps>
+  <Step title="ASO Score Card">
+    A visual breakdown of your score across all 10 factors, showing both the numeric score and a bar chart so you can instantly see where you're weakest.
+
+    ```text
+    Overall ASO Score: 61/100
+
+    Title:              8/10  ████████░░
+    Subtitle:           6/10  ██████░░░░
+    Keyword Field:      4/10  ████░░░░░░
+    Description:        8/10  ████████░░
+    Screenshots:       10/10  ██████████
+    Preview Video:      2/10  ██░░░░░░░░
+    Ratings & Reviews:  8/10  ████████░░
+    Icon:               8/10  ████████░░
+    Keyword Rankings:   6/10  ██████░░░░
+    Conversion Signals: 4/10  ████░░░░░░
+    ```
+  </Step>
+
+  <Step title="Quick Wins">
+    Three to five changes you can make today — typically keyword field fixes, subtitle tweaks, or promotional text updates that require no design work and no App Review submission.
+  </Step>
+
+  <Step title="High-Impact Changes">
+    Three to five improvements that take more effort — new screenshots, a revised title, or a revamped description — but move the needle significantly on your score and ranking.
+  </Step>
+
+  <Step title="Strategic Recommendations">
+    Longer-term moves for this month: launching an app preview video, setting up a rating prompt strategy, targeting a new keyword cluster, or building Custom Product Pages for separate audiences.
+  </Step>
+</Steps>
+
+<Tip>
+  After your audit, use the `/keyword-research` skill to dig into keyword opportunities the audit surfaces, and `/metadata-optimization` to implement the recommended title and subtitle changes.
+</Tip>
+
+## MCP tools used
+
+The skill pulls live data from the Appeeky MCP Server using these tools:
+
+<CardGroup cols={3}>
+  <Card title="aso_full_audit" icon="magnifying-glass-chart">
+    Runs the full 10-factor audit and returns weighted scores with specific findings for each factor.
+  </Card>
+  <Card title="get_app" icon="mobile">
+    Fetches your current metadata — title, subtitle, description, screenshots, icon, and ratings — from the live store listing.
+  </Card>
+  <Card title="get_app_keywords" icon="key">
+    Pulls your current keyword rankings so the audit can score your keyword coverage and spot gaps.
+  </Card>
+</CardGroup>
+
+<Note>
+  If the Appeeky MCP Server isn't connected, the skill will ask you to paste your current metadata manually. Connect the MCP Server for fully automated audits with live data.
+</Note>
+
+## Related skills
+
+- `/keyword-research` — Deep dive into keyword opportunities the audit identifies
+- `/metadata-optimization` — Write the improved title, subtitle, and keyword field
+- `/competitor-analysis` — Compare your audit results against top competitors
+
+For the full parameter reference and advanced options, see the [ASO Audit reference](/reference/aso-audit).

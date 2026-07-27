@@ -1,0 +1,62 @@
+---
+title: "Review Management: Ratings, Responses & Recovery"
+sidebarTitle: "Review Management"
+description: "Analyze review sentiment, generate response drafts using the HEAR framework, and build a rating improvement plan to hit and maintain 4.5+ stars."
+---
+
+The `/review-management` skill analyzes your app's reviews, categorizes sentiment across bugs, feature requests, UX complaints, and praise, then generates response drafts and a prioritized action plan to improve your rating and build user trust.
+
+## Invoke
+
+```
+/review-management
+```
+
+## What You Get
+
+- **Sentiment analysis breakdown** — reviews categorized by type (bugs, UX, pricing, praise, competitor mentions) with frequency counts
+- **Response templates** — HEAR-framework drafts for your most impactful negative reviews
+- **Rating improvement tactics** — in-app prompt timing optimization, strategic response guidance, and a re-rating invitation workflow
+- **Review health report** — current rating, trend direction, response rate, and top recurring issues
+
+## Example Prompts
+
+```
+"Analyze my reviews and give me response templates for the top complaints (id: 6447810428)"
+"My rating dropped from 4.7 to 4.1 this month — what's causing it and how do I recover?"
+"Generate response drafts for my 10 most recent 1-star reviews"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_app_reviews` | Fetch recent reviews with star ratings, text, and dates |
+| `get_app` | Fetch current rating, rating count, and metadata context |
+
+## The HEAR Response Framework
+
+Every review response should follow this four-step structure:
+
+| Step | What to do | Example |
+|------|-----------|---------|
+| **H**ear | Acknowledge the specific issue they mentioned | "Thank you for flagging the sync issue…" |
+| **E**mpathize | Show you understand their frustration | "…we know how frustrating data loss can be." |
+| **A**ct | Explain what you've done or are doing | "This is fixed in version 2.4, now available." |
+| **R**esolve | Invite direct contact for follow-up help | "Please reach out to support@app.com if it persists." |
+
+<Note>
+  On **Google Play**, responding to negative reviews is algorithmically beneficial — users can update their rating after you respond, and Google's ranking signals reward developer engagement. On **iOS**, a thoughtful response rebuilds trust with users reading reviews before downloading.
+</Note>
+
+<Accordion title="When should I show the in-app rating prompt?">
+  Trigger the prompt after a clear success moment: the user completes a meaningful task, hits a streak milestone, achieves a goal, or experiences a genuine delight moment. Never show it after a crash, error, onboarding step, or first session. Apple's `SKStoreReviewRequest` can only be called 3 times per 365-day period per device — spend those calls wisely.
+</Accordion>
+
+<Accordion title="What should I never do when responding to reviews?">
+  Never be defensive or argumentative, never copy-paste the same template to every review, never ignore negative reviews, never ask users directly to change their rating (against both Apple and Google guidelines), and never offer incentives in exchange for a review.
+</Accordion>
+
+<Tip>
+  Fix the underlying issue mentioned in a negative review, respond publicly acknowledging the fix, then follow up via support if the user contacted you. Many users will voluntarily update their rating to 4–5 stars after a positive resolution — this is the most reliable organic rating recovery tactic available.
+</Tip>

@@ -1,0 +1,77 @@
+---
+title: "A/B Test Store Listing: PPO & Play Experiments"
+sidebarTitle: "A/B Testing"
+description: "Design hypotheses, create variants, calculate sample sizes, and interpret results for Apple Product Page Optimization and Google Play Experiments."
+---
+
+The `/ab-test-store-listing` skill walks you through the full testing cycle — hypothesis writing, variant design, sample size calculation, test setup in App Store Connect or Play Console, and statistically sound result interpretation — for icons, screenshots, and App Preview videos.
+
+## Invoke
+
+```
+/ab-test-store-listing
+```
+
+## What You Get
+
+- **Hypothesis framework** — structured "If we [change], then [metric] will [improve] because [reason]" templates for each element
+- **Variant design guide** — what to change, what to keep constant, and how to make changes significant enough to detect
+- **Sample size calculator** — required impressions and estimated test duration based on your daily traffic and current conversion rate
+- **Result interpretation guide** — statistical significance thresholds, confidence intervals, segment analysis, and next-test recommendations
+
+## Example Prompts
+
+```
+"Design an A/B test for my first screenshot — it's currently feature-focused and I want to test benefit-focused"
+"How long will my icon test take? I get about 800 impressions a day."
+"My Variant B won at 94% confidence — is that enough to ship?"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_app` | Fetch current screenshots, icon, and metadata for the control variant |
+| `get_app_intelligence` | Benchmark category conversion rates for test design context |
+
+## What You Can Test
+
+### Apple Product Page Optimization (PPO)
+
+| Element | Testable | Notes |
+|---------|---------|-------|
+| App icon | ✅ Yes | Up to 3 variants |
+| Screenshots | ✅ Yes | Up to 3 variants |
+| App Preview video | ✅ Yes | Up to 3 variants |
+| Title / Subtitle | ❌ No | Not supported in PPO |
+| Description | ❌ No | Not supported in PPO |
+
+### Google Play Experiments
+
+Icon, feature graphic, screenshots (up to 3 variants), short description (up to 3 variants), and full description (up to 3 variants) are all testable natively.
+
+## Test Priority Order
+
+| Rank | Element | Potential CVR Lift | Effort |
+|------|---------|-------------------|--------|
+| 1 | First screenshot | 15–30% | Medium |
+| 2 | App icon | 10–20% | Medium |
+| 3 | Screenshot order | 5–15% | Low |
+| 4 | Screenshot style | 5–15% | High |
+| 5 | Preview video | 5–10% | High |
+
+<Note>
+  Apple Product Page Optimization requires **90% confidence minimum** to declare a winner — but aim for 95% before making irreversible decisions. Apple's PPO runs only against organic App Store traffic. You cannot configure the traffic split manually; Apple distributes it automatically.
+</Note>
+
+<Accordion title="How do I calculate how long my test will take?">
+  The skill calculates this for you, but the rule of thumb: if you have fewer than 1,000 daily impressions, tests take 30–90 days and may not be worth running. At 1,000–5,000 daily impressions, expect 14–30 days. Above 5,000 daily impressions, most tests reach significance in 7–14 days. You need at least 1,000 impressions **per variant** for a meaningful result.
+</Accordion>
+
+<Accordion title="What's the right hypothesis structure?">
+  Always write your hypothesis before designing the variant: "If we add social proof ('5M+ users') to the first screenshot, conversion rate will increase because it builds immediate trust for first-time visitors." This format forces you to predict **why** a change will win, which improves variant quality and makes result interpretation more actionable.
+</Accordion>
+
+<Tip>
+  **Never stop a test early because a variant looks like it's winning.** Early data is noisy — what looks like a 20% lift on Day 3 often converges toward 5–8% by Day 14. Let the test run to statistical significance or its scheduled end date before making decisions.
+</Tip>

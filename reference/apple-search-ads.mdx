@@ -1,0 +1,88 @@
+---
+title: "Apple Search Ads: Campaign Structure & Optimization"
+sidebarTitle: "Apple Search Ads"
+description: "Set up a 4-campaign ASA structure with exact, broad, and search match types, CPP routing, bid strategy, and a weekly optimization checklist."
+---
+
+The `/apple-search-ads` skill goes deep on Apple Search Ads — the only ad platform native to the App Store. It produces a complete campaign structure, keyword seed lists by campaign type, bidding guidance, Custom Product Page routing, and a weekly optimization checklist to compound performance over time.
+
+## Invoke
+
+```
+/apple-search-ads
+```
+
+## What You Get
+
+- **4-campaign account structure** — Brand, Competitor, Category, and Discovery campaigns with rationale for each
+- **Match type strategy** — when to use exact, broad, and search match, and how to promote keywords between campaigns
+- **CPP routing plan** — how to link Custom Product Pages to ad groups for keyword-specific creative
+- **Bidding framework** — starting bids per campaign type, optimization signals, and automated bidding prerequisites
+- **Weekly optimization checklist** — 7 recurring tasks to run every Monday
+
+## Example Prompts
+
+```
+"Build an Apple Search Ads campaign structure for my meditation app"
+"My ASA CPI is $3.20 but my brand CVR is only 18% — what's wrong?"
+"Set up CPP routing for yoga, sleep, and breathing keyword ad groups"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_keyword_metrics` | Validate volume and difficulty for category and competitor keyword lists |
+| `get_app_intelligence` | Benchmark category CPI and LTV for bid calibration |
+| `get_keyword_suggestions` | Expand keyword seed lists for Discovery and Category campaigns |
+
+## Account Structure
+
+```
+Account
+└── App
+    ├── Brand Campaign        → Exact match on your app name + misspellings
+    ├── Competitor Campaign   → Exact match on top competitor names
+    ├── Category Campaign     → High-volume generic and feature terms
+    └── Discovery Campaign    → Search Match ON, no manual keywords
+```
+
+## Match Types
+
+| Match Type | How It Works | Use For |
+|------------|-------------|---------|
+| **Exact** | Triggers only on that precise keyword | High-value, proven terms |
+| **Broad** | Triggers on close variants and related terms | Expanding reach of known winners |
+| **Search Match** | Apple auto-matches your app to relevant searches | Discovery campaign only |
+
+<Note>
+  The core ASA workflow is: **Search Match discovers → Broad validates → Exact scales.** Mine the Search Terms report weekly to find new exact-match candidates in your Discovery campaign, then graduate them to your Category or Competitor campaign with higher bids.
+</Note>
+
+## Weekly Optimization Checklist
+
+```
+- [ ] Review Search Terms report → add top new terms to exact match campaigns
+- [ ] Add irrelevant search terms as negative keywords
+- [ ] Check impression share per keyword → increase bid where < 50%
+- [ ] Pause keywords with 100+ taps and 0 installs
+- [ ] Review TTR per ad group → test new CPP if TTR < 3%
+- [ ] Check budget pacing → no campaigns hitting cap before noon
+- [ ] Compare CVR across campaign types
+```
+
+## Performance Benchmarks
+
+| Metric | Strong | Investigate |
+|--------|--------|------------|
+| Tap-Through Rate (TTR) | > 5% | < 3% |
+| Install Conversion Rate (CVR) | > 50% | < 30% |
+| ROAS | > 150% | < 100% |
+
+<Accordion title="What is CPP routing and why does it matter?">
+  Custom Product Pages (CPPs) let you show different screenshots to users depending on which ad group served their ad. A user searching "yoga app" sees yoga-focused screenshots; a user searching "sleep sounds" sees sleep-focused screenshots. This alignment between keyword intent and creative typically lifts both TTR and CVR by 15–30%.
+</Accordion>
+
+<Tip>
+  Don't turn on **automated bidding** until each ad group has at least 50 conversions per week. Before that point, Apple's algorithm doesn't have enough data to optimize effectively — manual bids with deliberate adjustments consistently outperform automation at early campaign stages.
+</Tip>

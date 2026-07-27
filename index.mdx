@@ -1,0 +1,54 @@
+---
+title: "ASO Skills: AI-Powered App Store Optimization"
+sidebarTitle: "Home"
+description: "20+ pre-built ASO and app marketing skills for Cursor, Claude Code, and any AI agent. Get expert keyword research, audits, and metadata optimization powered by real App Store data."
+---
+
+ASO Skills is an open-source collection of AI agent skills that bring expert App Store Optimization directly into your development environment. Install into Cursor, Claude Code, or any Agent Skills-compatible AI assistant and ask your agent to run audits, research keywords, analyze competitors, and generate optimized metadata — all backed by live App Store and Google Play data via the Appeeky MCP Server.
+
+<CardGroup cols={2}>
+  <Card title="Quick Start" icon="rocket" href="/quickstart">
+    Install ASO Skills in Cursor or Claude Code in under 2 minutes
+  </Card>
+  <Card title="How Skills Work" icon="brain" href="/how-skills-work">
+    Understand the skill + data framework behind every recommendation
+  </Card>
+  <Card title="ASO Audit" icon="magnifying-glass-chart" href="/skills/aso-audit">
+    Score your listing across 10 factors and get a prioritized fix list
+  </Card>
+  <Card title="Skills Reference" icon="book" href="/reference/skills-overview">
+    Browse all 20+ skills with example prompts and outputs
+  </Card>
+</CardGroup>
+
+## Get up and running
+
+<Steps>
+  <Step title="Install skills into your AI agent">
+    Add ASO Skills to Cursor via a Remote Rule, or run `npx skills add eronred/aso-skills` in Claude Code. See [Installation](/install/cursor) for full setup steps.
+  </Step>
+  <Step title="Connect the Appeeky MCP Server (optional but recommended)">
+    Link the [Appeeky MCP Server](/guides/appeeky-mcp) so your agent can pull live App Store data — keyword volumes, competitor rankings, chart positions, and more.
+  </Step>
+  <Step title="Ask your agent anything about your app">
+    Use the `/aso-skill` router or invoke skills directly. Try: _"Run an ASO audit for my app (id: 123456789)"_ or _"Find the best keywords for a meditation app."_
+  </Step>
+</Steps>
+
+## Explore by use case
+
+<CardGroup cols={3}>
+  <Card title="ASO Core" icon="chart-line" href="/skills/aso-audit">
+    Audit, keyword research, metadata optimization, and competitor analysis
+  </Card>
+  <Card title="Growth & Creative" icon="palette" href="/skills/screenshot-optimization">
+    Screenshots, app previews, icons, launch planning, and paid UA
+  </Card>
+  <Card title="Market Intelligence" icon="binoculars" href="/skills/market-intelligence">
+    Chart movers, trending keywords, featured apps, and new releases
+  </Card>
+</CardGroup>
+
+<Note>
+  Skills work without the Appeeky MCP Server — they provide expert ASO frameworks and guidance using general knowledge. Connect the MCP for recommendations backed by real-time App Store data.
+</Note>

@@ -1,0 +1,190 @@
+---
+title: "Run Your First ASO Audit in Minutes"
+sidebarTitle: "First ASO Audit"
+description: "A step-by-step walkthrough for running your first App Store Optimization audit, reading the score card, and turning findings into quick wins."
+---
+
+Running your first ASO audit is the fastest way to understand why your app is — or isn't — showing up in search results. In about five minutes, your AI agent will score your listing across ten factors, explain what's hurting your visibility, and hand you a prioritized fix list you can act on today.
+
+## Prerequisites
+
+Before you start, make sure you have:
+
+<CardGroup cols={2}>
+  <Card title="ASO Skills installed" icon="wrench">
+    Cursor, Claude Code, or any Agent Skills-compatible AI with the `aso-audit` skill loaded. See the [Quick Start](/) for installation instructions.
+  </Card>
+  <Card title="Appeeky MCP (optional)" icon="plug">
+    Connect the Appeeky MCP Server to get real-time App Store data — live keyword rankings, competitor benchmarks, and review sentiment. The audit works without it, but results are richer with it.
+  </Card>
+</CardGroup>
+
+## Find Your App ID
+
+Every audit starts with your App ID. The format differs by platform.
+
+<Tabs>
+  <Tab title="Apple App Store (iOS)">
+    Your iOS App ID is a **numeric identifier** — for example, `570060128`.
+
+    You can find it in two places:
+
+    - **App Store URL**: Open your app's page in a browser. The URL looks like `https://apps.apple.com/us/app/your-app-name/id570060128` — the number after `id` is your App ID.
+    - **App Store Connect**: Log in at [appstoreconnect.apple.com](https://appstoreconnect.apple.com), open your app, and look in the **App Information** section under **Apple ID**.
+
+    <Tip>
+      If you're auditing a competitor's app, just open their App Store page in a browser and copy the numeric ID from the URL.
+    </Tip>
+  </Tab>
+  <Tab title="Google Play (Android)">
+    Your Android App ID is a **package name** — a reverse-domain string like `com.myapp.android`.
+
+    Find it in:
+
+    - **Google Play URL**: Open your app's page. The URL looks like `https://play.google.com/store/apps/details?id=com.myapp.android` — the value after `id=` is your package name.
+    - **Google Play Console**: Select your app and find the package name in the **Dashboard** or **App Bundle Explorer**.
+  </Tab>
+</Tabs>
+
+## Step-by-Step Audit
+
+<Steps>
+  <Step title="Open your AI agent">
+    Launch Cursor, Claude Code, or your preferred Agent Skills-compatible client and open any project — the skills are available globally if you installed them globally.
+  </Step>
+
+  <Step title="Invoke the audit skill">
+    Type the direct skill command or use the router — both work:
+
+    ```
+    /aso-audit
+    ```
+
+    Or, if you prefer natural language via the router:
+
+    ```
+    /aso-skill Run an ASO audit for my app
+    ```
+
+    The router reads your request and automatically delegates to the `aso-audit` specialist skill.
+  </Step>
+
+  <Step title="Provide your App ID">
+    When prompted, enter your App ID and confirm the platform and target country:
+
+    ```
+    Run a full ASO audit on my app (id: 570060128). What's my score and what should I improve first?
+    ```
+
+    If Appeeky MCP is connected, the agent will automatically fetch your live metadata, keyword rankings, ratings, and top competitors. If not, it will ask you to paste your current title, subtitle, and keyword field.
+  </Step>
+
+  <Step title="Review the score card">
+    The agent returns an **ASO Score Card** — a 0-100 overall score broken down across ten factors. Here's what a score card looks like:
+
+    ```
+    Overall ASO Score: 61/100
+
+    Title:              7/10  ███████░░░
+    Subtitle:           5/10  █████░░░░░
+    Keyword Field:      4/10  ████░░░░░░
+    Description:        8/10  ████████░░
+    Screenshots:        6/10  ██████░░░░
+    Preview Video:      2/10  ██░░░░░░░░
+    Ratings & Reviews:  8/10  ████████░░
+    Icon:               7/10  ███████░░░
+    Keyword Rankings:   5/10  █████░░░░░
+    Conversion Signals: 3/10  ███░░░░░░░
+    ```
+
+    Use the table below to interpret any factor's score at a glance:
+
+    | Score | What it means |
+    |-------|--------------|
+    | **9–10** | Excellent — this factor is working for you. Monitor, don't change. |
+    | **7–8** | Good — solid foundation with room for incremental improvement. |
+    | **4–6** | Needs work — clear gaps that are costing you visibility or conversions. |
+    | **0–3** | Critical — this factor is actively hurting your rankings. Fix it first. |
+  </Step>
+
+  <Step title="Identify your top 3 quick wins">
+    After the score card, the agent produces a prioritised fix list split into three tiers:
+
+    - **Quick Wins** — changes you can make today (usually keyword field and subtitle tweaks)
+    - **High-Impact Changes** — improvements to make this week (title rewrite, screenshot overhaul)
+    - **Strategic Improvements** — longer-term investments this month (video, localisation, review prompts)
+
+    Pick the top three quick wins and focus on those before your next update.
+
+    <Note>
+      Don't try to fix everything at once. App Store ranking signals take time to propagate — making targeted changes and re-auditing after your next release gives you clean data on what moved the needle.
+    </Note>
+  </Step>
+
+  <Step title="Implement changes and re-audit">
+    Make your changes in **App Store Connect** (iOS) or **Google Play Console** (Android) with your next app update. After the update goes live, re-run the audit using the same prompt to compare your new score against the baseline.
+
+    <Tip>
+      Save your first score card somewhere — a Notion page, a comment in your codebase, anywhere. Seeing your score improve from 61 → 74 over two updates is genuinely motivating, and it proves the ROI of ASO to any stakeholders.
+    </Tip>
+  </Step>
+</Steps>
+
+## Understanding Each Factor
+
+<Accordion title="Title (weight: 20%)">
+  The single highest-weight factor. Apple and Google give the most ranking credit to keywords in your title. A strong title includes your primary target keyword alongside your brand name, uses close to all 30 characters, and reads naturally in search results — not stuffed.
+</Accordion>
+
+<Accordion title="Subtitle (weight: 15%) — iOS only">
+  The second most powerful indexed field on iOS. Its job is to cover secondary keywords that your title couldn't fit, while also communicating a benefit to users who see it in search results. Never repeat words from your title here — Apple indexes the fields together.
+</Accordion>
+
+<Accordion title="Keyword Field (weight: 15%) — iOS only">
+  A hidden 100-character field that only Apple sees. Common mistakes: repeating words from your title (wasted characters), including spaces after commas (costs you 1 character per keyword), and using plural forms (Apple indexes both singular and plural automatically).
+</Accordion>
+
+<Accordion title="Description (weight: 5% iOS / 15% Android)">
+  On iOS, the description is **not** indexed for search — it's pure conversion copy. On Android, it **is** indexed, so keyword placement and density matter. Either way, the first three lines (visible before "more") are the most important. Lead with your strongest benefit or social proof.
+</Accordion>
+
+<Accordion title="Screenshots (weight: 15%)">
+  Screenshots are often the deciding factor between a tap and a scroll-past. The audit checks whether you're using all ten slots, whether your first three screenshots showcase your most compelling value, and whether text overlays are legible and benefit-driven.
+</Accordion>
+
+<Accordion title="Preview Video (weight: 5%)">
+  An optional but high-impact slot. A 15–30 second video autoplays silently in search results — if you have one, the first three seconds need to hook without sound. If you don't have one, this is typically an easy quick win.
+</Accordion>
+
+<Accordion title="Ratings & Reviews (weight: 15%)">
+  A 4.5+ star average is the threshold that meaningfully impacts both ranking and conversion. The audit checks your average, volume of recent reviews, whether you respond to negative feedback, and whether you're using in-app rating prompts strategically.
+</Accordion>
+
+<Accordion title="Icon (weight: 5%)">
+  Your icon appears in every search result. The audit checks whether it's distinctive at small sizes, avoids unreadable text, and fits (or intentionally differentiates from) category conventions.
+</Accordion>
+
+<Accordion title="Keyword Rankings (weight: 10%)">
+  How many of your target keywords are you actually ranking for, and where? A score below 5 here usually means your metadata isn't aligned with what users are searching, or your app is too new to have built ranking authority yet.
+</Accordion>
+
+<Accordion title="Conversion Signals (weight: 5%)">
+  These are the easy levers many developers ignore: Promotional Text (iOS only, updatable without a new review), "What's New" notes, In-App Events, and Custom Product Pages. Each one adds a small visibility and conversion boost.
+</Accordion>
+
+## What to Do After Your Audit
+
+Your audit results tell you *what* to fix. The next two skills help you do it:
+
+<CardGroup cols={2}>
+  <Card title="Keyword Research" icon="magnifying-glass" href="/guides/keyword-workflow">
+    If your keyword field or ranking scores are low, run `/keyword-research` to find high-opportunity keywords you're missing. See the full [Keyword Workflow guide](/guides/keyword-workflow).
+  </Card>
+  <Card title="Metadata Optimization" icon="pen-to-square">
+    Once you have your target keywords, run `/metadata-optimization` to get three ready-to-publish variants of your title, subtitle, and keyword field — with character counts and keyword coverage matrices included.
+  </Card>
+</CardGroup>
+
+<Note>
+  Skills reference each other automatically. After your audit, the agent may suggest running `/keyword-research` directly — you can follow its lead or jump straight to the [Keyword Workflow guide](/guides/keyword-workflow).
+</Note>

@@ -1,0 +1,204 @@
+---
+title: "ASO Skills Overview — Full Skill Library"
+sidebarTitle: "Overview"
+description: "Browse all 20+ ASO Skills organized by category. Learn how to invoke any skill directly or use the /aso-skill router to get routed automatically."
+---
+
+ASO Skills is an open-source library of 20+ specialist AI agent skills for App Store Optimization and mobile app marketing. Each skill encodes battle-tested frameworks, scoring rubrics, and output templates so your AI agent — whether that's Cursor, Claude Code, or any Agent Skills-compatible tool — gives you expert-level guidance instead of generic advice. Connect the Appeeky MCP Server to pull live App Store data into every skill automatically.
+
+## How to Invoke a Skill
+
+You can invoke skills in two ways: use the **`/aso-skill` router** to describe your goal in plain language and let the router pick the right specialist, or call a skill directly by name when you know which one you want.
+
+<Tabs>
+  <Tab title="Router (Recommended)">
+    Use `/aso-skill` followed by any natural-language request. The router reads your intent and hands off to the right specialist skill automatically.
+
+    ```
+    /aso-skill  Run an ASO audit for my app (id: 1617391485)
+    /aso-skill  Find the best keywords for a meditation app targeting the US
+    /aso-skill  What apps are rising in the Health & Fitness charts right now?
+    ```
+  </Tab>
+  <Tab title="Direct Invocation">
+    Call any skill by its slash command when you know exactly what you need.
+
+    ```
+    /aso-audit
+    /keyword-research
+    /metadata-optimization
+    /competitor-analysis
+    /market-movers
+    /market-pulse
+    /app-marketing-context
+    /asc-metrics
+    ```
+  </Tab>
+</Tabs>
+
+<Tip>
+  Run `/app-marketing-context` first, before any other skill. It creates a shared `app-marketing-context.md` file that every other skill reads automatically — so you never have to repeat your app name, audience, competitors, or goals.
+</Tip>
+
+## All Skills by Category
+
+### ASO Core
+
+<CardGroup cols={2}>
+  <Card title="aso-audit" icon="magnifying-glass-chart" href="/reference/aso-audit">
+    Scores your listing across 10 weighted factors (0–100), flags problems, and gives you a prioritized fix list with Quick Wins, High-Impact Changes, and Strategic Recommendations.
+  </Card>
+  <Card title="keyword-research" icon="tags" href="/reference/keyword-research">
+    Finds keywords by volume × difficulty × relevance and groups them into primary, secondary, and long-tail tiers with an Opportunity Score for each.
+  </Card>
+  <Card title="metadata-optimization" icon="pen-to-square" href="/reference/metadata-optimization">
+    Writes title, subtitle, keyword field, and description — delivering 3 variants per field with character counts, keyword coverage matrices, and before/after comparisons.
+  </Card>
+  <Card title="competitor-analysis" icon="chart-bar" href="/reference/competitor-analysis">
+    Surfaces keyword gaps, tears down competitor creatives, builds a positioning map, and identifies specific opportunities to exploit.
+  </Card>
+  <Card title="seasonal-aso" icon="calendar" href="#">
+    Seasonal keyword calendar, metadata swap strategy, timing checklist, and trending-moment tactics for holidays and cultural events.
+  </Card>
+  <Card title="android-aso" icon="android" href="#">
+    Google Play-specific ASO — indexed description strategy, short description optimization, Play Experiments, and rating recovery.
+  </Card>
+</CardGroup>
+
+### Creative & International
+
+<CardGroup cols={2}>
+  <Card title="screenshot-optimization" icon="images" href="#">
+    10-slot screenshot strategy with design briefs, text overlay copy, and competitive screenshot audit.
+  </Card>
+  <Card title="app-preview-video" icon="video" href="#">
+    Up to 3 App Preview videos per locale — script template, beat-by-beat structure, Apple/Play specs, and rejection avoidance.
+  </Card>
+  <Card title="app-icon-optimization" icon="paintbrush" href="#">
+    Icon design principles, A/B testing via Custom Product Pages or Play Experiments, category differentiation, and icon briefs.
+  </Card>
+  <Card title="custom-product-pages" icon="browser" href="#">
+    Apple Custom Product Pages — variant strategy by audience and channel, ASA + CPP unlock, measurement floor, and common mistakes.
+  </Card>
+  <Card title="review-management" icon="star" href="#">
+    Sentiment analysis, response templates using the HEAR framework, and rating improvement tactics.
+  </Card>
+  <Card title="localization" icon="globe" href="#">
+    Market prioritization matrix, per-country keyword research, and cultural adaptation checklist.
+  </Card>
+</CardGroup>
+
+### Growth
+
+<CardGroup cols={2}>
+  <Card title="app-launch" icon="rocket" href="#">
+    8-week launch timeline with daily checklists, channel strategy, and press outreach templates.
+  </Card>
+  <Card title="ua-campaign" icon="bullhorn" href="#">
+    Apple Search Ads, Meta, and Google UAC — campaign structure, bidding, creative specs, and budget allocation.
+  </Card>
+  <Card title="apple-search-ads" icon="apple" href="#">
+    Deep-dive ASA strategy — campaign structure, match types, CPP routing, bid strategy, and weekly optimization checklist.
+  </Card>
+  <Card title="creator-ugc-marketing" icon="film" href="#">
+    TikTok, Instagram, and YouTube creator program — briefs, sourcing, hook angles, Spark Ads, and measurement.
+  </Card>
+  <Card title="referral-program" icon="share-nodes" href="#">
+    In-app referral mechanics — reward sizing, K-factor math, fraud prevention, and deep link flow.
+  </Card>
+  <Card title="press-and-pr" icon="newspaper" href="#">
+    Media targeting tiers, pitch templates, press kit checklist, embargo strategy, and Product Hunt launch.
+  </Card>
+</CardGroup>
+
+### Revenue & Retention
+
+<CardGroup cols={2}>
+  <Card title="monetization-strategy" icon="money-bill-wave" href="#">
+    Pricing tiers, paywall timing, trial structure, and category benchmarks.
+  </Card>
+  <Card title="retention-optimization" icon="arrow-rotate-left" href="#">
+    Activation → habit → engagement framework, push notification sequences, and churn prevention.
+  </Card>
+  <Card title="paywall-optimization" icon="lock" href="#">
+    Paywall conversion funnel diagnostic, 7-element audit, and A/B test playbook for Superwall, RevenueCat, and Adapty.
+  </Card>
+  <Card title="subscription-lifecycle" icon="rotate" href="#">
+    Trial nurture sequences, voluntary and involuntary churn reduction, dunning, and win-back campaigns.
+  </Card>
+</CardGroup>
+
+### Market Intelligence
+
+<CardGroup cols={2}>
+  <Card title="market-movers" icon="arrow-trend-up" href="/reference/market-movers">
+    Identifies top chart gainers and losers, new entries, and dropped apps — with explanations of what's driving each change.
+  </Card>
+  <Card title="market-pulse" icon="chart-line" href="/reference/market-pulse">
+    Full market briefing combining chart movements, trending keywords, featured apps, and new launches in one view.
+  </Card>
+  <Card title="competitor-tracking" icon="radar" href="#">
+    Weekly competitor surveillance — metadata changes, keyword shifts, rating trends, and chart movement deltas.
+  </Card>
+</CardGroup>
+
+### Analytics & Testing
+
+<CardGroup cols={2}>
+  <Card title="app-analytics" icon="chart-mixed" href="#">
+    Event tracking plan, dashboard setup, and KPI framework with category benchmarks.
+  </Card>
+  <Card title="ab-test-store-listing" icon="flask" href="#">
+    Hypothesis → variant design → sample size → interpretation for App Store A/B tests.
+  </Card>
+  <Card title="asc-metrics" icon="database" href="#">
+    Analyze your exact App Store Connect data — downloads, revenue, subscriptions, and country breakdowns via Appeeky Connect.
+  </Card>
+</CardGroup>
+
+### Foundation
+
+<CardGroup cols={2}>
+  <Card title="app-marketing-context" icon="file-lines" href="/reference/app-marketing-context">
+    Creates a shared context document (`app-marketing-context.md`) with your app details, audience, competitors, and goals — referenced by every other skill automatically.
+  </Card>
+  <Card title="aso-router (/aso-skill)" icon="route" href="#">
+    Single entry point — reads any natural-language ASO request and routes to the right specialist skill. Use when you don't want to remember every skill name.
+  </Card>
+</CardGroup>
+
+## The `/aso-skill` Router
+
+The router is a single entry point for the entire library. Instead of remembering 30 skill names, you describe what you want and the router determines the best specialist skill to invoke.
+
+```
+/aso-skill  Why isn't my app ranking for "habit tracker"?
+/aso-skill  Help me plan a Christmas In-App Event
+/aso-skill  My app rating dropped from 4.7 to 4.2 — how do I recover?
+/aso-skill  What seasonal keywords should I add in December?
+/aso-skill  Build an Apple Search Ads campaign structure for my fitness app
+```
+
+<Note>
+  The router works best after you've run `/app-marketing-context`. With your app's context loaded, the router can make smarter routing decisions and pass relevant context to the specialist skill it invokes.
+</Note>
+
+## How Skills Work Together
+
+Skills are designed to chain — the output of one feeds naturally into the next.
+
+```
+/app-marketing-context   →  Saves app context once
+       ↓
+/aso-audit               →  Scores your listing, finds weak spots
+       ↓
+/keyword-research        →  Discovers high-opportunity keywords
+       ↓
+/metadata-optimization   →  Writes new title, subtitle, keyword field
+       ↓
+/ab-test-store-listing   →  Designs and interprets A/B tests
+```
+
+<Tip>
+  Skills reference each other in their output. For example, `/aso-audit` will suggest `/keyword-research` for keyword gaps it finds, and `/keyword-research` will suggest `/metadata-optimization` when you're ready to implement.
+</Tip>

@@ -1,0 +1,227 @@
+---
+title: "8-Week App Launch Checklist and Planning Guide"
+sidebarTitle: "Launch Checklist"
+description: "A week-by-week launch framework powered by the app-launch skill — from ASO foundation through launch day and your first post-launch optimization cycle."
+---
+
+Shipping an app without a launch plan is like opening a restaurant without telling anyone the address. The `app-launch` skill gives you a battle-tested 8-week framework — from ASO groundwork and beta testing through launch day execution and your first post-launch data cycle. This guide walks you through each phase with specific prompts, tasks, and the reasoning behind the timing.
+
+## How to Use the Skill
+
+Start by giving the skill your app context and timeline. It will generate a fully dated checklist tailored to your launch date, budget, and existing audience.
+
+```
+/app-launch I'm launching a fitness app in 6 weeks. Create a launch plan.
+```
+
+Or with more detail for a richer plan:
+
+```
+/app-launch I'm launching a habit tracker for iOS in 8 weeks. I have 200 Twitter followers, no email list, and a $0 paid budget. Target users: productivity-focused adults 25-40 in the US. Create a launch plan.
+```
+
+The more context you provide — launch date, budget, pre-existing audience, target countries — the more specific the plan.
+
+---
+
+## Pre-Launch: Weeks 1–4
+
+### Week 1 — ASO Foundation
+
+The first week is about understanding the competitive landscape before you write a single word of your App Store listing. Don't touch your metadata yet — audit and research first.
+
+**Tasks:**
+
+- [ ] Run `/aso-audit` to score your current (or draft) listing
+- [ ] Run `/keyword-research` with 3–5 seed keywords describing your app's core function
+- [ ] Run `/competitor-analysis` to identify keyword gaps and positioning opportunities
+- [ ] Document your primary, secondary, and long-tail keyword tiers
+
+```
+Run keyword research for a fitness habit tracker app. Seed keywords: habit tracker, fitness goals, workout log, daily habits, exercise routine. US market.
+```
+
+<Tip>
+  If you haven't published yet, paste your draft title and description into the audit. The skill will score your draft metadata and flag issues before they go live.
+</Tip>
+
+### Week 2 — Metadata, Screenshots, and Icon
+
+Armed with your keyword research, this is the week to actually write and design your listing. Three skills work together here.
+
+**Tasks:**
+
+- [ ] Run `/metadata-optimization` with your target keywords — get the three variants and choose one
+- [ ] Run `/screenshot-optimization` to get a 10-slot screenshot strategy with design briefs and caption copy
+- [ ] Run `/app-icon-optimization` for a design brief and category differentiation guidance
+- [ ] Upload everything to App Store Connect (iOS) or Google Play Console (Android)
+
+```
+Optimize my metadata for iOS. App: fitness habit tracker. Primary keywords: habit tracker, fitness goals. Secondary: workout log, exercise routine, daily habits. Market: US.
+```
+
+<Note>
+  Screenshots are the single highest-impact creative element on your listing page. Users decide in under three seconds whether to keep reading. The first screenshot is your billboard.
+</Note>
+
+### Week 3 — TestFlight Beta and Feedback Collection
+
+Real users will find problems your team never imagined. A beta round before launch protects your day-one rating and surfaces critical fixes with no public consequences.
+
+**Tasks:**
+
+- [ ] Invite 50–200 beta testers via TestFlight (iOS) or Google Play Open Testing
+- [ ] Set up crash reporting (Firebase Crashlytics or Sentry)
+- [ ] Collect structured feedback — what's confusing, what's broken, what's missing
+- [ ] Fix any critical bugs and usability issues
+- [ ] Brief beta testers: ask them to be ready to leave an App Store review on launch day
+
+<Tip>
+  Beta testers who helped shape the app are your most enthusiastic early reviewers. A launch day ask — "We're live! We'd love your review" — is both authentic and effective.
+</Tip>
+
+### Week 4 — Press Outreach Prep and Product Hunt
+
+Press coverage has a long lead time. Journalists receive hundreds of pitches a week — if you reach out on launch day, you've already missed the window for most publications.
+
+**Tasks:**
+
+- [ ] Build your press kit: icon (1024×1024), screenshots (all device sizes), description, founder story, key stats
+- [ ] Identify 20–30 relevant journalists, bloggers, and YouTubers covering your category
+- [ ] Draft personalised pitch emails (run `/press-and-pr` for templates)
+- [ ] Draft your **Product Hunt listing**: tagline, description, first comment, media
+- [ ] Prepare 10+ social media posts for launch week
+- [ ] Write your launch blog post
+
+```
+/press-and-pr Help me write a pitch for my fitness habit tracker app launching next week. Target: productivity and wellness journalists at TechCrunch, The Verge, and app review blogs.
+```
+
+---
+
+## Launch Week: Week 5
+
+### 1 Week Before — Final Prep
+
+Submit for review with a buffer. Apple's average review time is 24–48 hours, but complex apps or first-time submissions can take longer. Don't schedule a launch-day announcement before your app is approved.
+
+**Tasks:**
+
+- [ ] Submit your app for App Store review — allow 3 business days of buffer
+- [ ] Schedule your release: you can set a date in App Store Connect so it goes live automatically after approval
+- [ ] Send press pitches with an **embargo date** of your launch day morning
+- [ ] Brief beta testers on the launch date and review timing
+- [ ] Prepare Apple Search Ads campaign (run `/apple-search-ads`) — ready to activate at launch
+
+<Warning>
+  Do not launch on a Friday. App Store editorial teams are smaller on weekends, press is harder to reach, and Product Hunt resets at midnight PST — Friday posts get far less traction than Tuesday–Thursday.
+</Warning>
+
+### Launch Day Checklist
+
+Start early. By the time most of your audience wakes up, you want the app live and the announcement engine running.
+
+**Morning:**
+
+- [ ] Confirm the app is live in the App Store / Google Play
+- [ ] Send the press embargo-lift email to all journalists
+- [ ] Post launch announcement on social media (personal + app accounts)
+- [ ] Launch on Product Hunt — post at 12:01 AM PST for maximum voting window
+- [ ] Post in relevant Reddit communities, Discord servers, and forums
+- [ ] Email your list (even if it's small — these are your most engaged people)
+- [ ] Activate your Apple Search Ads campaign
+
+**Throughout the Day:**
+
+- [ ] Monitor App Store Connect for download numbers hourly
+- [ ] Respond to every review — publicly and within a few hours
+- [ ] Engage with every social media mention and reply
+- [ ] Watch crash reports — if there's a spike, be ready to push a hotfix
+
+**Evening:**
+
+- [ ] Thank early adopters publicly — call out Product Hunt supporters by name if possible
+- [ ] Share a day-one milestone if you have one worth sharing ("We hit #3 in Health & Fitness!")
+- [ ] Plan tomorrow's content
+
+<Note>
+  Respond to every review on launch day — positive and negative. A developer who engages with users signals trustworthiness to both future users who read reviews and to Apple's editorial team. Run `/review-management` for response templates using the HEAR framework.
+</Note>
+
+---
+
+## Post-Launch: Weeks 6–8
+
+### Week 6 — Monitor and Respond
+
+The first week of data is noisy. Don't make major metadata changes yet — give your keywords time to stabilise in the rankings.
+
+**Tasks:**
+
+- [ ] Check keyword rankings daily — which target keywords are you indexing for?
+- [ ] Respond to all new reviews within 24 hours
+- [ ] Monitor crash rate and session length in App Store Connect
+- [ ] Follow up with press contacts who haven't responded
+- [ ] Continue daily social posting and community engagement
+
+```
+Check keyword rankings for my app (id: YOUR_APP_ID). Which of my target keywords broke into the top 50? Which am I not indexing for at all?
+```
+
+### Week 7 — Competitor Analysis Post-Launch
+
+Now that you're live and have a few hundred (or thousand) installs, you have real standing to benchmark against competitors. This is a different analysis than the pre-launch one — you can now see where you actually sit.
+
+**Tasks:**
+
+- [ ] Run `/competitor-analysis` — compare your ranking positions against top 3–5 competitors
+- [ ] Identify keyword gaps: terms competitors rank in the top 10 for that you're not indexing
+- [ ] Look for creative gaps: screenshot and icon strategies your competitors haven't tried
+- [ ] Check if any competitors changed their metadata since launch — they may be responding to you
+
+```
+/competitor-analysis Compare my habit tracker app (id: YOUR_APP_ID) against the top 3 competitors in Productivity. Show keyword gaps and any creative opportunities I'm missing.
+```
+
+### Week 8 — First Metadata Optimization Update
+
+You now have four weeks of real ranking data. This is when you make your first evidence-based metadata update — replacing underperformers with better-matched keywords identified in Week 7's competitor analysis.
+
+**Tasks:**
+
+- [ ] Identify keywords that climbed to positions 11–30 — these are candidates for promotion to the title or subtitle
+- [ ] Remove keywords you're not ranking for at all and have low opportunity scores
+- [ ] Run `/metadata-optimization` with your updated keyword strategy
+- [ ] Submit the metadata update (iOS title/subtitle/keyword changes require a new app version)
+- [ ] Set a recurring calendar reminder for the next keyword review in 4–6 weeks
+
+```
+Optimize my metadata for the next update. Here are my current keyword rankings after 4 weeks: [paste your ranking data]. Suggest changes to improve positions 11-30 keywords.
+```
+
+---
+
+## Quick Reference: Skills Used in This Plan
+
+| Phase | Skill | What it does |
+|-------|-------|-------------|
+| Week 1 | `/aso-audit` | Baseline score and keyword coverage |
+| Week 1 | `/keyword-research` | Target keyword discovery |
+| Week 1 | `/competitor-analysis` | Landscape mapping |
+| Week 2 | `/metadata-optimization` | Title, subtitle, keyword field |
+| Week 2 | `/screenshot-optimization` | 10-slot screenshot strategy |
+| Week 2 | `/app-icon-optimization` | Icon design brief |
+| Week 4 | `/press-and-pr` | Pitch templates and press kit |
+| Week 5 | `/apple-search-ads` | Campaign structure for launch |
+| Week 5 | `/review-management` | Launch-day review responses |
+| Week 7 | `/competitor-analysis` | Post-launch benchmark |
+| Week 8 | `/metadata-optimization` | First data-driven update |
+
+<CardGroup cols={2}>
+  <Card title="First ASO Audit" icon="clipboard-check" href="/guides/first-aso-audit">
+    New to ASO? Run your [baseline audit](/guides/first-aso-audit) before starting Week 1.
+  </Card>
+  <Card title="Connect Live Data" icon="plug" href="/guides/appeeky-mcp">
+    Connect [Appeeky MCP](/guides/appeeky-mcp) for real-time keyword rankings and competitor intelligence throughout the 8 weeks.
+  </Card>
+</CardGroup>

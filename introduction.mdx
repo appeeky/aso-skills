@@ -1,0 +1,79 @@
+---
+title: "Introduction to ASO Skills by Appeeky"
+sidebarTitle: "Introduction"
+description: "ASO Skills puts 20+ battle-tested App Store Optimization frameworks directly into your AI assistant — so you get expert guidance without leaving your IDE."
+---
+
+ASO Skills is an open-source collection of AI agent skills that turns your IDE's AI assistant into an expert App Store Optimization consultant. Instead of hunting through blog posts, hiring expensive consultants, or context-switching between tools, you install the skills once and ask your agent anything — from auditing your listing to researching keywords to planning a holiday push.
+
+## The Problem It Solves
+
+ASO knowledge is scattered. The best frameworks live in expensive courses, consultants' brains, and half-forgotten Medium posts. When you need to optimize a title, research keywords, or diagnose a ranking drop, you're either guessing or spending hours piecing together conflicting advice.
+
+ASO Skills packages that expertise — scoring rubrics, output templates, and step-by-step frameworks — into structured skill files that your AI agent reads at the moment you ask a question. Connect the Appeeky MCP Server and the agent also pulls live App Store data: real keyword rankings, competitor metadata, download estimates, and trending terms. The result is actionable, specific guidance instead of generic advice.
+
+## How It Works
+
+Every skill is a `SKILL.md` file that contains a complete expert framework for one area of ASO. When you invoke a skill, your agent:
+
+1. Reads the skill file to load the relevant framework, scoring rubric, and output template
+2. Calls the Appeeky MCP Server to fetch live App Store data for your specific app and category
+3. Applies the framework to your data
+4. Returns structured, prioritized recommendations you can act on immediately
+
+You can invoke skills by name — `/aso-audit`, `/keyword-research`, `/metadata-optimization` — or use the router skill (`/aso-skill`) to describe what you want in plain English and let it dispatch to the right specialist automatically.
+
+## Key Value Props
+
+<CardGroup cols={3}>
+  <Card title="20+ Specialist Skills" icon="layer-group">
+    Every major area of ASO and app marketing covered, from keyword research and metadata writing to paywall optimization and crash triage.
+  </Card>
+  <Card title="Works in Your IDE" icon="rectangle-terminal">
+    Install once into Cursor or Claude Code. No new tools to learn — just ask your agent in plain language.
+  </Card>
+  <Card title="Live App Store Data" icon="database">
+    Connect the Appeeky MCP Server for real-time keyword rankings, competitor data, download estimates, and trending terms.
+  </Card>
+</CardGroup>
+
+## Skill Categories
+
+ASO Skills covers the full lifecycle of an app — from pre-launch research to revenue optimization and market intelligence.
+
+### ASO Core
+The foundation of organic growth. The **aso-audit** skill scores your listing across 10 weighted factors and returns a prioritized fix list. **keyword-research** finds high-opportunity terms by volume, difficulty, and relevance. **metadata-optimization** writes your title, subtitle, and keyword field with three variants and exact character counts. **competitor-analysis** maps keyword gaps and creative opportunities. **seasonal-aso** builds a keyword calendar around trending moments. **android-aso** handles Google Play's unique ranking signals.
+
+### Creative & International
+Visual assets and global reach. **screenshot-optimization**, **app-preview-video**, and **app-icon-optimization** give you design briefs and A/B testing strategies for every slot. **localization** prioritizes markets and adapts your listing culturally. **custom-product-pages** unlocks Apple CPP strategy tied to your ad campaigns.
+
+### Growth
+From zero to launch and beyond. **app-launch** gives you an 8-week timeline with daily checklists. **apple-search-ads** and **ua-campaign** cover paid acquisition across all major channels. **creator-ugc-marketing**, **referral-program**, **web-to-app-funnel**, and **press-and-pr** round out the organic and earned growth playbook.
+
+### Revenue & Retention
+Turning installs into revenue and keeping users around. **monetization-strategy** benchmarks pricing tiers and paywall timing. **paywall-optimization** runs a 7-element conversion audit. **subscription-lifecycle** tackles churn, dunning, and win-back. **retention-optimization** and **onboarding-optimization** fix drop-off at every stage of the user journey.
+
+### Analytics & Testing
+Measuring what matters. **asc-metrics** connects to your exact App Store Connect data via Appeeky Connect. **app-analytics** builds your event tracking plan. **ab-test-store-listing** walks you through hypothesis-to-interpretation for store listing tests. **attribution-setup** handles SKAdNetwork 4 and MMP configuration.
+
+### Market Intelligence
+Knowing what's happening across the App Store. **market-movers** surfaces chart gainers, losers, and new entries. **market-pulse** delivers a full weekly briefing in one prompt. **competitor-tracking** runs ongoing surveillance on the apps you care about most.
+
+---
+
+<CardGroup cols={2}>
+  <Card
+    title="Get Started in 2 Minutes"
+    icon="bolt"
+    href="/quickstart"
+  >
+    Install ASO Skills into Cursor or Claude Code and run your first skill.
+  </Card>
+  <Card
+    title="How Skills Work"
+    icon="book-open"
+    href="/how-skills-work"
+  >
+    Understand the skill → data → output flow and what each component does.
+  </Card>
+</CardGroup>

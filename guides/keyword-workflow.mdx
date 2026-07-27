@@ -1,0 +1,208 @@
+---
+title: "Keyword Research to Metadata: The Full Workflow"
+sidebarTitle: "Keyword Workflow"
+description: "A complete three-step workflow: audit your current keyword coverage, research high-opportunity keywords, and publish optimized metadata for iOS or Android."
+---
+
+Keyword strategy is the engine behind organic App Store growth. Most developers either skip it entirely or treat it as a one-time task — both approaches leave ranking potential on the table. This guide walks you through the complete three-step workflow: audit what you have, discover what you're missing, and ship metadata that captures both.
+
+## The 3-Step Workflow at a Glance
+
+<CardGroup cols={3}>
+  <Card title="Step 1: Audit" icon="clipboard-check">
+    Run `/aso-audit` to understand your current keyword coverage and overall ASO health before making any changes.
+  </Card>
+  <Card title="Step 2: Research" icon="magnifying-glass">
+    Run `/keyword-research` with your seed keywords to find high-opportunity terms ranked by volume, difficulty, and relevance.
+  </Card>
+  <Card title="Step 3: Optimize" icon="pen-to-square">
+    Run `/metadata-optimization` to turn your keyword strategy into publish-ready metadata — three variants with full character counts.
+  </Card>
+</CardGroup>
+
+---
+
+## Step 1 — Audit Your Current Keyword Coverage
+
+Before searching for new keywords, understand where you stand today. Running the audit first prevents you from replacing keywords that are already working.
+
+```
+/aso-audit
+```
+
+Or with a direct prompt:
+
+```
+Audit my app (id: 570060128) and focus on my keyword field and ranking coverage. What keywords am I currently indexed for?
+```
+
+Pay close attention to two score card factors:
+
+- **Keyword Field** — Are you wasting characters on repeated words? Using spaces after commas? Including plurals that Apple handles automatically?
+- **Keyword Rankings** — How many target keywords are you actually ranking in the top 10 for? This tells you whether your current metadata is working at all.
+
+<Note>
+  If Appeeky MCP is connected, the audit automatically fetches your live keyword rankings and competitor keyword gaps. Without MCP, the audit still scores your metadata structure but can't show you your actual ranking positions.
+</Note>
+
+---
+
+## Step 2 — Research New Keywords
+
+With your audit baseline in hand, run the keyword research skill with 3–5 seed keywords that describe what your app does.
+
+```
+/keyword-research
+```
+
+Example prompt:
+
+```
+Research keywords for my meditation app (id: 544007664). Seed keywords: meditation, mindfulness, sleep, anxiety, breathing. Target market: US.
+```
+
+### Understanding the Output
+
+The skill evaluates every keyword candidate across three signals and combines them into an **Opportunity Score**:
+
+```
+Opportunity Score = (Volume × 0.4) + ((100 - Difficulty) × 0.3) + (Relevance × 0.3)
+```
+
+| Signal | Scale | What it means |
+|--------|-------|--------------|
+| **Volume** | 1–100 | Relative monthly search demand. Higher = more potential impressions. |
+| **Difficulty** | 1–100 | Competition level. Lower = easier to rank. |
+| **Relevance** | 1–100 | How closely the keyword matches your app's core function. Irrelevant traffic doesn't convert. |
+
+A keyword with volume 70, difficulty 30, and relevance 90 scores higher than a blockbuster keyword with volume 95 and difficulty 95 — because you can actually rank for it.
+
+### Keyword Tier Assignment
+
+The skill organises your keywords into four strategic buckets:
+
+<Accordion title="Primary Keywords (top 5 by Opportunity Score)">
+  These define your core positioning and **must appear in your title or subtitle**. They're the terms you most want to be known for in search. You'll have 3–5 of these maximum — don't try to squeeze more in, or you'll dilute all of them.
+</Accordion>
+
+<Accordion title="Secondary Keywords (next 10–15 by Opportunity Score)">
+  Good opportunity but lower priority than your primary set. Target these in your subtitle and keyword field. These are candidates for rotation — swap underperformers every 4–8 weeks based on ranking data.
+</Accordion>
+
+<Accordion title="Long-tail Keywords (remaining relevant terms)">
+  Lower individual volume but very specific intent. Users searching "5-minute guided morning meditation for anxiety" are much closer to downloading than someone searching "meditation." Fill the remaining characters in your keyword field with the best long-tail terms.
+</Accordion>
+
+<Accordion title="Aspirational Keywords (3–5 high-difficulty targets)">
+  High volume, high difficulty — these are terms you want to rank for eventually as your app gains authority. Track them weekly but don't sacrifice primary keyword placement for them yet.
+</Accordion>
+
+---
+
+## Step 3 — Optimize Your Metadata
+
+With your keyword tiers in hand, run metadata optimization to produce publish-ready copy.
+
+```
+/metadata-optimization
+```
+
+Example prompt:
+
+```
+Optimize my metadata for iOS using these target keywords: meditation (primary), mindfulness (primary), sleep sounds (secondary), anxiety relief (secondary), breathing exercises (secondary), relaxation (long-tail), white noise (long-tail). App id: 544007664, US market.
+```
+
+### The Three Variants
+
+The skill always produces three variants so you can choose the risk level that fits your situation:
+
+| Variant | Approach | Best for |
+|---------|----------|---------|
+| **Conservative** | Minimal changes from your current metadata; safest keyword swaps | Apps with existing ranking authority you don't want to disturb |
+| **Balanced** | Meaningful optimization while keeping brand clarity | Most apps — good balance of risk and upside |
+| **Aggressive** | Maximum keyword density, full character usage, bolder positioning | New apps or those willing to accept short-term ranking volatility for long-term gain |
+
+### Character Limits to Know
+
+<Tabs>
+  <Tab title="iOS (Apple App Store)">
+    | Field | Limit | Indexed? |
+    |-------|-------|---------|
+    | Title | 30 characters | ✅ Yes — highest weight |
+    | Subtitle | 30 characters | ✅ Yes — second highest weight |
+    | Keyword Field | 100 characters | ✅ Yes — hidden from users |
+    | Description | 4,000 characters | ❌ No — conversion copy only |
+    | Promotional Text | 170 characters | ❌ No — updatable without review |
+  </Tab>
+  <Tab title="Android (Google Play)">
+    | Field | Limit | Indexed? |
+    |-------|-------|---------|
+    | Title | 30 characters | ✅ Yes — highest weight |
+    | Short Description | 80 characters | ✅ Yes — visible on listing |
+    | Full Description | 4,000 characters | ✅ Yes — keyword density matters |
+  </Tab>
+</Tabs>
+
+### Reading the Keyword Coverage Matrix
+
+After producing your metadata, the skill outputs a coverage matrix showing exactly which field covers each target keyword:
+
+| Keyword | Title | Subtitle | Keyword Field | Coverage |
+|---------|-------|----------|---------------|---------|
+| meditation | ✓ | | | Title |
+| mindfulness | | ✓ | | Subtitle |
+| sleep sounds | | | ✓ | Keyword Field |
+| anxiety relief | | | ✓ | Keyword Field |
+| breathing | | | ✓ | Keyword Field |
+
+Use this matrix to confirm that every primary keyword appears in either the title or subtitle, and that no keyword is wasted by appearing in two fields at once.
+
+---
+
+## Tips for Better Results
+
+<Tip>
+  **Don't repeat keywords across fields.** Apple's algorithm indexes your title, subtitle, and keyword field together as one pool. If "meditation" is in your title, putting it in your keyword field too wastes 9 characters that could cover a new term.
+</Tip>
+
+<Tip>
+  **Use singular forms in the keyword field.** Apple automatically indexes both singular and plural, so "meditation" covers both "meditation" and "meditations." Using "meditations" instead wastes one character.
+</Tip>
+
+<Tip>
+  **No spaces after commas in the keyword field.** `sleep,relax,focus` uses 16 characters. `sleep, relax, focus` uses 18 — two characters wasted for nothing.
+</Tip>
+
+<Warning>
+  **Don't include competitor brand names in your keyword field.** Apple's App Store Review Guidelines prohibit this and can lead to your update being rejected or your app removed.
+</Warning>
+
+<Tip>
+  **Update keywords every 4–8 weeks.** Search trends shift with seasons, culture, and competitor moves. Set a recurring reminder and track ranking changes after each update to measure what's working.
+</Tip>
+
+---
+
+## Tracking and Iterating
+
+After you publish your new metadata, set up a simple tracking routine:
+
+```
+Check my keyword rankings for app id: 544007664. Which of my target keywords improved after my last update? Which declined?
+```
+
+The `get_keyword_ranks` MCP tool (when Appeeky is connected) will show week-over-week changes for each keyword. Focus your next optimization cycle on:
+
+1. Keywords that climbed into positions 11–20 — a small push can land them in the top 10
+2. Keywords that dropped — investigate whether a competitor made aggressive changes
+3. Keywords you're not ranking for at all — consider whether they're actually relevant or whether you need more installs/reviews to compete
+
+<CardGroup cols={2}>
+  <Card title="Run your first audit" icon="clipboard-check" href="/guides/first-aso-audit">
+    New to ASO Skills? Start with the [First ASO Audit guide](/guides/first-aso-audit) before running keyword research.
+  </Card>
+  <Card title="Connect live data" icon="plug" href="/guides/appeeky-mcp">
+    Get real keyword volumes and competitor rankings by connecting the [Appeeky MCP Server](/guides/appeeky-mcp).
+  </Card>
+</CardGroup>

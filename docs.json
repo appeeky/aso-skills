@@ -1,0 +1,105 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Appeeky",
+  "theme": "luma",
+  "colors": {
+    "primary": "#b1b1b1",
+    "light": "#ffffff"
+  },
+  "logo": {
+    "light": "https://media.brand.dev/7f0b1259-a00d-4a95-9c90-e169173d1c5a.svg",
+    "dark": "https://media.brand.dev/7f0b1259-a00d-4a95-9c90-e169173d1c5a.svg"
+  },
+  "favicon": "https://media.brand.dev/32c5d7d2-0caf-4bc9-afca-f974ff6d7fb7.png",
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/eronred/aso-skills"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Docs",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "how-skills-work"
+            ]
+          },
+          {
+            "group": "Installation",
+            "pages": [
+              "install/cursor",
+              "install/claude-code",
+              "install/other-agents"
+            ]
+          },
+          {
+            "group": "ASO Core Skills",
+            "pages": [
+              "skills/aso-audit",
+              "skills/keyword-research",
+              "skills/metadata-optimization",
+              "skills/competitor-analysis"
+            ]
+          },
+          {
+            "group": "Growth & Creative Skills",
+            "pages": [
+              "skills/market-intelligence",
+              "skills/screenshot-optimization",
+              "skills/app-launch",
+              "skills/seasonal-android"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/first-aso-audit",
+              "guides/keyword-workflow",
+              "guides/launch-checklist",
+              "guides/appeeky-mcp"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Skills Reference",
+        "groups": [
+          {
+            "group": "All Skills",
+            "pages": [
+              "reference/skills-overview",
+              "reference/aso-audit",
+              "reference/keyword-research",
+              "reference/metadata-optimization",
+              "reference/competitor-analysis",
+              "reference/seasonal-aso",
+              "reference/android-aso",
+              "reference/screenshot-optimization",
+              "reference/app-preview-video",
+              "reference/app-icon-optimization",
+              "reference/review-management",
+              "reference/localization",
+              "reference/app-launch",
+              "reference/ua-campaign",
+              "reference/apple-search-ads",
+              "reference/monetization-strategy",
+              "reference/retention-optimization",
+              "reference/market-movers",
+              "reference/market-pulse",
+              "reference/app-store-featured",
+              "reference/ab-test-store-listing",
+              "reference/app-analytics",
+              "reference/app-marketing-context"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+---
+title: "Android ASO: Google Play Store Optimization"
+sidebarTitle: "Android ASO"
+description: "Optimize your Google Play listing with indexed description strategy, keyword-rich short description, Play Experiments setup, and rating recovery tactics."
+---
+
+The `/android-aso` skill covers everything specific to Google Play — where the full 4,000-character description is indexed by Google's algorithm, there is no hidden keyword field, and ratings are continuous rather than version-reset.
+
+## Invoke
+
+```
+/android-aso
+```
+
+## What You Get
+
+- **Indexed description strategy** — structured 4,000-character description with keyword placement guidelines and density rules
+- **Short description rewrite** — 80-character hook with your top 2–3 keywords naturally embedded
+- **Play Experiments setup** — step-by-step instructions for A/B testing icons, screenshots, and descriptions natively
+- **Rating recovery plan** — response strategy and in-app review API timing to improve your continuous rating
+
+## Example Prompts
+
+```
+"Audit my Google Play listing (id: com.example.app) and rewrite the description"
+"My Play Store rating dropped to 3.8 — help me recover it"
+"Set up Play Store Experiments to test my short description"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_keyword_suggestions` | Find Play-relevant keywords including long-tail phrases |
+| `get_keyword_metrics` | Validate volume and competition for each keyword |
+| `get_app` | Fetch current metadata, screenshots, and rating to audit |
+
+## Key Differences vs iOS
+
+<Accordion title="What makes Google Play ASO fundamentally different?">
+  On Google Play, **all text is indexed**: title (30 chars, highest weight), short description (80 chars, high weight), and the full description (4,000 chars, medium weight). There is no hidden keyword field. This means your description is your keyword strategy — write it for the algorithm and for humans simultaneously. Long-tail phrases work especially well because Google's semantic index understands synonyms and intent.
+</Accordion>
+
+<Accordion title="How do Play ratings work differently?">
+  Unlike iOS, Play ratings are **never reset** — every rating ever given counts toward your current average. Responding to negative reviews is algorithmically beneficial: users can update their rating after you reply, and Google's algorithm rewards developer engagement. Use `/review-management` for response templates built on the HEAR framework.
+</Accordion>
+
+<Note>
+  The **first 167 characters** of your full description appear above the fold before users tap "read more." Your primary keyword must appear in this opening hook — it's the most-read and highest-weighted copy on the page.
+</Note>
+
+<Tip>
+  When running Play Store Experiments, test **one element at a time** and run each experiment for a minimum of 7 days or 1,000 impressions to get statistically meaningful results.
+</Tip>

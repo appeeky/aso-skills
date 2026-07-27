@@ -1,0 +1,70 @@
+---
+title: "Retention Optimization: Activation to Long-Term Habit"
+sidebarTitle: "Retention"
+description: "Diagnose Day-1/7/30 retention gaps, build push notification sequences, and implement churn prevention tactics using the activation–habit–engagement framework."
+---
+
+The `/retention-optimization` skill diagnoses where users drop off in your retention curve, benchmarks your metrics against category averages, and produces an actionable plan covering first-session activation, habit formation in days 1–7, engagement deepening in days 7–30, and long-term retention beyond day 30.
+
+## Invoke
+
+```
+/retention-optimization
+```
+
+## What You Get
+
+- **Retention diagnostic** — current Day 1/7/30 metrics compared to category benchmarks with gap analysis
+- **Activation plan** — onboarding flow audit focused on time-to-value and first-session quick wins
+- **Push notification sequences** — message-by-message schedule for Days 1, 3, 5, 7, 14, and 30 with copy and trigger logic
+- **Churn prevention tactics** — cancellation flow design, win-back campaign templates, and pause-vs-cancel offer strategy
+
+## Example Prompts
+
+```
+"My Day-7 retention is 9% — what are the most likely causes and how do I fix it?"
+"Build a 30-day push notification sequence for a fitness app"
+"Design a cancellation flow that reduces subscription churn"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_app_reviews` | Surface retention-related complaints (crashes, confusing UX, missing features) |
+| `get_app_intelligence` | Benchmark engagement and retention patterns against category |
+
+## Retention Framework
+
+| Phase | Days | Core Goal |
+|-------|------|-----------|
+| **Activation** | 0–1 | Reach the aha moment in under 60 seconds |
+| **Habit Formation** | 1–7 | Create a return trigger (notification, streak, content) |
+| **Engagement Deepening** | 7–30 | Introduce advanced features progressively |
+| **Long-term Retention** | 30+ | Content freshness, community, loyalty signals |
+
+## Industry Benchmarks
+
+| Category | Good D1 | Good D7 | Good D30 |
+|----------|---------|---------|---------|
+| Games | > 35% | > 15% | > 8% |
+| Social | > 40% | > 20% | > 15% |
+| Health & Fitness | > 30% | > 12% | > 10% |
+| Productivity | > 25% | > 10% | > 8% |
+| Finance | > 30% | > 12% | > 10% |
+
+<Note>
+  The biggest retention lever for most apps is **reducing time-to-value in the first session**. Users who don't reach the aha moment in session 1 rarely return. Every unnecessary onboarding step, permission request, or account creation screen before the core value is delivered is a retention tax.
+</Note>
+
+<Accordion title="How should I structure push notification content?">
+  Never send "Come back!" as a standalone message — always pair a return prompt with a specific value reason. Day 1: tip that helps users do something useful. Day 3: personalized data or content waiting for them. Day 7: streak celebration or progress summary. Day 14: feature discovery for something they haven't tried. Day 30: milestone recap. Max 3–5 notifications per week; allow granular opt-out preferences.
+</Accordion>
+
+<Accordion title="What should my cancellation flow look like?">
+  When a subscription user tries to cancel: (1) ask why with a multiple-choice prompt, (2) respond to their specific reason — "Too expensive" → offer a discount or downgrade; "Don't use enough" → show usage stats and suggest features; "Missing a feature" → share roadmap and offer to notify on release, (3) offer a **pause** option as the default alternative to cancelling. Forced-retention dark patterns backfire — they increase refund requests and 1-star reviews.
+</Accordion>
+
+<Tip>
+  The **single most predictive signal of long-term retention** is what users do in their first session. Use your analytics stack to identify which first-session action correlates with Day-30 retention — then redesign onboarding to drive every new user toward that action.
+</Tip>

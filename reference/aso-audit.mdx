@@ -1,0 +1,150 @@
+---
+title: "ASO Audit — Full App Store Health Check"
+sidebarTitle: "ASO Audit"
+description: "Score your App Store listing across 10 weighted factors, get a prioritized fix list, and see exactly what's holding your rankings back."
+---
+
+The ASO Audit skill performs a comprehensive health check of your App Store or Google Play listing. It scores your app across 10 weighted factors on a 0–100 scale, identifies what's dragging your rankings down, and delivers a prioritized action plan — split into Quick Wins you can ship today, High-Impact Changes for this week, and Strategic Recommendations for the month ahead.
+
+## Invoke
+
+```
+/aso-audit
+```
+
+You can also describe your goal naturally and let the router handle it:
+
+```
+/aso-skill  Run an ASO audit for my app (id: 1617391485)
+/aso-skill  Why isn't my app ranking — can you review my listing?
+/aso-skill  Give me an ASO score for com.example.myapp
+```
+
+<Note>
+  If you've already run `/app-marketing-context`, the audit will read your saved context file and skip redundant questions about your app. Run that skill first for the smoothest experience.
+</Note>
+
+## Inputs
+
+The skill will ask you for the following information:
+
+<ParamField path="app_id" type="string" required>
+  Your app's identifier. For iOS, this is the numeric App ID (e.g. `1617391485`). For Android, this is the Google Play package name (e.g. `com.example.myapp`).
+</ParamField>
+
+<ParamField path="target_country" type="string" default="US">
+  The country market you want to audit against. Keyword rankings, competitor context, and chart positions are all country-specific.
+</ParamField>
+
+<ParamField path="platform" type="string" default="iOS">
+  Which platform to audit: `iOS`, `Android`, or `Both`. iOS and Android scoring differs — notably, the Keyword Field factor only applies to iOS, and Description carries more weight on Android (15% vs 5%).
+</ParamField>
+
+## Scoring Framework
+
+The audit scores 10 factors and computes a weighted ASO Score from 0 to 100.
+
+<Accordion title="10 Scoring Factors and Weights">
+
+| Factor | Weight | What's Evaluated |
+|---|---|---|
+| **Title** | 20% | Primary keyword presence, character usage (30-char limit), brand/keyword balance, readability |
+| **Subtitle** | 15% | Secondary keywords not repeated from title, value proposition, character usage — iOS only |
+| **Keyword Field** | 15% | No repetition, no spaces after commas, singular forms, full 100-char usage — iOS only |
+| **Description** | 5% iOS / 15% Android | First-3-line hook, feature/benefit framing, keyword density (Android), formatting, CTA |
+| **Screenshots** | 15% | All 10 slots used, first 3 slots highlight top features, text overlays, design consistency |
+| **App Preview Video** | 5% | Exists, hooks in first 3 seconds, 15–30 seconds long, works without sound |
+| **Ratings & Reviews** | 15% | 4.5+ stars, sufficient review count, positive recent trend, developer responses |
+| **Icon** | 5% | Distinctiveness, legibility at small sizes, category fit, no text |
+| **Keyword Rankings** | 10% | Top-10 rankings for target keywords, coverage breadth, ranking trend, gap vs competitors |
+| **Conversion Signals** | 5% | Promotional text, What's New notes, In-App Events, Custom Product Pages |
+
+</Accordion>
+
+## Output
+
+The skill returns a structured report with four sections.
+
+### ASO Score Card
+
+A visual breakdown of your score across all 10 factors:
+
+```
+Overall ASO Score: 67/100
+
+Title:              8/10  ████████░░
+Subtitle:           6/10  ██████░░░░
+Keyword Field:      4/10  ████░░░░░░
+Description:        8/10  ████████░░
+Screenshots:       10/10  ██████████
+Preview Video:      2/10  ██░░░░░░░░
+Ratings & Reviews:  8/10  ████████░░
+Icon:               8/10  ████████░░
+Keyword Rankings:   6/10  ██████░░░░
+Conversion Signals: 4/10  ████░░░░░░
+```
+
+### Quick Wins — Implement Today
+
+Three to five changes you can make immediately without a new app submission — for example, updating your Promotional Text, Keyword Field, or responding to recent negative reviews.
+
+### High-Impact Changes — This Week
+
+Three to five higher-effort changes with significant ranking or conversion impact — such as rewriting your title and subtitle with better keyword targeting.
+
+### Strategic Recommendations — This Month
+
+Three to five longer-term improvements — such as building a screenshot set, launching an App Preview video, or running a rating-recovery campaign.
+
+### Competitor Comparison Table
+
+A side-by-side snapshot of your app versus the top 3 competitors on key metrics including title keywords, screenshot count, rating, and estimated downloads.
+
+## Example Prompts
+
+```
+/aso-audit
+→ App ID: 1617391485, Country: US, Platform: iOS
+
+Audit my Google Play listing for com.headspace.android in the US
+
+Run an ASO audit for both iOS and Android versions of my app
+
+Why am I not ranking for "habit tracker"? Start with an ASO audit.
+```
+
+## MCP Tools Used
+
+When the Appeeky MCP Server is connected, the audit pulls live data using these tools:
+
+| Tool | What It Fetches |
+|---|---|
+| `aso_full_audit` | Full automated ASO audit scores and recommendations |
+| `get_app` | App metadata — title, subtitle, description, screenshots, ratings |
+| `get_app_keywords` | Current keyword rankings for the app |
+| `get_keyword_metrics` | Search volume and difficulty for ranked keywords |
+
+<Note>
+  Without the Appeeky MCP Server connected, the skill works with metadata you paste in manually. Connecting Appeeky unlocks live keyword rankings, competitor data, and automated scoring.
+</Note>
+
+## Tips
+
+<Tip>
+  **Fix the Keyword Field first.** It's the most commonly under-optimized factor and requires no app submission — just an App Store Connect metadata update. A fully utilized, non-repetitive keyword field can move the needle on rankings within days.
+</Tip>
+
+<Tip>
+  **Re-run the audit after each metadata update.** The skill tracks score changes over time, so you can measure the impact of every change you make. Aim to improve your score by at least 5–10 points per sprint.
+</Tip>
+
+<Tip>
+  **Pair with `/keyword-research`** for any factor that scores below 6. The audit tells you *what* is wrong; keyword research tells you *which specific keywords* to use to fix it.
+</Tip>
+
+## Related Skills
+
+- [`/keyword-research`](/reference/keyword-research) — Deep dive into keyword opportunities surfaced by the audit
+- [`/metadata-optimization`](/reference/metadata-optimization) — Implement the title, subtitle, and keyword improvements
+- [`/competitor-analysis`](/reference/competitor-analysis) — Detailed competitive analysis for context
+- [`/app-marketing-context`](/reference/app-marketing-context) — Set up shared context so the audit runs with full app knowledge

@@ -1,0 +1,146 @@
+---
+title: "Market Movers — App Store Chart Rank Changes"
+sidebarTitle: "Market Movers"
+description: "Spot top chart gainers, losers, new entries, and dropped apps in real time — with explanations of what's driving each movement."
+---
+
+The Market Movers skill analyzes App Store and Google Play chart rank changes between snapshots to show you what's moving, how fast, and why. Whether you want to catch a breakout competitor before it dominates your category, time an update or campaign to a chart dip, or simply understand the rhythm of your category, this skill turns raw rank data into actionable intelligence.
+
+## Invoke
+
+```
+/market-movers
+```
+
+You can also describe your goal naturally and let the router handle it:
+
+```
+/aso-skill  What apps are rising in the Health & Fitness charts right now?
+/aso-skill  Show me the top gainers and losers in the Productivity category
+/aso-skill  Which apps just entered the top 100 in the US?
+```
+
+<Note>
+  If you've run `/app-marketing-context`, the skill knows your category and uses it as the default — you won't need to specify it every time.
+</Note>
+
+## Inputs
+
+<ParamField path="chart_type" type="string" default="top-free">
+  Which chart to analyze: `top-free`, `top-paid`, or `top-grossing`. Top-free reflects download volume; top-grossing reflects revenue.
+</ParamField>
+
+<ParamField path="category" type="string" default="All">
+  The App Store category to scope the analysis. Omit for an all-category overview, or specify (e.g. `Health & Fitness`, `Productivity`, `Games`) to focus on your competitive space.
+</ParamField>
+
+<ParamField path="country" type="string" default="US">
+  The country market to analyze. Chart dynamics vary significantly by country — a US gainer may not be moving at all in Germany.
+</ParamField>
+
+<ParamField path="view" type="string" default="full overview">
+  What you want back: `gainers` (only rising apps), `losers` (only declining apps), `new entries` (apps that just entered the top 100), or `full overview` (all movements).
+</ParamField>
+
+## Output
+
+### Chart Movement Summary
+
+A snapshot of the period being compared and its headline numbers:
+
+| Metric | Value |
+|---|---|
+| Period compared | Today vs 7 days ago |
+| Chart / Country | Top Free / US — Health & Fitness |
+| Total significant moves | 23 |
+| New entries | 4 |
+| Dropped out | 3 |
+| Biggest gainer | +45 positions |
+| Biggest loser | −28 positions |
+
+### Top Gainers
+
+For each notable gainer, you get their rank change, current and previous position, and an explanation of what likely drove the surge — whether that's a viral moment, an Apple featuring, a UA campaign, a seasonal event, or a product update.
+
+| App | Rank Change | Current | Previous | Category | Rating |
+|---|---|---|---|---|---|
+| Calm | +45 | #3 | #48 | Health & Fitness | 4.8 |
+| Streaks | +23 | #17 | #40 | Health & Fitness | 4.9 |
+
+**Likely driver analysis** is included for each significant gainer — for example: *"Calm entered Apple's 'New Year, New You' featuring collection on January 1. The +45 position gain aligns with the feature start date. Expect the ranking to partially retrace when the collection rotates in ~2 weeks."*
+
+### Top Losers
+
+For each significant loser, the skill assesses what may have caused the decline and whether it represents an opportunity for you — an opening in the ranking you could target.
+
+### New Chart Entries
+
+Apps that appeared in the top 100 for the first time in the analyzed period:
+
+| App | Entered At | Category | Rating | Reviews |
+|---|---|---|---|---|
+| NovaSleep | #34 | Health & Fitness | 4.6 | 1,240 |
+
+For each new entry, the skill assesses whether this is a fresh launch or a resurgent app, whether it competes directly with you, and what launch strategy they likely used.
+
+### Alert-Style Summary
+
+For quick consumption or copy-pasting into a Slack message:
+
+```
+🟢 GAINERS:  Calm +45, Streaks +23, AutoSleep +18
+🔴 LOSERS:   Sleep Cycle −28, Pillow −14
+🆕 NEW:      NovaSleep entered at #34, Breathwork AI at #67
+⬇️ OUT:      Relax Melodies dropped from #89
+```
+
+### Actionable Recommendations
+
+A short table of priority actions for your app based on the movements observed:
+
+| Priority | Action | Why | Expected Impact |
+|---|---|---|---|
+| 1 | Target "sleep tracker" — Sleep Cycle just dropped 28 positions | Competitor weakening | High |
+| 2 | Launch a New Year UA push — category is up 40% overall | Seasonal tailwind | High |
+| 3 | Monitor NovaSleep — new entry at #34 competes directly | Threat | Medium |
+
+## Example Prompts
+
+```
+/market-movers
+→ Chart: top-free, Category: Health & Fitness, Country: US
+
+Show me the top gainers in the Productivity category this week
+
+What apps just entered the top 100 free charts in the UK?
+
+Which competitor apps in Finance dropped rankings recently — I want to find an opening
+```
+
+## MCP Tools Used
+
+| Tool | What It Fetches |
+|---|---|
+| `get_market_movers` | Top gainers, losers, new entries, and dropped apps across chart snapshots |
+| `get_market_activity` | Chronological feed of all significant chart movements |
+| `get_category_top` | Current chart standings for context and comparison |
+
+## Tips
+
+<Tip>
+  **Run this weekly, not just when you're curious.** Chart dynamics compound. A competitor gaining 10 positions per week is doubling its visibility in a month. Catching a trend early gives you time to respond — whether by adjusting your UA spend, tightening your keyword targeting, or simply monitoring more closely.
+</Tip>
+
+<Tip>
+  **Losers are opportunities.** When a competitor drops in the charts, they're ceding downloads to whoever fills the gap. If you can correlate the drop to a bad update or negative review surge, that's your window to capture their audience with a targeted UA push or updated keywords.
+</Tip>
+
+<Tip>
+  **Check new entries for launch playbooks.** An app that enters the top 100 without being featured likely ran a coordinated launch — friends-and-family ratings, a Product Hunt launch, an influencer push, or a coordinated UA campaign. Reverse-engineer it by looking at their review dates and social activity.
+</Tip>
+
+## Related Skills
+
+- [`/market-pulse`](/reference/market-pulse) — Broader market briefing combining movers with trending keywords and featuring
+- [`/competitor-analysis`](/reference/competitor-analysis) — Deep dive into specific competitors you spot in the movers list
+- [`/app-marketing-context`](/reference/app-marketing-context) — Set up your app context so the skill defaults to your category automatically

@@ -1,0 +1,150 @@
+---
+title: "Competitor Analysis — ASO Competitive Intelligence"
+sidebarTitle: "Competitors"
+description: "Uncover keyword gaps, dissect competitor creatives, map your market position, and find specific opportunities to outrank your top rivals."
+---
+
+The Competitor Analysis skill gives you a complete picture of your competitive landscape. It compares your metadata, keyword rankings, creative assets, ratings, and growth signals against up to five competitor apps — then surfaces concrete opportunities you can act on: keywords to steal, creative angles your rivals are missing, and underserved user segments waiting for you.
+
+## Invoke
+
+```
+/competitor-analysis
+```
+
+You can also describe your goal naturally and let the router handle it:
+
+```
+/aso-skill  Analyze my competitors in the meditation app space
+/aso-skill  What keywords does Calm rank for that I don't?
+/aso-skill  Compare my app to Headspace and give me opportunities to win
+```
+
+<Note>
+  If you've run `/app-marketing-context`, the skill automatically reads your known competitors from that file. You only need to confirm or add to the list.
+</Note>
+
+## Inputs
+
+<ParamField path="your_app_id" type="string" required>
+  Your Apple numeric App ID or Google Play package name. The analysis anchors everything to your current position.
+</ParamField>
+
+<ParamField path="competitor_app_ids" type="array" required>
+  One to five competitor App IDs. If you're unsure who to analyze, the skill will suggest competitors based on your category, keyword overlap, and the "You Might Also Like" section. Aim for 2 direct competitors, 1–2 aspirational (larger) apps, and 1 emerging challenger.
+</ParamField>
+
+<ParamField path="target_country" type="string" default="US">
+  The country market for the analysis. Rankings, reviews, and chart positions are all country-specific.
+</ParamField>
+
+<ParamField path="focus" type="string" default="all">
+  What aspect to emphasize: `keywords` (gap analysis only), `creative` (screenshots, icons, videos), `positioning` (metadata and messaging), or `all` (complete report).
+</ParamField>
+
+## Analysis Framework
+
+<Accordion title="Metadata Comparison">
+  A side-by-side table of title, subtitle, description hooks, and character usage for your app and each competitor. Reveals how rivals balance brand vs keywords, what positioning angle each takes, and whether anyone is leaving keyword coverage on the table.
+</Accordion>
+
+<Accordion title="Keyword Gap Analysis">
+  Three keyword tables:
+
+  - **Gaps** — Keywords competitors rank for (top 20) that you don't. Sorted by the opportunity they represent.
+  - **Unique advantages** — Keywords you rank for that competitors don't. These are your moats — protect them.
+  - **Outranked keywords** — Keywords you both rank for, but competitors rank higher. Sorted by the effort to close the gap.
+</Accordion>
+
+<Accordion title="Creative Teardown">
+  A structured audit of competitors' screenshots, App Preview videos, and icons. Covers: how many screenshot slots they use, what the first screenshot features, whether they use text overlays, their design style (dark/light, device frames, lifestyle), and what the hook of any preview video is.
+</Accordion>
+
+<Accordion title="Ratings & Reviews">
+  Side-by-side rating comparison including average stars, total review count, recent trend (last 30 days), top user complaint, top user praise, and whether the developer actively responds to reviews. User complaints are your feature opportunities. Top praise is what you need to match before entering the market.
+</Accordion>
+
+<Accordion title="Growth Signals">
+  A comparison table of estimated monthly downloads and revenue, chart position, update frequency, use of In-App Events, Custom Product Pages, and Apple Search Ads presence.
+</Accordion>
+
+## Output
+
+### Executive Summary
+
+Two to three paragraphs summarizing the competitive landscape, your current position, and the highest-leverage opportunities.
+
+### Competitive Position Map
+
+A text-based positioning map showing where each app sits on two axes (e.g. visibility vs ratings, or breadth vs depth):
+
+```
+                    HIGH VISIBILITY
+                         │
+            Calm ●       │       ● Headspace
+                         │
+   LOW ──────────────────┼────────────────── HIGH
+   RATINGS               │               RATINGS
+                         │
+                  You ●  │
+                         │
+                    LOW VISIBILITY
+```
+
+### Top Opportunities
+
+A ranked list of the five highest-leverage moves you can make based on the analysis:
+
+| Priority | Opportunity | Type | Expected Impact |
+|---|---|---|---|
+| 1 | Target "sleep meditation" — Competitors rank 8–14, you're unranked | Keyword gap | High |
+| 2 | Add an App Preview video — Only 1 of 4 competitors has one | Creative | High |
+| 3 | Improve Subtitle keyword coverage — 12 chars wasted | Metadata | Medium |
+| 4 | Respond to negative reviews — Competitors reply, you don't | Ratings | Medium |
+| 5 | Expand to UK market — Top competitor has no UK localization | Market | High |
+
+### Threats to Monitor
+
+A short list of competitor moves that could affect your position — new keyword targeting, upcoming feature launches signaled in recent reviews, or aggressive charting from an emerging app.
+
+## Example Prompts
+
+```
+/competitor-analysis
+→ Your App: 1617391485, Competitors: 378458261, 1063993390, Country: US
+
+What keywords does Calm rank for in the top 10 that I don't rank for at all?
+
+Compare my fitness app to Nike Training Club and Strava — where are the gaps?
+
+Tear down the screenshots of the top 3 meditation apps and tell me how to beat them creatively
+```
+
+## MCP Tools Used
+
+| Tool | What It Fetches |
+|---|---|
+| `aso_competitor_report` | Full automated competitor comparison — metadata, rankings, ratings, and growth signals |
+| `compare_keywords` | Side-by-side keyword ranking comparison between your app and each competitor |
+| `get_app_intelligence` | Estimated downloads, revenue, and growth signals for each app |
+
+## Tips
+
+<Tip>
+  **Include one aspirational competitor** — an app that's larger than you in the same space. Their keyword strategy shows you where the market is heading. Their weaknesses show you how to differentiate. Even if you can't beat them today, understanding their playbook is essential.
+</Tip>
+
+<Tip>
+  **User complaints are your product roadmap.** The Top Complaints column in the ratings analysis reveals unmet needs that users are actively expressing. If a competitor's reviews are full of "I wish it had X," and your app has X, lead with that in your metadata and screenshots.
+</Tip>
+
+<Tip>
+  **Run this skill before writing any metadata.** The competitive creative teardown shows you what visual and copy angles are already saturated — and which ones are absent. Writing metadata without this context risks sounding identical to every other app in your category.
+</Tip>
+
+## Related Skills
+
+- [`/keyword-research`](/reference/keyword-research) — Deep dive into the keyword gaps surfaced here
+- [`/metadata-optimization`](/reference/metadata-optimization) — Implement the competitive insights into your metadata
+- [`/aso-audit`](/reference/aso-audit) — Audit your own listing alongside the competitive context
+- [`/market-movers`](/reference/market-movers) — Track chart movement of the competitors you've identified

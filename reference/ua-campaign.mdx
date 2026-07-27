@@ -1,0 +1,71 @@
+---
+title: "UA Campaign: Paid User Acquisition Strategy"
+sidebarTitle: "UA Campaign"
+description: "Plan Apple Search Ads, Meta, and Google UAC campaigns with channel allocation, bidding strategy, creative specs, and optimization cadence by budget tier."
+---
+
+The `/ua-campaign` skill builds a full paid user acquisition plan across all major channels — Apple Search Ads, Meta (Facebook/Instagram), Google UAC, and TikTok — with campaign structure, bidding strategy, creative specs, and a weekly optimization cadence calibrated to your budget and target CPI.
+
+## Invoke
+
+```
+/ua-campaign
+```
+
+## What You Get
+
+- **Budget-tiered channel allocation** — which channels to use based on your monthly spend (from under $1K to $100K+)
+- **Campaign structure** — ad group hierarchy, keyword lists, audience targeting, and creative requirements per channel
+- **Bidding strategy** — starting bids, CPA targets, and escalation rules for each campaign type
+- **Creative specs** — video (15–30s), static, and carousel requirements with hook principles
+- **Optimization cadence** — daily, weekly, bi-weekly, and monthly tasks to maintain performance
+
+## Example Prompts
+
+```
+"Build an Apple Search Ads + Meta campaign plan for my fitness app with a $5K/month budget"
+"My CPI is $4.50 but my LTV is only $6 — help me fix the unit economics"
+"Create a creative brief for Meta video ads targeting health-conscious users"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_keyword_metrics` | Validate keyword volume and difficulty for ASA campaign seed lists |
+| `get_app_intelligence` | Benchmark download estimates and revenue for LTV modeling |
+
+## Channel Selection by Budget
+
+| Monthly Budget | Recommended Channels |
+|---------------|---------------------|
+| Under $1K | Apple Search Ads Basic only |
+| $1K–$5K | Apple Search Ads Advanced + 1 social channel |
+| $5K–$20K | ASA + Meta + Google UAC |
+| $20K–$100K | ASA + Meta + Google + TikTok |
+| $100K+ | All channels + programmatic + influencer |
+
+<Note>
+  **Apple Search Ads has the highest intent of any paid channel** — users are already inside the App Store searching for something. Start here before any social channel. Even a $500/month ASA campaign will typically outperform a $2,000/month Meta campaign in install quality for most app categories.
+</Note>
+
+## Key Funnel Metrics
+
+| Metric | Target (ASA) | Target (Social) |
+|--------|-------------|----------------|
+| Click-Through Rate | > 5% | > 1% |
+| Install Conversion Rate | > 30% | > 10% |
+| CPI | < LTV ÷ 3 | < LTV ÷ 3 |
+| Day-7 ROAS | Predictive of long-term return | > 40% |
+
+<Accordion title="What makes a high-performing video ad creative?">
+  Hook in the first 3 seconds — show the app doing something remarkable, not a logo or title card. Keep it 15–30 seconds. Design for sound-off (most users see it muted) with captions or text overlays carrying the narrative. End with a clear CTA and App Store badge. Show the app in action — not lifestyle footage of someone "enjoying" the app.
+</Accordion>
+
+<Accordion title="How do I optimize after launch?">
+  Daily: check spend pacing, pause overspending ad sets. Weekly: review CPI/CPA by keyword or ad set, adjust bids. Bi-weekly: refresh creative (ad fatigue typically sets in after 2–3 weeks). Monthly: review channel mix, reallocate budget to winning channels. Quarterly: strategic review and test one new channel.
+</Accordion>
+
+<Tip>
+  Improving your **organic App Store conversion rate** directly lowers your effective CPI on every paid channel — more of the users you pay to send to your page will download. Run `/ab-test-store-listing` alongside your UA campaign for a compounding growth effect.
+</Tip>

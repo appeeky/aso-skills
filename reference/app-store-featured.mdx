@@ -1,0 +1,74 @@
+---
+title: "App Store Featured: Editorial Pitch & Readiness"
+sidebarTitle: "Featured"
+description: "Score your app's featuring readiness, complete Apple's tech checklist, write a self-nomination pitch, and build an In-App Events calendar to maximize visibility."
+---
+
+The `/app-store-featured` skill assesses your app against Apple's editorial criteria, produces a scored readiness report, drafts your self-nomination pitch for Apple's promotional form, and plans an In-App Events calendar to maintain ongoing editorial visibility throughout the year.
+
+## Invoke
+
+```
+/app-store-featured
+```
+
+## What You Get
+
+- **Featuring readiness score** — rated across design quality, Apple technology adoption, quality signals, story, and timing (scored out of 100)
+- **Apple tech checklist** — specific technologies to adopt (SwiftUI, WidgetKit, Live Activities, App Intents, visionOS) with implementation priority
+- **Pitch template** — ready-to-send self-nomination structured around Apple's editorial decision criteria
+- **In-App Events calendar** — 3-month plan of events timed to cultural moments, Apple launches, and seasonal peaks
+
+## Example Prompts
+
+```
+"Score my app's chance of getting featured on the App Store (id: 6447810428)"
+"Write an App Store self-nomination pitch for our major update launching next month"
+"Plan an In-App Events calendar for the next quarter"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_featured_apps` | Analyze what types of apps Apple is currently featuring |
+| `get_app` | Fetch metadata, screenshots, rating, and update history |
+
+## What Apple Looks For
+
+| Factor | Weight |
+|--------|--------|
+| Design quality — clean, Apple-like UI | Very High |
+| Apple technology adoption (SwiftUI, WidgetKit, Live Activities) | Very High |
+| Unique value — does something no other app does | High |
+| Compelling developer story | High |
+| Timeliness — relevant to current seasons or Apple events | High |
+| Rating 4.5+ stars | Medium |
+| Stability — no crashes, fast launch time | Medium |
+| Accessibility — VoiceOver, Dynamic Type | Medium |
+
+<Note>
+  Apple consistently **features apps that adopt the latest Apple technologies** — especially in the first weeks after a new iOS release or hardware launch. If you support visionOS, Live Activities, or App Intents, lead with that in your pitch and time your submission to align with an Apple event.
+</Note>
+
+## Featuring Placement Types
+
+| Placement | Visibility | How to Earn It |
+|-----------|-----------|----------------|
+| App of the Day | Highest | Exceptional design + story + timing |
+| Today Tab Story | Very High | Unique narrative angle |
+| Apps We Love | High | Quality + category relevance |
+| Category Feature | Medium | Strong performer in a specific category |
+| In-App Events | Medium | Self-serve via App Store Connect |
+
+<Accordion title="How do I submit my app for featuring consideration?">
+  Use Apple's self-nomination form at **developer.apple.com/contact/app-store/promote/**. Submit 2–4 weeks before a major update or seasonal moment. Include: a one-sentence pitch, what's new, which Apple technologies you use, a compelling story angle, timing rationale, and high-resolution screenshots and promo artwork.
+</Accordion>
+
+<Accordion title="What are In-App Events and how do they help?">
+  In-App Events are time-limited events you publish through App Store Connect that appear on the **Today tab, search results, and your product page**. They are a form of self-serve featuring that keeps your app visible between editorial selections. Run them regularly — Apple favors active developers. Event types include challenges, competitions, live events, major updates, and new seasons. See `/in-app-events` for the full planning skill.
+</Accordion>
+
+<Tip>
+  Your rating must be **4.5 stars or higher** before you pitch Apple. A sub-4.5 rating is an immediate editorial red flag regardless of design quality. Run `/review-management` to improve your rating before submitting any featuring request.
+</Tip>

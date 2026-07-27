@@ -1,0 +1,71 @@
+---
+title: "App Preview Video: Script & Production Guide"
+sidebarTitle: "Preview Video"
+description: "Generate up to 3 App Preview video scripts per locale with beat-by-beat structure, Apple and Google Play specs, and Apple rejection avoidance tips."
+---
+
+The `/app-preview-video` skill produces ready-to-shoot video scripts for iOS App Previews and Google Play promo videos — complete with beat-by-beat timing, production notes, poster frame guidance, and a pre-submission checklist to avoid Apple rejections.
+
+## Invoke
+
+```
+/app-preview-video
+```
+
+## What You Get
+
+- **Up to 3 App Preview scripts per locale** — each with a distinct hook angle (Outcome, Demo, Social Proof)
+- **Beat-by-beat structure** — timestamped visual directions, text overlay copy, and audio notes for every second
+- **Platform specs** — Apple (15–30 seconds, H.264, portrait/landscape) and Google Play (YouTube URL, 30s recommended) requirements
+- **Rejection avoidance checklist** — common Apple guideline violations and how to avoid them
+- **Poster frame recommendation** — the frame shown when the video is paused or hasn't started playing
+
+## Example Prompts
+
+```
+"Write a 30-second App Preview script for my budgeting app (id: 1234567890)"
+"Create 3 preview video variants with different hook angles for my fitness app"
+"My App Preview was rejected — help me fix it"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_app` | Fetch current video URL, screenshots, and metadata for context |
+
+## Apple App Preview Specs
+
+| Spec | Requirement |
+|------|------------|
+| Length | **15–30 seconds** maximum |
+| Count | Up to **3 per locale** |
+| Playback | Autoplays **muted** in search results |
+| Content | **In-app footage only** — no marketing intros, logos, or real people |
+| Resolution | 1080×1920px minimum (portrait) |
+| Codec | H.264, MP4 or MOV |
+| CTA text | No "Download Now" or App Store badges (rejection reason) |
+
+## 3-Variant Strategy
+
+<Accordion title="How should I use all 3 App Preview slots?">
+  Don't upload three versions of the same video. Diversify by hook angle:
+
+  - **Variant A — Outcome:** Result-led hook ("Sleep better in 7 days") — use as the default first preview
+  - **Variant B — Demo:** Pure UX walkthrough showing how the app works step-by-step
+  - **Variant C — Social Proof:** Numbers, ratings, and results shown inside the app
+
+  Apple shows the first preview by default. Users can swipe to see additional previews.
+</Accordion>
+
+<Accordion title="What are the most common Apple rejection reasons?">
+  The top rejection triggers are: real people or hands appearing on screen, a marketing logo or intro card in the first frames, a "Download Now" CTA at the end, footage that doesn't match the current app version, and audio narration without burned-in captions. The skill's production checklist covers all of these before submission.
+</Accordion>
+
+<Note>
+  Google Play promo videos are hosted on **YouTube** — you link a URL rather than uploading a file. Play is less restrictive: real people, voiceover narration, and marketing intros are all permitted. The skill generates separate scripts for each platform.
+</Note>
+
+<Tip>
+  Your **poster frame** (the still shown before the video plays) is what 80% of users see. Choose a visually striking, text-light frame — ideally a moment that conveys your core value proposition at a glance. Avoid frames showing text being typed mid-word.
+</Tip>

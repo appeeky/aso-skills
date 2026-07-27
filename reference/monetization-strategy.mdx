@@ -1,0 +1,71 @@
+---
+title: "Monetization Strategy: Pricing, Paywalls & Trials"
+sidebarTitle: "Monetization"
+description: "Design or audit your app's pricing tiers, paywall timing and copy, free trial structure, and conversion targets benchmarked against your category."
+---
+
+The `/monetization-strategy` skill analyzes your current monetization model, recommends pricing tiers, paywall timing, and trial length, and benchmarks your conversion rate and ARPU against category norms — giving you a prioritized roadmap to increase revenue without hurting user satisfaction.
+
+## Invoke
+
+```
+/monetization-strategy
+```
+
+## What You Get
+
+- **Pricing tier analysis** — recommended monthly, annual, and optional lifetime prices based on category benchmarks and competitor data
+- **Paywall timing recommendations** — when to gate (after aha moment, feature-based, time-based trial) and which converts best for your app type
+- **Trial optimization plan** — trial length, in-trial message sequence (Day 1, 3, 5), countdown nudge, and end-of-trial offer strategy
+- **Category benchmarks** — conversion rate, ARPU, and trial-to-paid targets for your specific category
+
+## Example Prompts
+
+```
+"Analyze my monetization strategy for a productivity app with a $4.99/month subscription"
+"My trial-to-paid rate is 22% — what's a realistic target and how do I improve it?"
+"Should I offer a lifetime purchase option alongside my subscription?"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_app_intelligence` | Benchmark revenue, download estimates, and monetization patterns |
+| `get_app` | Fetch current IAP configuration and pricing for audit |
+
+## Category Pricing Benchmarks
+
+| Category | Typical Monthly | Typical Annual | Trial-to-Paid Target |
+|----------|----------------|---------------|---------------------|
+| Productivity | $4.99–$9.99 | $29.99–$49.99 | 40–60% |
+| Health & Fitness | $9.99–$14.99 | $49.99–$79.99 | 35–55% |
+| Education | $9.99–$19.99 | $49.99–$99.99 | 30–50% |
+| Photo & Video | $4.99–$9.99 | $29.99–$49.99 | 40–60% |
+| Finance | $4.99–$14.99 | $29.99–$79.99 | 35–55% |
+
+## Paywall Timing Options
+
+| Timing | Conversion Rate | Best For |
+|--------|----------------|---------|
+| Onboarding (before value) | 2–5% | Strong brands only |
+| After aha moment | 5–10% | Most apps |
+| Feature gate (when they need premium) | 8–15% | Utility and productivity |
+| Usage limit (after N uses) | 5–8% | Content and tools |
+| Time-based trial | 5–10% | Complex apps |
+
+<Note>
+  Anchoring your **annual plan** as the "Best Value" option while displaying the monthly plan as the default reference price is one of the highest-leverage pricing tactics available. Show the weekly equivalent cost for expensive subscriptions ("Just $1.92/week") to reduce sticker shock.
+</Note>
+
+<Accordion title="Should I offer a lifetime purchase option?">
+  Lifetime purchases work well as a **one-time cash flow boost** and appeal to users who are philosophically opposed to subscriptions. Price it at 2–3× the annual rate. Be aware it creates a cohort of users who stop paying — track LTV carefully and limit or remove the lifetime option once your subscription base reaches critical mass.
+</Accordion>
+
+<Accordion title="How long should my free trial be?">
+  7 days works for most apps — long enough to form a habit, short enough to force a decision. Use 3-day trials for simple utility apps where value is immediate, and 14-day trials for complex tools where users need more time. Send value-reminder notifications on Days 1, 3, and 5 of the trial, and a countdown nudge on the last day with a discounted first-month offer.
+</Accordion>
+
+<Tip>
+  Test raising your price before optimizing your paywall design. Many apps are significantly underpriced relative to the value they deliver — a 30% price increase with a 5% drop in conversion rate is still a net revenue win.
+</Tip>

@@ -1,0 +1,164 @@
+---
+title: "How ASO Skills Work: The Complete Guide"
+sidebarTitle: "How Skills Work"
+description: "Learn what a skill file is, how the agent reads it, how live data flows through the pipeline, and how skills chain together for end-to-end ASO workflows."
+---
+
+Understanding how ASO Skills work under the hood helps you get the most out of them — knowing when to invoke a single skill, when to chain skills together, and what the agent is actually doing when it processes your request. This page covers all of that, from the anatomy of a skill file to the full data pipeline to skill compatibility across editors.
+
+## What Is a Skill?
+
+A skill is a Markdown file (`SKILL.md`) that contains everything an expert would bring to an ASO engagement:
+
+- **A framework** — the methodology and process the agent follows (e.g., the 10-factor audit process in `aso-audit`)
+- **A scoring rubric** — explicit criteria for evaluating quality at each step, so the agent's judgments are consistent and explainable
+- **An output template** — the exact format the agent uses to structure its response, so you always get the same predictable, actionable deliverable
+
+When your AI agent reads a skill file, it adopts that expertise for the duration of the conversation. It's not just "know about ASO" — it's "apply this specific framework, in this order, to produce this exact output."
+
+<Accordion title="Anatomy of a skill file">
+  Every `SKILL.md` contains a YAML frontmatter block with the skill's `name` and `description` (which helps the router match it to your request), followed by:
+
+  1. **Role definition** — sets the agent's persona and area of expertise
+  2. **Initial assessment steps** — what data to gather before starting
+  3. **The framework** — the step-by-step methodology with scoring criteria
+  4. **Output format** — the exact template for the deliverable
+  5. **Related skills** — which other skills to recommend after this one
+
+  You can browse the raw skill files in the [GitHub repository](https://github.com/eronred/aso-skills).
+</Accordion>
+
+---
+
+## The Skill → Data → Output Pipeline
+
+Here is what happens from the moment you send a prompt to the moment you receive a recommendation:
+
+<Steps>
+  <Step title="Skill invocation">
+    You either invoke a skill directly (e.g., `/aso-audit`) or use the router (`/aso-skill`) with a plain-language request. The router reads your message, matches it against its routing table, and loads the correct specialist skill.
+  </Step>
+  <Step title="Framework loading">
+    The agent reads the skill's `SKILL.md` file. It now has the full expert framework — what to check, how to score it, and what format to return.
+  </Step>
+  <Step title="Data collection">
+    If the Appeeky MCP Server is connected, the agent calls the relevant MCP tools to pull live data. For `aso-audit`, this means calling `aso_full_audit`, `get_app`, `get_app_keywords`, and `get_keyword_metrics` to fetch your current metadata, rankings, and competitive landscape. If MCP is not connected, the agent asks you to provide the data directly.
+  </Step>
+  <Step title="Framework application">
+    The agent applies the loaded framework to the data. For the audit, it scores each of 10 factors (Title, Subtitle, Keyword Field, Description, Screenshots, Preview Video, Ratings & Reviews, Icon, Keyword Rankings, Conversion Signals) on a 0–10 scale using the rubric from the skill file.
+  </Step>
+  <Step title="Structured output">
+    The agent formats its response using the skill's output template. For `aso-audit`, that's a Score Card with a visual progress bar for each factor, followed by Quick Wins, High-Impact Changes, and Strategic Recommendations in priority order.
+  </Step>
+</Steps>
+
+### Example: aso-audit end-to-end
+
+```
+You: "Run an ASO audit for my app (id: 1617391485)"
+
+Agent:
+  1. Reads skills/aso-audit/SKILL.md
+     → Loads 10-factor framework, scoring rubric, output template
+  2. Calls Appeeky MCP tools:
+     → aso_full_audit(appId: "1617391485")
+     → get_app_keywords(appId: "1617391485")
+     → get_keyword_metrics(keywords: [...])
+  3. Scores each factor (e.g. Title: 7/10, Keyword Field: 4/10, Screenshots: 9/10...)
+  4. Returns: ASO Score Card + Quick Wins + High-Impact Changes + Strategic Recs
+```
+
+---
+
+## The Router: Your Single Entry Point
+
+The router (`/aso-skill`) is its own specialist skill whose only job is dispatch. You never have to remember 30 skill names — just describe what you want in plain English.
+
+```
+/aso-skill  →  routes any request to the right specialist skill automatically
+```
+
+The router matches your intent against a routing table that covers every skill in the library. For compound requests, it loads up to three skills in the correct sequence:
+
+| Your request | Skills loaded (in order) |
+|---|---|
+| "Optimize my entire listing" | `aso-audit` → `keyword-research` → `metadata-optimization` |
+| "I want more downloads" | `aso-audit` first; if paid growth, also `ua-campaign` |
+| "My revenue is flat" | `asc-metrics` → `monetization-strategy` → `subscription-lifecycle` |
+| "Beat my competitor" | `competitor-analysis` → `keyword-research` → `metadata-optimization` |
+| "Holiday push" | `seasonal-aso` → `metadata-optimization` → `in-app-events` |
+
+If your request is genuinely ambiguous, the router asks one clarifying question — never more — before dispatching.
+
+---
+
+## How Skills Chain Together
+
+Skills are designed to be aware of each other. Each skill's output is built to feed naturally into the next skill's input. The most common chain in ASO looks like this:
+
+```
+aso-audit
+  → flags weak spots (e.g. low keyword field score, keyword gap vs. competitors)
+  → recommends keyword-research for gaps
+
+keyword-research
+  → finds high-opportunity keywords (ranked by volume × difficulty × relevance)
+  → groups them into primary / secondary / long-tail tiers
+  → feeds into metadata-optimization
+
+metadata-optimization
+  → generates title, subtitle, and keyword field using research output
+  → produces 3 variants with exact character counts
+  → ready to ship
+```
+
+This isn't just a suggestion — the skill files explicitly cross-reference each other. After an `aso-audit`, the output includes a **Related Skills** section that recommends the logical next steps. After `keyword-research`, the agent knows to offer to hand off the keyword list to `metadata-optimization` for implementation.
+
+You can run the full chain manually by invoking skills in sequence, or let the router trigger multi-skill workflows automatically.
+
+---
+
+## Working Without MCP
+
+Skills provide expert value even without a live data connection. In offline mode, the agent:
+
+- Applies the full framework and scoring rubric to data you provide (paste your current metadata, share a screenshot of your listing, or describe your situation)
+- Uses its general ASO knowledge to benchmark your inputs against category norms
+- Delivers the same structured output format — Score Card, recommendations, templates
+
+The output is less precise without real keyword rankings and competitor data, but the frameworks and output templates are just as useful. Connecting the Appeeky MCP Server is recommended for production work, but optional for exploration and planning.
+
+<Note>
+  The `asc-metrics` skill is the one exception — it requires Appeeky Connect (which syncs your exact App Store Connect data) and won't produce meaningful output without it.
+</Note>
+
+---
+
+## Skill Compatibility
+
+ASO Skills follows the [Agent Skills](https://agentskills.io) open standard, which means skills work in any tool that reads from `.agents/skills/`, `.cursor/skills/`, `.claude/skills/`, or `.codex/skills/`.
+
+| Editor / Agent | Supported | Install Method |
+|---|---|---|
+| **Cursor** | ✅ Full support | Settings → Rules → Remote Rule (GitHub) |
+| **Claude Code** | ✅ Full support | `npx skills add eronred/aso-skills` |
+| **Windsurf** | ✅ Via Agent Skills standard | Copy to `.agents/skills/` |
+| **VS Code + Copilot** | ✅ Via Agent Skills standard | Copy to `.agents/skills/` |
+| **Any Agent Skills tool** | ✅ | `git submodule add https://github.com/eronred/aso-skills.git .agents/aso-skills` |
+
+<Warning>
+  MCP Server integration (for live App Store data) requires your editor or agent to support the Model Context Protocol. Cursor and Claude Code both support MCP natively. For other tools, check the Agent Skills documentation.
+</Warning>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Install ASO Skills" icon="bolt" href="/quickstart">
+    Get set up in Cursor or Claude Code in under two minutes.
+  </Card>
+  <Card title="Connect Live Data" icon="plug" href="/guides/appeeky-mcp">
+    Add the Appeeky MCP Server for real-time keyword rankings and competitor intelligence.
+  </Card>
+</CardGroup>

@@ -1,0 +1,146 @@
+---
+title: "Keyword Research — ASO Keyword Strategy"
+sidebarTitle: "Keyword Research"
+description: "Discover high-value App Store keywords ranked by Opportunity Score and organized into primary, secondary, and long-tail tiers ready to implement."
+---
+
+The Keyword Research skill helps you find, evaluate, and prioritize the keywords your app should target in the App Store or Google Play. It expands from your seed keywords using competitor data, search suggestions, and category analysis, then scores every candidate on a combined Opportunity Score — so you always know which keywords to go after first and which to save for later.
+
+## Invoke
+
+```
+/keyword-research
+```
+
+You can also describe your goal naturally and let the router handle it:
+
+```
+/aso-skill  Find the best keywords for a meditation app
+/aso-skill  What keywords should I target for a fitness tracker in the UK?
+/aso-skill  Show me keywords my competitors rank for that I don't
+```
+
+<Note>
+  If you have an existing app, provide your App ID so the skill can pull your current keyword rankings. This makes the gap analysis significantly more useful — you'll see exactly where you already have ranking momentum versus where you're starting from zero.
+</Note>
+
+## Inputs
+
+<ParamField path="app_id" type="string">
+  Your Apple numeric App ID or Google Play package name. Optional, but strongly recommended — it lets the skill compare your current rankings against competitors and identify gaps.
+</ParamField>
+
+<ParamField path="target_country" type="string" default="US">
+  The country market you want keywords for. Search volume, difficulty, and competition vary significantly by country.
+</ParamField>
+
+<ParamField path="seed_keywords" type="array" required>
+  Three to five keywords that describe your app's core function. These are your starting point — the skill expands each one into dozens of candidates. Example: `["habit tracker", "daily routine", "productivity"]`.
+</ParamField>
+
+<ParamField path="intent" type="string" default="downloads">
+  Your primary optimization goal: `downloads` (maximize installs), `revenue` (target high-value users likely to subscribe or purchase), or `brand` (rank for your app or company name).
+</ParamField>
+
+## Research Process
+
+The skill runs four phases to build your keyword strategy:
+
+<Accordion title="Phase 1 — Seed Expansion">
+  Your seed keywords are expanded using App Store autocomplete suggestions, competitor keyword analysis, category-level research, synonyms, related terms, and common misspellings. Long-tail suggestions are flagged separately — they often carry lower competition than head terms.
+</Accordion>
+
+<Accordion title="Phase 2 — Keyword Evaluation">
+  Each candidate is evaluated on four signals: **Search Volume** (estimated monthly search demand, 1–100 scale), **Difficulty** (competition for the keyword, 1–100 scale), **Relevance** (how closely the keyword matches your app's function), and **Intent** (whether the searcher is likely to download, not just browse).
+</Accordion>
+
+<Accordion title="Phase 3 — Opportunity Scoring">
+  Every keyword receives an Opportunity Score calculated as:
+
+  ```
+  Opportunity = (Volume × 0.4) + ((100 − Difficulty) × 0.3) + (Relevance × 0.3)
+  ```
+
+  This balances reach against achievability — a high-volume keyword you can't rank for scores lower than a moderate-volume keyword where you have a real shot.
+</Accordion>
+
+<Accordion title="Phase 4 — Keyword Grouping">
+  Keywords are sorted into four strategic tiers: **Primary** (3–5 keywords for your title and subtitle), **Secondary** (5–10 for subtitle and keyword field), **Long-tail** (10–20 for keyword field fill), and **Aspirational** (3–5 high-difficulty targets to track for future cycles).
+</Accordion>
+
+## Output
+
+### Keyword Research Report
+
+A summary header followed by the full ranked table:
+
+| Keyword | Volume | Difficulty | Relevance | Opportunity | Current Rank | Action |
+|---|---|---|---|---|---|---|
+| habit tracker | 82 | 71 | 95 | 73 | — | Primary |
+| daily routine app | 54 | 43 | 90 | 68 | 34 | Primary |
+| goal tracker | 61 | 58 | 85 | 64 | — | Secondary |
+| productivity planner | 47 | 39 | 80 | 62 | 67 | Secondary |
+| morning routine | 38 | 31 | 75 | 57 | — | Long-tail |
+
+### Keyword Strategy Block
+
+A ready-to-implement placement plan for each metadata field:
+
+```
+Title (30 chars):      Habit Tracker — Daily Routine
+Subtitle (30 chars):   Goal & Productivity Planner
+Keyword Field (100):   routine,goal,planner,morning,streak,challenge,reminder,task,focus,journal
+```
+
+### Competitor Keyword Gap
+
+A table showing keywords competitors rank for that you don't — sorted by the opportunity they represent:
+
+| Keyword | Your Rank | Competitor 1 | Competitor 2 | Gap |
+|---|---|---|---|---|
+| streak tracker | — | 4 | 11 | High |
+| daily challenge | — | 7 | 19 | High |
+| bedtime routine | 54 | 12 | — | Medium |
+
+## Example Prompts
+
+```
+/keyword-research
+→ App ID: 1617391485, Country: US, Seeds: habit tracker, daily routine, productivity
+
+Find keywords for a meditation app targeting US, seed words: meditation, mindfulness, sleep
+
+What keywords should I rank for to compete with Headspace and Calm?
+
+Show me high-volume, low-difficulty keywords for a language learning app in Germany
+```
+
+## MCP Tools Used
+
+| Tool | What It Fetches |
+|---|---|
+| `get_keyword_suggestions` | Autocomplete-based keyword candidates for each seed term |
+| `get_keyword_metrics` | Search volume and difficulty scores for each candidate keyword |
+| `get_keyword_ranks` | Current App Store rankings for a keyword across all apps |
+| `get_app_keywords` | Keywords your app (and competitor apps) already rank for |
+
+## Tips
+
+<Tip>
+  **Never repeat keywords across fields.** Apple indexes the title, subtitle, and keyword field independently. Putting the same word in all three wastes your character budget without improving rankings — use each field to cover different keywords.
+</Tip>
+
+<Tip>
+  **Use singular forms in the keyword field.** Apple automatically indexes both singular and plural forms, so `tracker` covers both "tracker" and "trackers". This saves you characters for additional unique keywords.
+</Tip>
+
+<Tip>
+  **Refresh your keyword strategy every quarter.** Search trends shift with seasons, cultural moments, and competitor moves. Set a reminder to re-run this skill every 90 days and compare Opportunity Scores against your current rankings.
+</Tip>
+
+## Related Skills
+
+- [`/metadata-optimization`](/reference/metadata-optimization) — Turn your keyword strategy into optimized title, subtitle, and keyword field copy
+- [`/aso-audit`](/reference/aso-audit) — Broader audit that includes your current keyword performance
+- [`/competitor-analysis`](/reference/competitor-analysis) — Deep dive into the keyword gaps identified here
+- [`/app-marketing-context`](/reference/app-marketing-context) — Set up shared context so seed keywords are pre-populated from your app profile

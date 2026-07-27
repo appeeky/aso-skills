@@ -1,0 +1,224 @@
+---
+title: "Connect the Appeeky MCP Server to Your AI"
+sidebarTitle: "Appeeky MCP"
+description: "Set up the Appeeky MCP Server in Cursor, Claude Code, Claude Desktop, Windsurf, or VS Code to give your AI agent live App Store and Google Play data."
+---
+
+ASO Skills work out of the box with battle-tested frameworks and scoring rubrics. Connect the Appeeky MCP Server and your AI agent also gets live App Store data — real keyword rankings, search volumes, competitor metadata, trending terms, and review sentiment — fetched automatically during every skill run.
+
+## What the MCP Server Does
+
+The Appeeky MCP Server sits between your AI agent and the App Store. When you run a skill like `/aso-audit` or `/keyword-research`, the agent calls MCP tools to pull real-time data without you having to copy-paste anything manually.
+
+**Endpoint:** `https://mcp.appeeky.com`
+
+Key capabilities your agent gains access to:
+
+| Category | Tools |
+|----------|-------|
+| **App data** | `search_apps`, `get_app`, `get_app_intelligence`, `get_app_reviews` |
+| **Keyword intelligence** | `get_keyword_ranks`, `get_keyword_suggestions`, `get_keyword_metrics`, `get_app_keywords` |
+| **ASO automation** | `aso_full_audit`, `aso_validate_metadata`, `aso_suggest_metadata`, `aso_competitor_report` |
+| **Market intelligence** | `get_market_movers`, `get_market_activity`, `get_trending_keywords` |
+| **Discovery** | `get_category_top`, `get_featured_apps`, `get_new_releases` |
+
+## Get an API Key
+
+<Note>
+  **Claude Desktop users:** Claude Desktop connects via OAuth — you don't need an API key. See the Claude Desktop tab below.
+</Note>
+
+For all other clients, get an API key from either:
+
+- [appeeky.com](https://appeeky.com) → **Settings**
+- [dashboard.appeeky.com](https://dashboard.appeeky.com)
+
+Your key will look like `apk_your_key_here`. Keep it out of version control — add `.cursor/mcp.json` to your `.gitignore` if your project is public.
+
+## Setup by Client
+
+<Tabs>
+  <Tab title="Cursor">
+    Add the server to your Cursor MCP configuration file at `.cursor/mcp.json`. Create the file if it doesn't exist.
+
+    ```json
+    {
+      "mcpServers": {
+        "appeeky": {
+          "url": "https://mcp.appeeky.com/mcp",
+          "headers": {
+            "Authorization": "Bearer apk_your_key_here"
+          }
+        }
+      }
+    }
+    ```
+
+    **To apply the configuration:**
+    1. Save the file
+    2. Open the Cursor command palette (`Cmd+Shift+P` / `Ctrl+Shift+P`)
+    3. Run **MCP: Reload Servers**
+    4. Confirm `appeeky` appears in your MCP server list
+
+    <Tip>
+      For a project-level configuration (shared with your team via version control), place the file at `.cursor/mcp.json` in your project root. For a personal global configuration that applies to all projects, use `~/.cursor/mcp.json`.
+    </Tip>
+  </Tab>
+  <Tab title="Claude Code">
+    You have two options: add the configuration manually, or use the `claude mcp add` command.
+
+    **Option A — CLI (fastest):**
+
+    ```bash
+    claude mcp add appeeky \
+      --type http \
+      --url https://mcp.appeeky.com/mcp \
+      --header "Authorization: Bearer apk_your_key_here"
+    ```
+
+    **Option B — Manual configuration:**
+
+    Edit `~/.claude/settings.json` (create it if it doesn't exist):
+
+    ```json
+    {
+      "mcpServers": {
+        "appeeky": {
+          "type": "http",
+          "url": "https://mcp.appeeky.com/mcp",
+          "headers": {
+            "Authorization": "Bearer apk_your_key_here"
+          }
+        }
+      }
+    }
+    ```
+
+    Claude Code picks up configuration changes automatically — no restart needed.
+  </Tab>
+  <Tab title="Claude Desktop">
+    Claude Desktop uses **OAuth** to connect to Appeeky. No API key required.
+
+    1. Open Claude Desktop
+    2. Go to **Settings** → **Integrations** (or **Connections**)
+    3. Click **Add MCP Server** (or **Add Integration**)
+    4. Enter the server URL: `https://mcp.appeeky.com`
+    5. Click **Connect** and sign in with your Appeeky account when prompted
+
+    OAuth grants access scoped to your account — the same permissions you'd have in the Appeeky dashboard. You can revoke access at any time from [appeeky.com → Settings → Connected Apps](https://appeeky.com).
+  </Tab>
+  <Tab title="Windsurf">
+    Edit your Windsurf MCP configuration file. The default location is `~/.codeium/windsurf/mcp_config.json`.
+
+    ```json
+    {
+      "mcpServers": {
+        "appeeky": {
+          "serverUrl": "https://mcp.appeeky.com/mcp",
+          "headers": {
+            "Authorization": "Bearer apk_your_key_here"
+          }
+        }
+      }
+    }
+    ```
+
+    Restart Windsurf after saving the file to load the new server.
+  </Tab>
+  <Tab title="VS Code / Copilot">
+    VS Code with GitHub Copilot supports MCP servers in **Agent Mode**. Add the server to your workspace or user `mcp.json`.
+
+    **Workspace level** (`.vscode/mcp.json`):
+
+    ```json
+    {
+      "servers": {
+        "appeeky": {
+          "type": "http",
+          "url": "https://mcp.appeeky.com/mcp",
+          "headers": {
+            "Authorization": "Bearer apk_your_key_here"
+          }
+        }
+      }
+    }
+    ```
+
+    Make sure you're in **Agent Mode** in the Copilot Chat panel (toggle in the chat input bar). MCP tools are only available in Agent Mode, not standard chat.
+  </Tab>
+</Tabs>
+
+## Authentication Reference
+
+| Client | Auth method | Where to configure |
+|--------|------------|-------------------|
+| Cursor | `Authorization: Bearer` header | `.cursor/mcp.json` |
+| Claude Code | `Authorization: Bearer` header | `~/.claude/settings.json` |
+| Claude Desktop | OAuth (no API key needed) | Settings → Integrations |
+| Windsurf | `Authorization: Bearer` header | `~/.codeium/windsurf/mcp_config.json` |
+| VS Code / Copilot | `Authorization: Bearer` header | `.vscode/mcp.json` |
+
+Both `Authorization: Bearer apk_your_key_here` and `X-API-Key: apk_your_key_here` are accepted by the server — use whichever your client's configuration format supports.
+
+## Test Your Connection
+
+Once configured, verify the connection is working with a simple prompt in your AI agent:
+
+```
+Search for meditation apps on the App Store.
+```
+
+If the MCP server is connected, your agent will call `search_apps` and return a real list of apps with their names, ratings, categories, and App IDs. If it returns a generic answer without real data, the connection isn't active — double-check your API key and reload your MCP servers.
+
+You can also ask the agent to confirm explicitly:
+
+```
+What Appeeky MCP tools do you have available?
+```
+
+A connected agent will list the available tools. An unconnected agent will say it doesn't have access to external App Store data.
+
+## What Happens Without MCP
+
+Skills work without MCP — they apply expert ASO frameworks to data you provide manually. With MCP connected:
+
+| Without MCP | With MCP |
+|-------------|----------|
+| Score is based on metadata structure you provide | Score includes live keyword rankings, rating velocity, and competitor benchmarks |
+| Keyword suggestions are framework-based estimates | Keyword volumes and difficulty scores are real, pulled from App Store search data |
+| Competitor analysis requires you to paste competitor metadata | Agent fetches competitor listings, keywords, and review sentiment automatically |
+| Market trends are general knowledge | Agent pulls what's trending right now in your specific category |
+
+Both modes are useful — MCP just removes the manual data-gathering step and makes every skill output more precise.
+
+## Rate Limits
+
+<Note>
+  **`get_keyword_metrics` burst limit:** 10 requests per minute per API key.
+
+  To stay within this limit, batch multiple countries in a single call rather than making one call per country. For example, instead of calling `get_keyword_metrics` separately for US, UK, CA, and AU, pass all four country codes in one request — the tool supports multi-country batching natively.
+</Note>
+
+Other tools have higher limits. If you're running large-scale keyword research across dozens of terms, space your requests across a few minutes or contact [support@appeeky.com](mailto:support@appeeky.com) about higher-volume plans.
+
+## Troubleshooting
+
+<Accordion title="The agent says it doesn't have App Store tools">
+  The MCP server isn't connected or wasn't loaded. Try:
+  1. Check your config file for typos (JSON is strict about commas and quotes)
+  2. Confirm your API key is correct and hasn't been rotated
+  3. Reload MCP servers in your client (Cursor: `Cmd+Shift+P` → MCP: Reload Servers)
+  4. Restart the client entirely if reload doesn't work
+</Accordion>
+
+<Accordion title="I'm getting authentication errors">
+  Your API key may be invalid or have been rotated. Generate a new key at [dashboard.appeeky.com](https://dashboard.appeeky.com) and update your config file. Also check that there's no extra whitespace before or after the key in your JSON.
+</Accordion>
+
+<Accordion title="The agent is calling tools but getting empty results">
+  Some tools require a valid App ID. Pass the correct numeric ID (iOS) or package name (Android). If you're searching for an app by name, use `search_apps` first to get the ID, then use that ID in subsequent calls.
+</Accordion>
+
+<Accordion title="I'm hitting rate limits on keyword research">
+  Batch your country requests. Instead of calling `get_keyword_metrics` once per country, pass an array of country codes in a single call. Also consider spacing out large keyword lists — research 20–30 keywords at a time rather than 200 at once.
+</Accordion>

@@ -1,0 +1,59 @@
+---
+title: "App Store Localization: Expand to New Markets"
+sidebarTitle: "Localization"
+description: "Prioritize international markets with an ROI matrix, run per-country keyword research, and adapt screenshots and metadata for each locale."
+---
+
+The `/localization` skill helps you pick the right markets to enter, conduct fresh keyword research for each locale (not just translations), and produce a culturally adapted metadata and screenshot plan for every target country.
+
+## Invoke
+
+```
+/localization
+```
+
+## What You Get
+
+- **Market prioritization matrix** — each candidate market scored on size, competition, effort, revenue potential, and strategic fit
+- **Per-country keyword research** — locally searched terms (not translated English keywords) with volume and difficulty data
+- **Localized metadata drafts** — title, subtitle, and keyword field for each market within character limits
+- **Cultural adaptation checklist** — currency formats, imagery guidance, tone adjustments, and right-to-left layout flags
+
+## Example Prompts
+
+```
+"Which markets should I localize for first? My app is a habit tracker."
+"Run keyword research for Germany and Japan for my meditation app (id: 6447810428)"
+"Create a localization plan for the top 5 markets outside the US"
+```
+
+## MCP Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| `get_keyword_suggestions` | Generate locally searched terms for each target market |
+| `get_keyword_metrics` | Validate volume and difficulty per country |
+
+## Market Prioritization Tiers
+
+**Tier 1 — Highest ROI for most apps:**
+United States, United Kingdom, Germany, Japan, France, South Korea, Brazil, Canada, Australia
+
+**Tier 2 — Strong potential:**
+Spain, Italy, Netherlands, Mexico, India, Indonesia, Turkey, Saudi Arabia
+
+<Note>
+  The biggest localization mistake is **translating English keywords directly**. Each locale requires independent keyword research. The German word for "budget tracker" is "Haushaltsbuch" (household book) — a direct translation of "budget tracker" has near-zero search volume in Germany. Run the skill per market, not per language.
+</Note>
+
+<Accordion title="What does 'each locale gets its own keyword field' mean?">
+  Apple's App Store allows a separate 100-character keyword field, title, subtitle, and description for every locale you publish. Each locale is an entirely independent SEO opportunity. Japanese users searching in Japanese, German users searching in German — your keywords must match how locals actually search, not how you'd describe your app in English.
+</Accordion>
+
+<Accordion title="Do I need to localize my screenshots too?">
+  Yes, and it matters more than most developers realize. At minimum, translate text overlays into the local language. For higher-priority markets, also adjust currency symbols, date formats, and imagery. Arabic and Hebrew require right-to-left layout adjustments. A localized screenshot set typically lifts conversion 8–15% over the default English version in that market.
+</Accordion>
+
+<Tip>
+  Start with **English-speaking markets** (UK, Canada, Australia) as near-zero-effort wins — you already have localized copy. Then move to German, French, and Japanese, which have strong App Store ARPU and large user bases worth the translation investment.
+</Tip>

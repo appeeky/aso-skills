@@ -1,0 +1,165 @@
+---
+title: "Keyword Research: Find High-Value App Store Keywords"
+sidebarTitle: "Keyword Research"
+description: "Discover, score, and prioritize App Store keywords by volume, difficulty, and relevance — then group them into a ready-to-implement keyword strategy."
+---
+
+The Keyword Research skill helps you move beyond guesswork and find the exact keywords that can drive downloads for your app. It expands from your seed keywords, scores every candidate on volume, difficulty, and relevance, calculates an Opportunity Score for each, and groups the results into primary, secondary, and long-tail tiers so you know precisely what to put in your title, subtitle, and keyword field.
+
+## What you need before you start
+
+- **App ID** — optional but recommended so the skill can compare your current rankings against opportunities
+- **Target country** — defaults to US if not specified
+- **Seed keywords** — 3–5 words or phrases that describe your app's core function
+- **Intent** — are you optimizing for downloads, revenue, or brand awareness?
+
+<Tip>
+  The more specific your seed keywords, the better your results. Instead of "fitness", try "home workout", "strength training", or "workout tracker". Think about how your users describe the problem, not the solution.
+</Tip>
+
+## How to invoke the skill
+
+```text
+/keyword-research
+```
+
+Or describe what you're trying to accomplish:
+
+```text
+"Find the best keywords for a meditation app"
+```
+
+```text
+"Show me volume, difficulty, and which ones my competitors rank for"
+```
+
+```text
+"What keywords should I add to my Health & Fitness app?"
+```
+
+## The research process
+
+The skill works through four phases to build your keyword strategy:
+
+<Steps>
+  <Step title="Seed Expansion">
+    Your seed keywords are the starting point, not the finish line. The skill expands them using Apple Search autocomplete suggestions (including variations like "[keyword] app", "[keyword] for [audience]", and "best [keyword]"), competitor keyword rankings, category-level analysis to surface terms top apps in your space are targeting, and synonyms — including the words users use to describe their *problem* rather than your *solution*.
+
+    Long-tail suggestions from autocomplete often signal real user searches with lower competition than their head terms.
+  </Step>
+
+  <Step title="Keyword Evaluation">
+    Every candidate keyword is evaluated across five signals:
+
+    | Signal | What's checked | Why it matters |
+    |--------|----------------|----------------|
+    | **Search Volume** | Score 1–100 | More volume = more potential impressions |
+    | **Difficulty** | Competition score 1–100 | Lower difficulty = faster path to ranking |
+    | **Relevance** | How closely it matches your app | Irrelevant traffic doesn't convert |
+    | **Intent** | Download intent vs informational | "photo editor app" beats "how to edit photos" |
+    | **Current Rank** | Your existing position (if any) | Improving an existing rank is faster than starting from zero |
+  </Step>
+
+  <Step title="Opportunity Scoring">
+    Each keyword receives an Opportunity Score that balances all three primary signals:
+
+    ```text
+    Opportunity = (Volume × 0.4) + ((100 - Difficulty) × 0.3) + (Relevance × 0.3)
+    ```
+
+    Volume and difficulty are on a 1–100 scale. Difficulty is inverted — a difficulty score of 20 contributes 80 points toward Opportunity. Relevance is a 1–100 assessment of how closely the keyword matches your app's actual function.
+
+    The result is a single score that lets you rank every keyword from best opportunity to least, regardless of how the three underlying signals trade off.
+  </Step>
+
+  <Step title="Tier Assignment">
+    Keywords are grouped into strategic tiers so you know exactly where each one belongs in your metadata:
+
+    <CardGroup cols={2}>
+      <Card title="Primary Keywords" icon="trophy">
+        Your top 3–5 keywords by Opportunity Score. These define your core positioning and must appear in your **title** or **subtitle**. They get the most algorithmic weight.
+      </Card>
+      <Card title="Secondary Keywords" icon="list-ol">
+        10–15 keywords with strong opportunity scores. Target these in your **subtitle** and **keyword field**. These can rotate based on performance.
+      </Card>
+      <Card title="Long-tail Keywords" icon="tag">
+        Remaining high-relevance terms — lower volume but very specific searcher intent. These fill out your **keyword field** and are often easier to rank for quickly.
+      </Card>
+      <Card title="Aspirational Keywords" icon="arrow-trend-up">
+        High volume, high difficulty terms — the "dream" keywords. Track these over time as your app grows authority, but don't sacrifice primary keywords for them now.
+      </Card>
+    </CardGroup>
+  </Step>
+</Steps>
+
+## What the output looks like
+
+The skill delivers a complete Keyword Research Report with three components:
+
+**Top Keywords by Opportunity** — a ranked table showing every candidate with its Volume, Difficulty, Relevance, Opportunity Score, your current rank (if any), and the recommended tier:
+
+```text
+Keyword           Volume  Difficulty  Relevance  Opportunity  Rank  Action
+meditation app      82        71          95         75.4       —    Primary
+sleep meditation    74        58          90         73.4       34   Primary
+mindfulness app     68        55          88         71.1       —    Primary
+breathing exercises 61        44          82         68.8       —    Secondary
+anxiety relief      77        79          75         63.7       —    Secondary
+calm music          55        38          60         55.6       —    Long-tail
+```
+
+**Keyword Strategy** — a ready-to-use layout showing which keywords go in which metadata field, with character counts:
+
+```text
+Title (30 chars):      Calm: Sleep & Meditation App
+Subtitle (30 chars):   Mindfulness, Anxiety & Stress
+Keyword Field (100):   breathing,sleep,relaxation,focus,anxiety,stress,guided,yoga,wellness,nap
+```
+
+**Competitor Keyword Gap** — a table showing keywords your competitors rank for that you currently don't, so you can identify and close the most valuable gaps.
+
+## Key rules the skill enforces
+
+<CardGroup cols={2}>
+  <Card title="No keyword repetition" icon="ban">
+    Don't repeat the same keyword across title, subtitle, and keyword field. Apple indexes each field separately — repetition wastes space without increasing your ranking.
+  </Card>
+  <Card title="Singular forms only" icon="one">
+    Use singular forms in the keyword field. Apple automatically indexes both singular and plural, so "workout" covers "workouts" and saves you characters.
+  </Card>
+  <Card title="No spaces after commas" icon="compress">
+    In the keyword field, write `meditation,sleep,calm` not `meditation, sleep, calm`. Each saved space is another character for another keyword.
+  </Card>
+  <Card title="Avoid wasted terms" icon="trash">
+    Never include "app", "free", your app name, or App Store category names. Apple already knows these — they add zero ranking value.
+  </Card>
+</CardGroup>
+
+<Warning>
+  Never include competitor brand names in your keyword field — it violates both Apple and Google's policies and can result in your app being removed from search results.
+</Warning>
+
+## MCP tools used
+
+<CardGroup cols={2}>
+  <Card title="get_keyword_suggestions" icon="lightbulb">
+    Expands your seed keywords using Apple Search autocomplete and related term data to build your initial candidate list.
+  </Card>
+  <Card title="get_keyword_metrics" icon="chart-bar">
+    Returns search volume and difficulty scores for each candidate keyword on a 1–100 scale.
+  </Card>
+  <Card title="get_keyword_ranks" icon="ranking-star">
+    Shows which apps rank at which positions for a given keyword, revealing how competitive the landscape is.
+  </Card>
+  <Card title="get_app_keywords" icon="key">
+    Pulls your current keyword rankings so the skill can compare your existing position against new opportunities.
+  </Card>
+</CardGroup>
+
+## Related skills
+
+- `/metadata-optimization` — Implement your keyword strategy into a polished title, subtitle, keyword field, and description
+- `/aso-audit` — Broader audit that includes your current keyword performance as a scored factor
+- `/competitor-analysis` — Deep dive into competitor keyword strategies and gap analysis
+
+For the full parameter reference and advanced options, see the [Keyword Research reference](/reference/keyword-research).
