@@ -39,7 +39,7 @@ Each skill contains battle-tested frameworks, scoring rubrics, and output templa
 
 ## Quick Start
 
-**Cursor** — Settings (Cmd+Shift+J) → Rules → Add Rule → Remote Rule (Github) → paste `https://github.com/eronred/aso-skills`
+**Cursor** — `npx skills add eronred/aso-skills -a cursor`
 
 **Claude Code** — `npx skills add eronred/aso-skills`
 
@@ -68,7 +68,7 @@ Then ask your agent:
 **Don't want to remember 30 skill names?** Just use the router:
 
 ```
-/aso-skill  →  routes your request to the right specialist skill automatically
+/aso-router  →  routes your request to the right specialist skill automatically
 ```
 
 Or invoke directly: `/aso-audit`, `/keyword-research`, `/metadata-optimization`, `/market-movers`, `/market-pulse`, `/asc-metrics`, `/in-app-events`, `/seasonal-aso`, `/android-aso`, `/apple-search-ads`, `/competitor-tracking`
@@ -175,7 +175,7 @@ Skills reference each other — `aso-audit` might suggest running `keyword-resea
 
 | Method | Command |
 |--------|---------|
-| GitHub Import | Settings → Rules → Add Rule → Remote Rule → `https://github.com/eronred/aso-skills` |
+| CLI | `npx skills add eronred/aso-skills -a cursor` |
 | Project-level | `cp -r aso-skills/skills/* .cursor/skills/` |
 | Global | `cp -r aso-skills/skills/* ~/.cursor/skills/` |
 

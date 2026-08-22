@@ -36,7 +36,7 @@ Here is what happens from the moment you send a prompt to the moment you receive
 
 <Steps>
   <Step title="Skill invocation">
-    You either invoke a skill directly (e.g., `/aso-audit`) or use the router (`/aso-skill`) with a plain-language request. The router reads your message, matches it against its routing table, and loads the correct specialist skill.
+    You either invoke a skill directly (e.g., `/aso-audit`) or use the router (`/aso-router`) with a plain-language request. The router reads your message, matches it against its routing table, and loads the correct specialist skill.
   </Step>
   <Step title="Framework loading">
     The agent reads the skill's `SKILL.md` file. It now has the full expert framework — what to check, how to score it, and what format to return.
@@ -72,10 +72,10 @@ Agent:
 
 ## The Router: Your Single Entry Point
 
-The router (`/aso-skill`) is its own specialist skill whose only job is dispatch. You never have to remember 30+ skill names — just describe what you want in plain English.
+The router (`/aso-router`) is its own specialist skill whose only job is dispatch. You never have to remember 30+ skill names — just describe what you want in plain English.
 
 ```text
-/aso-skill  →  routes any request to the right specialist skill automatically
+/aso-router  →  routes any request to the right specialist skill automatically
 ```
 
 The router matches your intent against a routing table that covers every skill in the library. For compound requests, it loads up to three skills in the correct sequence:
@@ -140,7 +140,7 @@ ASO Skills follows the [Agent Skills](https://agentskills.io) open standard, whi
 
 | Editor / Agent | Supported | Install Method |
 |---|---|---|
-| **Cursor** | ✅ Full support | Settings → Rules → Remote Rule (GitHub) |
+| **Cursor** | ✅ Full support | `npx skills add eronred/aso-skills -a cursor` |
 | **Claude Code** | ✅ Full support | `npx skills add eronred/aso-skills` |
 | **Windsurf** | ✅ Via Agent Skills standard | Copy to `.agents/skills/` |
 | **VS Code + Copilot** | ✅ Via Agent Skills standard | Copy to `.agents/skills/` |

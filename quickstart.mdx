@@ -22,31 +22,30 @@ That's it. ASO Skills works out of the box with the AI assistant built into both
 <Tabs>
   <Tab title="Cursor">
     <Steps>
-      <Step title="Open Cursor Settings">
-        Press `Cmd+Shift+J` (macOS) or `Ctrl+Shift+J` (Windows/Linux) to open the Settings panel.
+      <Step title="Open a terminal in your project">
+        Run the install from the project root so skills land in this repo.
       </Step>
-      <Step title="Navigate to Rules">
-        In the Settings panel, click **Rules** in the left sidebar.
-      </Step>
-      <Step title="Add a Remote Rule">
-        Click **Add Rule**, then select **Remote Rule (GitHub)** from the dropdown.
-      </Step>
-      <Step title="Paste the Repository URL">
-        Paste the following URL and confirm:
-
-        ```text
-        https://github.com/eronred/aso-skills
+      <Step title="Install the skills">
+        ```bash
+        npx skills add eronred/aso-skills -a cursor
         ```
 
-        Cursor will fetch all skills from the repository and make them available to your AI agent immediately.
+        For a global install (every Cursor project on this machine), add `-g`:
+
+        ```bash
+        npx skills add eronred/aso-skills -a cursor -g
+        ```
+      </Step>
+      <Step title="Start a new Agent chat">
+        Type `/` and look for `/aso-router` or `/aso-audit` to confirm the skills loaded.
       </Step>
     </Steps>
 
     <Tip>
-      You can also install skills at the project level (so teammates get them too) by running this command in your project root:
+      You can also copy skills into the project by hand:
 
       ```bash
-      git clone https://github.com/eronred/aso-skills.git && cp -r aso-skills/skills/* .cursor/skills/
+      git clone https://github.com/eronred/aso-skills.git && mkdir -p .cursor/skills && cp -r aso-skills/skills/* .cursor/skills/
       ```
     </Tip>
   </Tab>
@@ -159,7 +158,7 @@ Analyze my competitors' keyword strategy
   Not sure which skill to use? Just describe what you want in plain English and invoke the router:
 
   ```text
-  /aso-skill I want to grow my fitness app's organic downloads
+  /aso-router I want to grow my fitness app's organic downloads
   ```
 
   The router reads your request and dispatches it to the right specialist skill automatically.

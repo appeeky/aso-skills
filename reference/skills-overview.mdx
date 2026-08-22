@@ -1,23 +1,23 @@
 ---
 title: "ASO Skills Reference — Full Skill Library by Category"
 sidebarTitle: "Overview"
-description: "Browse all 20+ ASO Skills organized by category. Learn how to invoke any skill directly or use the /aso-skill router to get routed automatically."
+description: "Browse all 20+ ASO Skills organized by category. Learn how to invoke any skill directly or use the /aso-router router to get routed automatically."
 ---
 
 ASO Skills is an open-source library of 20+ specialist AI agent skills for App Store Optimization and mobile app marketing. Each skill encodes battle-tested frameworks, scoring rubrics, and output templates so your AI agent — whether that's Cursor, Claude Code, or any Agent Skills-compatible tool — gives you expert-level guidance instead of generic advice. Connect the Appeeky MCP Server to pull live App Store data into every skill automatically.
 
 ## How to Invoke a Skill
 
-You can invoke skills in two ways: use the **`/aso-skill` router** to describe your goal in plain language and let the router pick the right specialist, or call a skill directly by name when you know which one you want.
+You can invoke skills in two ways: use the **`/aso-router` router** to describe your goal in plain language and let the router pick the right specialist, or call a skill directly by name when you know which one you want.
 
 <Tabs>
   <Tab title="Router (Recommended)">
-    Use `/aso-skill` followed by any natural-language request. The router reads your intent and hands off to the right specialist skill automatically.
+    Use `/aso-router` followed by any natural-language request. The router reads your intent and hands off to the right specialist skill automatically.
 
     ```
-    /aso-skill  Run an ASO audit for my app (id: 1617391485)
-    /aso-skill  Find the best keywords for a meditation app targeting the US
-    /aso-skill  What apps are rising in the Health & Fitness charts right now?
+    /aso-router  Run an ASO audit for my app (id: 1617391485)
+    /aso-router  Find the best keywords for a meditation app targeting the US
+    /aso-router  What apps are rising in the Health & Fitness charts right now?
     ```
   </Tab>
   <Tab title="Direct Invocation">
@@ -162,21 +162,21 @@ You can invoke skills in two ways: use the **`/aso-skill` router** to describe y
   <Card title="app-marketing-context" icon="file-lines" href="/reference/app-marketing-context">
     Creates a shared context document (`app-marketing-context.md`) with your app details, audience, competitors, and goals — referenced by every other skill automatically.
   </Card>
-  <Card title="aso-router (/aso-skill)" icon="route" href="#">
+  <Card title="aso-router (/aso-router)" icon="route" href="#">
     Single entry point — reads any natural-language ASO request and routes to the right specialist skill. Use when you don't want to remember every skill name.
   </Card>
 </CardGroup>
 
-## The `/aso-skill` Router
+## The `/aso-router` Router
 
 The router is a single entry point for the entire library. Instead of remembering 30 skill names, you describe what you want and the router determines the best specialist skill to invoke.
 
 ```
-/aso-skill  Why isn't my app ranking for "habit tracker"?
-/aso-skill  Help me plan a Christmas In-App Event
-/aso-skill  My app rating dropped from 4.7 to 4.2 — how do I recover?
-/aso-skill  What seasonal keywords should I add in December?
-/aso-skill  Build an Apple Search Ads campaign structure for my fitness app
+/aso-router  Why isn't my app ranking for "habit tracker"?
+/aso-router  Help me plan a Christmas In-App Event
+/aso-router  My app rating dropped from 4.7 to 4.2 — how do I recover?
+/aso-router  What seasonal keywords should I add in December?
+/aso-router  Build an Apple Search Ads campaign structure for my fitness app
 ```
 
 <Note>

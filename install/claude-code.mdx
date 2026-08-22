@@ -115,7 +115,7 @@ Open the Claude Code terminal in your project and invoke a skill directly:
 Or use the router for any free-form ASO question:
 
 ```text
-/aso-skill  Find the best keywords for a meditation app
+/aso-router  Find the best keywords for a meditation app
 ```
 
 A successful install returns a structured response following the skill's framework — a scoring rubric for `/aso-audit`, a keyword table for `/keyword-research`, and so on. If Claude responds with a generic answer instead, see the troubleshooting section below.
@@ -157,7 +157,7 @@ Replace `apk_your_key_here` with your Appeeky API key. Full setup instructions a
     Confirm the skill files are in `.claude/skills/` inside your project root. Run `ls .claude/skills/` — you should see a directory named `aso-audit` containing a `SKILL.md` file. If the directory is empty or missing, re-run the install command from the project root.
   </Accordion>
   <Accordion title="Agent gives generic ASO advice instead of following the skill">
-    Invoke skills using the slash command prefix (e.g., `/aso-audit`) to explicitly load the skill file. Free-form questions without the slash prefix may not trigger skill loading in all Claude Code versions. The `/aso-skill` router is a reliable fallback for any natural-language request.
+    Invoke skills using the slash command prefix (e.g., `/aso-audit`) to explicitly load the skill file. Free-form questions without the slash prefix may not trigger skill loading in all Claude Code versions. The `/aso-router` router is a reliable fallback for any natural-language request.
   </Accordion>
   <Accordion title="How do I update skills to the latest version?">
     For `npx` installs, re-run the original install command — it overwrites existing files with the latest versions:

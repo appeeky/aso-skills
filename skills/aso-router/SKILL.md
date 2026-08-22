@@ -1,6 +1,6 @@
 ---
 name: aso-router
-description: Single entry point that routes any ASO, App Store, Google Play, app marketing, paid UA, monetization, retention, reviews, ratings, market-intel, or app-analytics question to the correct specialist skill in this library. Use FIRST whenever the user mentions an app, App Store, Play Store, keywords, ranking, downloads, revenue, subscriptions, screenshots, icon, reviews, competitors, charts, in-app events, launch, press, or ads — but the right specialized skill is not obvious. Triggers: "/aso-skill", "/aso", "aso help", "help me with my app", "I need ASO", "which skill should I use", or any ambiguous app-marketing request. Skip this router only when the user explicitly invokes a specific skill (e.g. /aso-audit, /keyword-research).
+description: Single entry point that routes any ASO, App Store, Google Play, app marketing, paid UA, monetization, retention, reviews, ratings, market-intel, or app-analytics question to the correct specialist skill in this library. Use FIRST whenever the user mentions an app, App Store, Play Store, keywords, ranking, downloads, revenue, subscriptions, screenshots, icon, reviews, competitors, charts, in-app events, launch, press, or ads — but the right specialized skill is not obvious. Triggers: "/aso-router", "/aso-skill", "/aso", "aso help", "help me with my app", "I need ASO", "which skill should I use", or any ambiguous app-marketing request. Skip this router only when the user explicitly invokes a specific skill (e.g. /aso-audit, /keyword-research).
 metadata:
   version: 1.0.0
 ---

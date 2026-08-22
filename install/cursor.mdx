@@ -1,45 +1,46 @@
 ---
-title: "Install ASO Skills in Cursor: Remote Rule & Manual Methods"
+title: "Install ASO Skills in Cursor: CLI & Manual Methods"
 sidebarTitle: "Cursor"
-description: "Add all 30+ ASO Skills to Cursor in under two minutes using a Remote Rule that auto-syncs, or clone the repo manually for project-level control."
+description: "Add all 30+ ASO Skills to Cursor in under two minutes using the skills CLI, or clone the repo and copy them into .cursor/skills/ for project-level or global install."
 ---
 
-Cursor lets you install ASO Skills as a Remote Rule that syncs automatically from GitHub, or you can clone the repository and copy the skills folder yourself. Both methods give your Cursor agent access to the same expert ASO frameworks — the Remote Rule method is recommended because any upstream updates land in your editor without any extra steps.
+Cursor loads skills from local directories (`.cursor/skills/`, `~/.cursor/skills/`, and `.agents/skills/`). Install with the Agent Skills CLI, or clone the repository and copy the `skills/` folder yourself. Both methods give your Cursor agent the same expert ASO frameworks.
 
-## Method 1: Remote Rule via GitHub (Recommended)
+## Method 1: Skills CLI (Recommended)
 
-The Remote Rule method points Cursor directly at the GitHub repository. Cursor fetches and keeps the skills in sync automatically, so you always have the latest versions without re-running any commands.
+The CLI copies every skill into Cursor's skills directories so the agent can invoke them by name.
 
 <Steps>
-  <Step title="Open Cursor Settings">
-    Press **Cmd+Shift+J** (macOS) or **Ctrl+Shift+J** (Windows/Linux) to open the Settings panel. You can also reach it from the menu: **Cursor → Settings**.
+  <Step title="Open a terminal in your project">
+    Run the command from the project where you want the skills available (project-level), or from anywhere if you plan to install globally.
   </Step>
-  <Step title="Navigate to Rules">
-    In the Settings panel, select the **Rules** tab in the left sidebar.
-  </Step>
-  <Step title="Add a New Rule">
-    Click **Add Rule**, then choose **Remote Rule (Github)** from the rule type options.
-  </Step>
-  <Step title="Paste the Repository URL">
-    In the URL field, paste the following and confirm:
+  <Step title="Install the skills">
+    **Project-level** (this repo only — commit `.cursor/skills/` or `.agents/skills/` so teammates get them):
 
-    ```text
-    https://github.com/eronred/aso-skills
+    ```bash
+    npx skills add eronred/aso-skills -a cursor
     ```
 
-    Cursor will fetch the repository and register all skills automatically.
+    **Global** (every Cursor project on this machine):
+
+    ```bash
+    npx skills add eronred/aso-skills -a cursor -g
+    ```
+  </Step>
+  <Step title="Start a new Agent chat">
+    Cursor reads skill metadata when a chat starts. Open a new Agent conversation after installing.
   </Step>
 </Steps>
 
 <Tip>
-  Remote Rules sync each time Cursor starts, so any new skills or improvements we ship are available immediately without any manual action on your part.
+  Type `/` in chat and look for `/aso-router` (or any specialist like `/aso-audit`) to confirm the skills loaded.
 </Tip>
 
 ---
 
 ## Method 2: Manual Clone and Copy
 
-Use this method when you want to pin a specific version of the skills, modify them locally, or install them project-by-project rather than globally.
+Use this method when you want to pin a specific version of the skills, modify them locally, or skip the CLI.
 
 <Steps>
   <Step title="Clone the repository">
@@ -53,20 +54,15 @@ Use this method when you want to pin a specific version of the skills, modify th
     For a **project-level** install (only available in the current project):
 
     ```bash
+    mkdir -p .cursor/skills
     cp -r aso-skills/skills/* .cursor/skills/
     ```
 
     For a **global** install (available in all Cursor projects):
 
     ```bash
+    mkdir -p ~/.cursor/skills
     cp -r aso-skills/skills/* ~/.cursor/skills/
-    ```
-
-    If the `.cursor/skills/` directory doesn't exist yet, create it first:
-
-    ```bash
-    mkdir -p .cursor/skills
-    cp -r aso-skills/skills/* .cursor/skills/
     ```
   </Step>
 </Steps>
@@ -78,7 +74,7 @@ Use this method when you want to pin a specific version of the skills, modify th
 Once installed, open a new Cursor chat window and try invoking a skill. The quickest check is the router skill, which accepts any natural-language ASO request:
 
 ```text
-/aso-skill  Run an ASO audit for my app
+/aso-router  Run an ASO audit for my app
 ```
 
 Or invoke a skill directly by name:
@@ -123,23 +119,21 @@ Replace `apk_your_key_here` with your Appeeky API key. See the [Appeeky MCP guid
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Skills don't appear after adding the Remote Rule">
-    Try restarting Cursor completely — the Remote Rule sync runs on startup. If skills still don't appear, navigate back to **Settings → Rules**, confirm the URL is saved correctly (`https://github.com/eronred/aso-skills`), remove the rule, and re-add it.
+  <Accordion title="Skills don't appear after installing">
+    Start a **new** Agent chat — Cursor indexes skills at session start. Confirm `SKILL.md` files exist under `.cursor/skills/` (project), `~/.cursor/skills/` (global), or `.agents/skills/`. Run `ls .cursor/skills/` or `ls ~/.cursor/skills/` to verify.
   </Accordion>
   <Accordion title="Slash commands like /aso-audit aren't recognized">
-    Skills installed via the manual method must be in the correct directory. Confirm that the `SKILL.md` files are present in `.cursor/skills/aso-audit/` (for project-level) or `~/.cursor/skills/aso-audit/` (for global). Run `ls .cursor/skills/` to verify the folder structure.
+    Skills installed via the manual method must be in the correct directory. Confirm that the `SKILL.md` files are present in `.cursor/skills/aso-audit/` (for project-level) or `~/.cursor/skills/aso-audit/` (for global). The router command is `/aso-router`, not `/aso-skill`.
   </Accordion>
   <Accordion title="The agent gives generic ASO advice instead of using the skill framework">
-    Make sure you're invoking the skill by name (e.g., `/aso-audit`) rather than asking a free-form question. The slash command tells Cursor to load and follow the specific skill file. You can also use `/aso-skill` as a universal router for any ASO request.
+    Make sure you're invoking the skill by name (e.g., `/aso-audit`) rather than asking a free-form question. The slash command tells Cursor to load and follow the specific skill file. You can also use `/aso-router` as a universal router for any ASO request.
   </Accordion>
-  <Accordion title="I want to update the skills manually">
-    If you used the clone-and-copy method, pull the latest changes and re-copy:
+  <Accordion title="I want to update the skills">
+    If you used the CLI, re-run the same install command to overwrite with the latest version. If you used clone-and-copy:
 
     ```bash
     cd aso-skills && git pull
     cp -r skills/* ../.cursor/skills/
     ```
-
-    If you used the Remote Rule method, Cursor handles updates automatically.
   </Accordion>
 </AccordionGroup>
