@@ -19,13 +19,16 @@ AI agent skills for App Store Optimization (ASO) and mobile app marketing. Built
 
 Powered by real App Store data via the [Appeeky API](https://docs.appeeky.com).
 
+## Agent skills for user acquisition
+
 For agent skills for mobile app user acquisition — TikTok ads, Meta ads, Apple Search Ads, ad creatives, and ROAS - see [ua-skills](https://github.com/appeeky/ua-skills).
 
+## Local App Growth
 
-Web, desktop, and mobile app platforms are also available, powered by AI chats and our MCP: [Appeeky Web](https://appeeky.com).
+A native macOS app — a local-first for app growth. App Store Connect, Google Play, Apple Search Ads, Meta/TikTok ads, and RevenueCat sync into a cache on your Mac: full history, no CSV exports, credentials in the Keychain. Reviews, ads intelligence, and keyword data stay fast (and work offline). A built-in terminal pairs with MCP, so the same agents that use these skills can talk to your local data. Download from [Appeeky](https://appeeky.com/desktop).
 
  <a href="https://www.appeeky.com/desktop">
-<img width="1706" height="1204" alt="image" src="https://github.com/user-attachments/assets/6ce60216-fd3a-4e97-ab56-00d150f7947a" />
+<img width="3072" height="2040" alt="image" src="https://github.com/user-attachments/assets/2c04ba9d-eb91-4543-8d38-21fa48cd476f" />
   </a>
 
 ## Why This Exists
