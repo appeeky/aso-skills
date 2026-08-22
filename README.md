@@ -19,6 +19,9 @@ AI agent skills for App Store Optimization (ASO) and mobile app marketing. Built
 
 Powered by real App Store data via the [Appeeky API](https://docs.appeeky.com).
 
+For agent skills for mobile app user acquisition — TikTok ads, Meta ads, Apple Search Ads, ad creatives, and ROAS - see [ua-skills](https://github.com/appeeky/ua-skills).
+
+
 Web, desktop, and mobile app platforms are also available, powered by AI chats and our MCP: [Appeeky Web](https://appeeky.com).
 
  <a href="https://www.appeeky.com/desktop">
