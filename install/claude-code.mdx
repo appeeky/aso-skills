@@ -1,29 +1,50 @@
 ---
 title: "Install ASO Skills in Claude Code: npx & Manual Methods"
 sidebarTitle: "Claude Code"
-description: "Install all 30+ ASO Skills into Claude Code with one npx command, install only the skills you need, or clone the repo manually for full control."
+description: "Install all 30+ ASO Skills into Claude Code with the Claude Code plugin marketplace or one npx command, install only the skills you need, or clone the repo manually for full control."
 ---
 
 Claude Code supports ASO Skills through the Agent Skills standard, meaning you can install the full collection with one command, cherry-pick only the skills you need, or clone the repository and copy files manually. The `npx skills add` method is the fastest path and works in any Claude Code project directory.
 
-## Method 1: Install All Skills (Recommended)
+## Method 1: Install as a Claude Code Plugin (Recommended)
+
+This repository is a Claude Code plugin marketplace. Add it once, then install the `aso-skills` plugin to get every skill in all your projects:
+
+```text
+/plugin marketplace add appeeky/aso-skills
+/plugin install aso-skills@aso-skills
+```
+
+Choose a scope when prompted: **user** (every project), **project** (everyone in this repo), or **local** (just you, this repo). From your shell, run the same steps with `claude plugin marketplace add appeeky/aso-skills` and `claude plugin install aso-skills@aso-skills`.
+
+Plugin skills are namespaced under the plugin name, for example `/aso-skills:aso-audit` and `/aso-skills:keyword-research`. Claude also loads them automatically when your request matches a skill.
+
+To get the latest skills later:
+
+```text
+/plugin marketplace update aso-skills
+```
+
+---
+
+## Method 2: Install All Skills with npx
 
 Run this command in your project root to pull down the complete ASO Skills collection:
 
 ```bash
-npx skills add eronred/aso-skills
+npx skills add appeeky/aso-skills
 ```
 
 This fetches all 30+ skills from GitHub and places them in `.claude/skills/` automatically. No configuration file changes required.
 
 ---
 
-## Method 2: Install Specific Skills
+## Method 3: Install Specific Skills
 
 If you only need a subset of skills — useful for keeping your context lean or focusing on a single workflow — pass the `--skill` flag with the skill names you want:
 
 ```bash
-npx skills add eronred/aso-skills --skill aso-audit keyword-research market-movers
+npx skills add appeeky/aso-skills --skill aso-audit keyword-research market-movers
 ```
 
 You can install any combination of available skills in a single command. Here are some common bundles:
@@ -31,7 +52,7 @@ You can install any combination of available skills in a single command. Here ar
 <CardGroup cols={2}>
   <Card title="ASO Core Bundle" icon="magnifying-glass-chart">
     ```bash
-    npx skills add eronred/aso-skills \
+    npx skills add appeeky/aso-skills \
       --skill aso-audit \
              keyword-research \
              metadata-optimization \
@@ -40,7 +61,7 @@ You can install any combination of available skills in a single command. Here ar
   </Card>
   <Card title="Market Intelligence Bundle" icon="binoculars">
     ```bash
-    npx skills add eronred/aso-skills \
+    npx skills add appeeky/aso-skills \
       --skill market-movers \
              market-pulse \
              competitor-tracking \
@@ -49,7 +70,7 @@ You can install any combination of available skills in a single command. Here ar
   </Card>
   <Card title="Growth Bundle" icon="rocket">
     ```bash
-    npx skills add eronred/aso-skills \
+    npx skills add appeeky/aso-skills \
       --skill app-launch \
              ua-campaign \
              apple-search-ads \
@@ -58,7 +79,7 @@ You can install any combination of available skills in a single command. Here ar
   </Card>
   <Card title="Revenue Bundle" icon="dollar-sign">
     ```bash
-    npx skills add eronred/aso-skills \
+    npx skills add appeeky/aso-skills \
       --skill monetization-strategy \
              paywall-optimization \
              subscription-lifecycle \
@@ -73,14 +94,14 @@ You can install any combination of available skills in a single command. Here ar
 
 ---
 
-## Method 3: Manual Clone and Copy
+## Method 4: Manual Clone and Copy
 
 Use this method when you want version control over your skills, need to modify them locally, or are working in an environment without `npx`.
 
 <Steps>
   <Step title="Clone the repository">
     ```bash
-    git clone https://github.com/eronred/aso-skills.git
+    git clone https://github.com/appeeky/aso-skills.git
     ```
   </Step>
   <Step title="Create the Claude skills directory (if needed)">
@@ -163,7 +184,7 @@ Replace `apk_your_key_here` with your Appeeky API key. Full setup instructions a
     For `npx` installs, re-run the original install command — it overwrites existing files with the latest versions:
 
     ```bash
-    npx skills add eronred/aso-skills
+    npx skills add appeeky/aso-skills
     ```
 
     For manual installs, pull the latest changes and re-copy:

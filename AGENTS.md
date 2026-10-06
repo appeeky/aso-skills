@@ -41,6 +41,13 @@ Description drives discovery — agent reads all descriptions to decide which sk
 
 **Key rules:** Title has highest keyword weight. Don't repeat keywords across fields. Use singular forms. Don't include "app" or category names in keyword field.
 
+## Claude Code Plugin
+
+The repo is also a Claude Code plugin marketplace: `.claude-plugin/plugin.json` (plugin manifest) and `.claude-plugin/marketplace.json` (catalog). Skills in `skills/` are auto-discovered.
+
+- Bump `version` in `plugin.json` on every release, or installed users won't receive the update
+- Run `claude plugin validate --strict .` before pushing
+
 ## Commits
 
 `feat(skill-name): ...` / `fix(skill-name): ...` / `docs: ...`
