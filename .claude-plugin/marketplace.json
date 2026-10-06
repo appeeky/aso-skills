@@ -6,60 +6,16 @@
   },
   "metadata": {
     "description": "ASO & App Marketing skills for Claude Code — keyword research, metadata optimization, competitor analysis, and app growth",
-    "version": "1.0.0",
-    "repository": "https://github.com/eronred/aso-skills"
+    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "aso-skills",
       "description": "40 ASO and app marketing skills for indie developers, app marketers, and growth teams. Covers keyword research, metadata optimization, competitor analysis, market intelligence, screenshots, reviews, localization, user acquisition, monetization, App Store Connect metrics, and more.",
       "source": "./",
-      "strict": false,
-      "homepage": "https://github.com/eronred/aso-skills",
+      "homepage": "https://github.com/appeeky/aso-skills",
       "license": "MIT",
-      "keywords": ["aso", "app-store", "google-play", "keywords", "metadata", "marketing"],
-      "skills": [
-        "./skills/aso-router",
-        "./skills/app-marketing-context",
-        "./skills/aso-audit",
-        "./skills/keyword-research",
-        "./skills/metadata-optimization",
-        "./skills/competitor-analysis",
-        "./skills/seasonal-aso",
-        "./skills/android-aso",
-        "./skills/screenshot-optimization",
-        "./skills/app-preview-video",
-        "./skills/app-icon-optimization",
-        "./skills/custom-product-pages",
-        "./skills/review-management",
-        "./skills/localization",
-        "./skills/app-launch",
-        "./skills/ua-campaign",
-        "./skills/apple-search-ads",
-        "./skills/creator-ugc-marketing",
-        "./skills/referral-program",
-        "./skills/web-to-app-funnel",
-        "./skills/app-store-featured",
-        "./skills/in-app-events",
-        "./skills/app-clips",
-        "./skills/press-and-pr",
-        "./skills/monetization-strategy",
-        "./skills/paywall-optimization",
-        "./skills/subscription-lifecycle",
-        "./skills/retention-optimization",
-        "./skills/onboarding-optimization",
-        "./skills/rating-prompt-strategy",
-        "./skills/app-analytics",
-        "./skills/attribution-setup",
-        "./skills/ab-test-store-listing",
-        "./skills/asc-metrics",
-        "./skills/crash-analytics",
-        "./skills/market-movers",
-        "./skills/market-pulse",
-        "./skills/competitor-tracking",
-        "./skills/category-positioning",
-        "./skills/app-rejection-recovery"
-      ]
+      "keywords": ["aso", "app-store", "google-play", "keywords", "metadata", "marketing"]
     }
   ]
 }

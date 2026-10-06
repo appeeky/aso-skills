@@ -39,11 +39,11 @@ Each skill contains battle-tested frameworks, scoring rubrics, and output templa
 
 ## Quick Start
 
-**Cursor** — `npx skills add eronred/aso-skills -a cursor`
+**Cursor** — `npx skills add appeeky/aso-skills -a cursor`
 
-**Claude Code** — `npx skills add eronred/aso-skills`
+**Claude Code** — `npx skills add appeeky/aso-skills`
 
-**Manual** — `git clone https://github.com/eronred/aso-skills.git && cp -r aso-skills/skills/* .cursor/skills/`
+**Manual** — `git clone https://github.com/appeeky/aso-skills.git && cp -r aso-skills/skills/* .cursor/skills/`
 
 Then ask your agent:
 
@@ -175,22 +175,32 @@ Skills reference each other — `aso-audit` might suggest running `keyword-resea
 
 | Method | Command |
 |--------|---------|
-| CLI | `npx skills add eronred/aso-skills -a cursor` |
+| CLI | `npx skills add appeeky/aso-skills -a cursor` |
 | Project-level | `cp -r aso-skills/skills/* .cursor/skills/` |
 | Global | `cp -r aso-skills/skills/* ~/.cursor/skills/` |
 
 ### Claude Code
 
+Install as a Claude Code plugin (all 40 skills, updatable with `/plugin marketplace update aso-skills`):
+
+```
+/plugin marketplace add appeeky/aso-skills
+/plugin install aso-skills@aso-skills
+```
+
+Plugin skills are namespaced, e.g. `/aso-skills:aso-audit`.
+
 | Method | Command |
 |--------|---------|
-| CLI | `npx skills add eronred/aso-skills` |
-| Specific skills | `npx skills add eronred/aso-skills --skill aso-audit keyword-research` |
+| Plugin | `/plugin marketplace add appeeky/aso-skills` then `/plugin install aso-skills@aso-skills` |
+| CLI | `npx skills add appeeky/aso-skills` |
+| Specific skills | `npx skills add appeeky/aso-skills --skill aso-audit keyword-research` |
 | Manual | `cp -r aso-skills/skills/* .claude/skills/` |
 
 ### Any Agent
 
 ```bash
-git submodule add https://github.com/eronred/aso-skills.git .agents/aso-skills
+git submodule add https://github.com/appeeky/aso-skills.git .agents/aso-skills
 ```
 
 Works with any tool that supports the [Agent Skills](https://agentskills.io) standard (`.agents/skills/`, `.cursor/skills/`, `.claude/skills/`, `.codex/skills/`).
