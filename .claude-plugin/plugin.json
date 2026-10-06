@@ -3,6 +3,7 @@
   "displayName": "ASO Skills",
   "version": "1.0.0",
   "description": "40 ASO and app marketing skills for indie developers, app marketers, and growth teams. Covers keyword research, metadata optimization, competitor analysis, market intelligence, screenshots, reviews, localization, user acquisition, monetization, App Store Connect metrics, and more.",
+  "icon": "./.claude-plugin/icon.png",
   "author": {
     "name": "Appeeky",
     "email": "hey@appeeky.com",
