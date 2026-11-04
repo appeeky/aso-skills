@@ -105,3 +105,4 @@ Which skills use which Appeeky tools:
 | **Appeeky Connect** | Exact ASC sales/revenue data synced into Appeeky | [appeeky-connect.md](integrations/appeeky-connect.md) |
 | **RevenueCat** | Subscription analytics, paywall A/B testing | [revenuecat.md](integrations/revenuecat.md) |
 | **Firebase** | In-app analytics, crash reporting, A/B testing | [firebase.md](integrations/firebase.md) |
+| **StoreStudio** | Free browser preview of public iPhone screenshot order, screenshot size checks, and asset exports | [Browser tools](https://storestudio.app/tools/) |
