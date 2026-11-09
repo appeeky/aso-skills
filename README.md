@@ -15,15 +15,20 @@
   </p>
 </div>
 
-AI agent skills for App Store Optimization (ASO) and mobile app marketing. Built for indie developers, app marketers, and growth teams who want **Cursor**, **Claude Code**, or any [Agent Skills](https://agentskills.io)-compatible AI assistant to help with keyword research, metadata optimization, competitor analysis, market intelligence, and app growth.
+AI agent skills for App Store Optimization (ASO) and mobile app marketing. Built for indie developers, app marketers, and growth teams who want **Cursor**, **Claude Code**, or any Agent Skills-compatible AI assistant to help with keyword research, metadata optimization, competitor analysis, market intelligence, and app growth. Powered by real App Store data via the [Appeeky API](https://docs.appeeky.com).
 
-Powered by real App Store data via the [Appeeky API](https://docs.appeeky.com).
+# Appeeky Spec: App growth, run by your coding agent
+<a href="spec.appeeky.com">
+<img src="https://cdn.jsdelivr.net/npm/@appeeky/spec/.github/assets/cover.gif" alt="Animated pixel-art night sky over a hilltop: a puffin in a scarf hops between Grok, Claude Code, Codex and Cursor on the left and Gemini CLI, opencode, T3 Code and Zed on the right. Above them: App growth, run by your coding agent, the features with their logos and the places it runs, from GitHub Actions and Docker to Hetzner, DigitalOcean, AWS, Google Cloud, Railway, Fly.io and Render." width="100%" />
+</a>
 
-## Agent skills for user acquisition
+Appeeky Spec puts your app's whole growth loop in one folder of your repo: the store listing and the searches it should win, reviews and competitors, what AI assistants say about the app, ads, experiments, and what every past change did. Your coding agent (Claude Code, Codex, Cursor, Gemini CLI and others) reads it and proposes the next change as a pull request. You merge it. The change is checked against the store rules, pushed to App Store Connect and Google Play, and measured on day 7 and day 14, and the result goes into a playbook the next change starts from.
+
+## Our other open-source skills and local app growth
 
 For agent skills for mobile app user acquisition — TikTok ads, Meta ads, Apple Search Ads, ad creatives, and ROAS - see [ua-skills](https://github.com/appeeky/ua-skills).
 
-## Local App Growth
+### Local App Growth
 
 A native macOS app — a local-first for app growth. App Store Connect, Google Play, Apple Search Ads, Meta/TikTok ads, and RevenueCat sync into a cache on your Mac: full history, no CSV exports, credentials in the Keychain. Reviews, ads intelligence, and keyword data stay fast (and work offline). A built-in terminal pairs with MCP, so the same agents that use these skills can talk to your local data. Download from [Appeeky](https://appeeky.com/desktop).
 
