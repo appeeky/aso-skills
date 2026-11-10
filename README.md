@@ -18,11 +18,11 @@
 AI agent skills for App Store Optimization (ASO) and mobile app marketing. Built for indie developers, app marketers, and growth teams who want **Cursor**, **Claude Code**, or any Agent Skills-compatible AI assistant to help with keyword research, metadata optimization, competitor analysis, market intelligence, and app growth. Powered by real App Store data via the [Appeeky API](https://docs.appeeky.com).
 
 # Appeeky Spec: App growth, run by your coding agent
-<a href="spec.appeeky.com">
+<a href="https://spec.appeeky.com">
 <img src="https://cdn.jsdelivr.net/npm/@appeeky/spec/.github/assets/cover.gif" alt="Animated pixel-art night sky over a hilltop: a puffin in a scarf hops between Grok, Claude Code, Codex and Cursor on the left and Gemini CLI, opencode, T3 Code and Zed on the right. Above them: App growth, run by your coding agent, the features with their logos and the places it runs, from GitHub Actions and Docker to Hetzner, DigitalOcean, AWS, Google Cloud, Railway, Fly.io and Render." width="100%" />
 </a>
 
-Appeeky Spec puts your app's whole growth loop in one folder of your repo: the store listing and the searches it should win, reviews and competitors, what AI assistants say about the app, ads, experiments, and what every past change did. Your coding agent (Claude Code, Codex, Cursor, Gemini CLI and others) reads it and proposes the next change as a pull request. You merge it. The change is checked against the store rules, pushed to App Store Connect and Google Play, and measured on day 7 and day 14, and the result goes into a playbook the next change starts from.
+[Appeeky Spec](https://spec.appeeky.com) puts your app's whole growth loop in one folder of your repo: the store listing and the searches it should win, reviews and competitors, what AI assistants say about the app, ads, experiments, and what every past change did. Your coding agent (Claude Code, Codex, Cursor, Gemini CLI and others) reads it and proposes the next change as a pull request. You merge it. The change is checked against the store rules, pushed to App Store Connect and Google Play, and measured on day 7 and day 14, and the result goes into a playbook the next change starts from.
 
 ## Our other open-source skills and local app growth
 
