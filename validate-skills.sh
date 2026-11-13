@@ -9,7 +9,7 @@ NC='\033[0m'
 ERRORS=0
 WARNINGS=0
 
-for skill_dir in skills/*/; do
+for skill_dir in plugin/skills/*/; do
   skill_name=$(basename "$skill_dir")
   skill_file="$skill_dir/SKILL.md"
 

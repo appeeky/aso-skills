@@ -48,7 +48,7 @@ GET /v1/connect/metrics/apps/:appId?from=YYYY-MM-DD&to=YYYY-MM-DD
 
 Response includes: `daily[]`, `countries[]`, `totals`.
 
-See full API reference: [appeeky-connect.md](../../tools/integrations/appeeky-connect.md)
+See full API reference: [appeeky-connect.md](https://github.com/appeeky/aso-skills/blob/main/tools/integrations/appeeky-connect.md)
 
 ## Analysis Frameworks
 

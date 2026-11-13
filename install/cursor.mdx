@@ -55,14 +55,14 @@ Use this method when you want to pin a specific version of the skills, modify th
 
     ```bash
     mkdir -p .cursor/skills
-    cp -r aso-skills/skills/* .cursor/skills/
+    cp -r aso-skills/plugin/skills/* .cursor/skills/
     ```
 
     For a **global** install (available in all Cursor projects):
 
     ```bash
     mkdir -p ~/.cursor/skills
-    cp -r aso-skills/skills/* ~/.cursor/skills/
+    cp -r aso-skills/plugin/skills/* ~/.cursor/skills/
     ```
   </Step>
 </Steps>
@@ -133,7 +133,7 @@ Replace `apk_your_key_here` with your Appeeky API key. See the [Appeeky MCP guid
 
     ```bash
     cd aso-skills && git pull
-    cp -r skills/* ../.cursor/skills/
+    cp -r plugin/skills/* ../.cursor/skills/
     ```
   </Accordion>
 </AccordionGroup>

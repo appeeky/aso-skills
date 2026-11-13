@@ -5,8 +5,9 @@ This repo contains ASO & App Marketing skills following the [Agent Skills](https
 ## Structure
 
 ```
-skills/<name>/SKILL.md     — Skill instructions (required, <500 lines)
-skills/<name>/references/  — Detailed docs loaded on demand (optional)
+plugin/skills/<name>/SKILL.md     — Skill instructions (required, <500 lines)
+plugin/skills/<name>/references/  — Detailed docs loaded on demand (optional)
+plugin/.claude-plugin/            — Claude Code plugin manifest and icon
 tools/integrations/        — API integration guides (Appeeky, Firebase, etc.)
 tools/REGISTRY.md          — Capability matrix: which skill uses which tool
 ```
@@ -43,9 +44,11 @@ Description drives discovery — agent reads all descriptions to decide which sk
 
 ## Claude Code Plugin
 
-The repo is also a Claude Code plugin marketplace: `.claude-plugin/plugin.json` (plugin manifest) and `.claude-plugin/marketplace.json` (catalog). Skills in `skills/` are auto-discovered.
+The Claude Code plugin is the `plugin/` folder: `plugin/.claude-plugin/plugin.json` (manifest), `plugin/.claude-plugin/icon.png`, and `plugin/skills/` (auto-discovered). The root `.claude-plugin/marketplace.json` lists it with `"source": "./plugin"`.
 
-- Bump `version` in `plugin.json` on every release, or installed users won't receive the update
+- `plugin/` is what Anthropic's directory scans. Only put Markdown, text, JSON, YAML, and PNG/JPEG/GIF/WebP/ICO images in it: no scripts (nothing starting with `#!`), no `.mdx`, no `.DS_Store`
+- Link to files outside `plugin/` with full GitHub URLs, since they don't ship with the plugin
+- Bump `version` in `plugin/.claude-plugin/plugin.json` on every release, or installed users won't receive the update
 - Run `claude plugin validate --strict .` before pushing
 
 ## Commits
