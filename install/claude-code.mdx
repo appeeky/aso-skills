@@ -111,14 +111,14 @@ Use this method when you want version control over your skills, need to modify t
   </Step>
   <Step title="Copy all skills into place">
     ```bash
-    cp -r aso-skills/skills/* .claude/skills/
+    cp -r aso-skills/plugin/skills/* .claude/skills/
     ```
 
     To install only specific skills, copy individual directories:
 
     ```bash
-    cp -r aso-skills/skills/aso-audit .claude/skills/
-    cp -r aso-skills/skills/keyword-research .claude/skills/
+    cp -r aso-skills/plugin/skills/aso-audit .claude/skills/
+    cp -r aso-skills/plugin/skills/keyword-research .claude/skills/
     ```
   </Step>
 </Steps>
@@ -191,7 +191,7 @@ Replace `apk_your_key_here` with your Appeeky API key. Full setup instructions a
 
     ```bash
     cd aso-skills && git pull
-    cp -r skills/* ../.claude/skills/
+    cp -r plugin/skills/* ../.claude/skills/
     ```
   </Accordion>
 </AccordionGroup>

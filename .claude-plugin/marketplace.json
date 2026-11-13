@@ -12,7 +12,7 @@
     {
       "name": "aso-skills",
       "description": "40 ASO and app marketing skills for indie developers, app marketers, and growth teams. Covers keyword research, metadata optimization, competitor analysis, market intelligence, screenshots, reviews, localization, user acquisition, monetization, App Store Connect metrics, and more.",
-      "source": "./",
+      "source": "./plugin",
       "homepage": "https://github.com/appeeky/aso-skills",
       "license": "MIT",
       "keywords": ["aso", "app-store", "google-play", "keywords", "metadata", "marketing"]

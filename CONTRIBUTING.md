@@ -3,7 +3,7 @@
 ## Add a Skill
 
 ```
-skills/your-skill-name/
+plugin/skills/your-skill-name/
 └── SKILL.md           # Required, under 500 lines
 └── references/        # Optional, for detailed docs
 ```

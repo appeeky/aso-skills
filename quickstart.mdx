@@ -45,7 +45,7 @@ That's it. ASO Skills works out of the box with the AI assistant built into both
       You can also copy skills into the project by hand:
 
       ```bash
-      git clone https://github.com/appeeky/aso-skills.git && mkdir -p .cursor/skills && cp -r aso-skills/skills/* .cursor/skills/
+      git clone https://github.com/appeeky/aso-skills.git && mkdir -p .cursor/skills && cp -r aso-skills/plugin/skills/* .cursor/skills/
       ```
     </Tip>
   </Tab>
@@ -86,13 +86,13 @@ That's it. ASO Skills works out of the box with the AI assistant built into both
 
         ```bash
         # Cursor
-        cp -r aso-skills/skills/* .cursor/skills/
+        cp -r aso-skills/plugin/skills/* .cursor/skills/
 
         # Claude Code
-        cp -r aso-skills/skills/* .claude/skills/
+        cp -r aso-skills/plugin/skills/* .claude/skills/
 
         # Any Agent Skills-compatible tool
-        cp -r aso-skills/skills/* .agents/skills/
+        cp -r aso-skills/plugin/skills/* .agents/skills/
         ```
       </Step>
     </Steps>

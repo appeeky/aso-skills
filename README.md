@@ -48,7 +48,7 @@ Each skill contains battle-tested frameworks, scoring rubrics, and output templa
 
 **Claude Code** — `npx skills add appeeky/aso-skills`
 
-**Manual** — `git clone https://github.com/appeeky/aso-skills.git && cp -r aso-skills/skills/* .cursor/skills/`
+**Manual** — `git clone https://github.com/appeeky/aso-skills.git && cp -r aso-skills/plugin/skills/* .cursor/skills/`
 
 Then ask your agent:
 
@@ -84,81 +84,81 @@ Or invoke directly: `/aso-audit`, `/keyword-research`, `/metadata-optimization`,
 
 | Skill | What it does |
 |-------|-------------|
-| [`aso-audit`](skills/aso-audit) | Scores your listing across 10 factors (0-100), flags problems, gives a prioritized fix list |
-| [`keyword-research`](skills/keyword-research) | Finds keywords by volume × difficulty × relevance, groups them into primary/secondary/long-tail |
-| [`metadata-optimization`](skills/metadata-optimization) | Writes title, subtitle, keyword field, description — with 3 variants and character counts |
-| [`competitor-analysis`](skills/competitor-analysis) | Keyword gaps, creative teardown, positioning map, and specific opportunities to exploit |
-| [`seasonal-aso`](skills/seasonal-aso) | Seasonal keyword calendar, metadata swap strategy, timing checklist, and trending-moment tactics |
-| [`android-aso`](skills/android-aso) | Google Play-specific ASO — indexed description strategy, short description, Play Experiments, rating recovery |
+| [`aso-audit`](plugin/skills/aso-audit) | Scores your listing across 10 factors (0-100), flags problems, gives a prioritized fix list |
+| [`keyword-research`](plugin/skills/keyword-research) | Finds keywords by volume × difficulty × relevance, groups them into primary/secondary/long-tail |
+| [`metadata-optimization`](plugin/skills/metadata-optimization) | Writes title, subtitle, keyword field, description — with 3 variants and character counts |
+| [`competitor-analysis`](plugin/skills/competitor-analysis) | Keyword gaps, creative teardown, positioning map, and specific opportunities to exploit |
+| [`seasonal-aso`](plugin/skills/seasonal-aso) | Seasonal keyword calendar, metadata swap strategy, timing checklist, and trending-moment tactics |
+| [`android-aso`](plugin/skills/android-aso) | Google Play-specific ASO — indexed description strategy, short description, Play Experiments, rating recovery |
 
 ### Creative & International
 
 | Skill | What it does |
 |-------|-------------|
-| [`screenshot-optimization`](skills/screenshot-optimization) | 10-slot screenshot strategy with design briefs, text overlay copy, and competitor audit |
-| [`app-preview-video`](skills/app-preview-video) | Up to 3 App Preview videos per locale — script template, beat-by-beat structure, Apple/Play specs, rejection avoidance |
-| [`app-icon-optimization`](skills/app-icon-optimization) | Icon design principles, A/B testing via PPO/Play Experiments, category differentiation, and icon briefs |
-| [`custom-product-pages`](skills/custom-product-pages) | Apple CPPs — variant strategy by audience/channel, ASA + CPP unlock, measurement floor, common mistakes |
-| [`review-management`](skills/review-management) | Sentiment analysis, response templates (HEAR framework), rating improvement tactics |
-| [`localization`](skills/localization) | Market prioritization matrix, per-country keyword research, cultural adaptation checklist |
+| [`screenshot-optimization`](plugin/skills/screenshot-optimization) | 10-slot screenshot strategy with design briefs, text overlay copy, and competitor audit |
+| [`app-preview-video`](plugin/skills/app-preview-video) | Up to 3 App Preview videos per locale — script template, beat-by-beat structure, Apple/Play specs, rejection avoidance |
+| [`app-icon-optimization`](plugin/skills/app-icon-optimization) | Icon design principles, A/B testing via PPO/Play Experiments, category differentiation, and icon briefs |
+| [`custom-product-pages`](plugin/skills/custom-product-pages) | Apple CPPs — variant strategy by audience/channel, ASA + CPP unlock, measurement floor, common mistakes |
+| [`review-management`](plugin/skills/review-management) | Sentiment analysis, response templates (HEAR framework), rating improvement tactics |
+| [`localization`](plugin/skills/localization) | Market prioritization matrix, per-country keyword research, cultural adaptation checklist |
 
 ### Growth
 
 | Skill | What it does |
 |-------|-------------|
-| [`app-launch`](skills/app-launch) | 8-week launch timeline with daily checklists, channel strategy, and press outreach templates |
-| [`ua-campaign`](skills/ua-campaign) | Apple Search Ads, Meta, Google UAC — campaign structure, bidding, creative specs, budget allocation |
-| [`apple-search-ads`](skills/apple-search-ads) | Deep-dive ASA — campaign structure, match types, CPP routing, bid strategy, weekly optimization checklist |
-| [`creator-ugc-marketing`](skills/creator-ugc-marketing) | TikTok / IG / YouTube creator program — briefs, sourcing, hook angles, Spark Ads / Partnership Ads, measurement |
-| [`referral-program`](skills/referral-program) | In-app referral / invite mechanics — reward sizing, K-factor math, fraud prevention, deep link flow |
-| [`web-to-app-funnel`](skills/web-to-app-funnel) | Web → app install funnels (incl. quiz + Stripe + deferred deep link) to bypass App Store fees on subs |
-| [`app-store-featured`](skills/app-store-featured) | Featuring readiness score, Apple tech checklist, pitch template, In-App Events calendar |
-| [`in-app-events`](skills/in-app-events) | Plan and write App Store In-App Events — copy, image brief, keyword strategy, submission timeline |
-| [`app-clips`](skills/app-clips) | App Clip use cases, card design, URL scheme setup, SKOverlay handoff, and measurement |
-| [`press-and-pr`](skills/press-and-pr) | Media targeting tiers, pitch templates, press kit checklist, embargo strategy, Product Hunt launch |
+| [`app-launch`](plugin/skills/app-launch) | 8-week launch timeline with daily checklists, channel strategy, and press outreach templates |
+| [`ua-campaign`](plugin/skills/ua-campaign) | Apple Search Ads, Meta, Google UAC — campaign structure, bidding, creative specs, budget allocation |
+| [`apple-search-ads`](plugin/skills/apple-search-ads) | Deep-dive ASA — campaign structure, match types, CPP routing, bid strategy, weekly optimization checklist |
+| [`creator-ugc-marketing`](plugin/skills/creator-ugc-marketing) | TikTok / IG / YouTube creator program — briefs, sourcing, hook angles, Spark Ads / Partnership Ads, measurement |
+| [`referral-program`](plugin/skills/referral-program) | In-app referral / invite mechanics — reward sizing, K-factor math, fraud prevention, deep link flow |
+| [`web-to-app-funnel`](plugin/skills/web-to-app-funnel) | Web → app install funnels (incl. quiz + Stripe + deferred deep link) to bypass App Store fees on subs |
+| [`app-store-featured`](plugin/skills/app-store-featured) | Featuring readiness score, Apple tech checklist, pitch template, In-App Events calendar |
+| [`in-app-events`](plugin/skills/in-app-events) | Plan and write App Store In-App Events — copy, image brief, keyword strategy, submission timeline |
+| [`app-clips`](plugin/skills/app-clips) | App Clip use cases, card design, URL scheme setup, SKOverlay handoff, and measurement |
+| [`press-and-pr`](plugin/skills/press-and-pr) | Media targeting tiers, pitch templates, press kit checklist, embargo strategy, Product Hunt launch |
 
 ### Revenue & Retention
 
 | Skill | What it does |
 |-------|-------------|
-| [`monetization-strategy`](skills/monetization-strategy) | Pricing tiers, paywall timing, trial structure, category benchmarks |
-| [`paywall-optimization`](skills/paywall-optimization) | Paywall conversion funnel diagnostic, 7-element audit, A/B test playbook (Superwall, RevenueCat, Adapty) |
-| [`subscription-lifecycle`](skills/subscription-lifecycle) | Trial nurture sequences, voluntary/involuntary churn reduction, dunning, and win-back campaigns |
-| [`retention-optimization`](skills/retention-optimization) | Activation → habit → engagement framework, push notification sequences, churn prevention |
-| [`onboarding-optimization`](skills/onboarding-optimization) | First-run flow audit, activation event definition, permission prompt timing, sign-up friction reduction |
-| [`rating-prompt-strategy`](skills/rating-prompt-strategy) | SKStoreReviewRequest / Play In-App Review timing, pre-prompt survey, version-gating, and rating recovery |
+| [`monetization-strategy`](plugin/skills/monetization-strategy) | Pricing tiers, paywall timing, trial structure, category benchmarks |
+| [`paywall-optimization`](plugin/skills/paywall-optimization) | Paywall conversion funnel diagnostic, 7-element audit, A/B test playbook (Superwall, RevenueCat, Adapty) |
+| [`subscription-lifecycle`](plugin/skills/subscription-lifecycle) | Trial nurture sequences, voluntary/involuntary churn reduction, dunning, and win-back campaigns |
+| [`retention-optimization`](plugin/skills/retention-optimization) | Activation → habit → engagement framework, push notification sequences, churn prevention |
+| [`onboarding-optimization`](plugin/skills/onboarding-optimization) | First-run flow audit, activation event definition, permission prompt timing, sign-up friction reduction |
+| [`rating-prompt-strategy`](plugin/skills/rating-prompt-strategy) | SKStoreReviewRequest / Play In-App Review timing, pre-prompt survey, version-gating, and rating recovery |
 
 ### Analytics & Testing
 
 | Skill | What it does |
 |-------|-------------|
-| [`app-analytics`](skills/app-analytics) | Event tracking plan, dashboard setup, KPI framework with category benchmarks |
-| [`attribution-setup`](skills/attribution-setup) | SKAdNetwork 4 / AdAttributionKit / MMP setup — conversion-value schema design, deep link debug playbook |
-| [`ab-test-store-listing`](skills/ab-test-store-listing) | Hypothesis → variant design → sample size → interpretation for App Store A/B tests |
-| [`asc-metrics`](skills/asc-metrics) | Analyze your exact App Store Connect data (downloads, revenue, subscriptions, countries) via Appeeky Connect |
-| [`crash-analytics`](skills/crash-analytics) | Crashlytics setup, crash triage framework (P0–P3), symbolication, phased release strategy, rating recovery |
+| [`app-analytics`](plugin/skills/app-analytics) | Event tracking plan, dashboard setup, KPI framework with category benchmarks |
+| [`attribution-setup`](plugin/skills/attribution-setup) | SKAdNetwork 4 / AdAttributionKit / MMP setup — conversion-value schema design, deep link debug playbook |
+| [`ab-test-store-listing`](plugin/skills/ab-test-store-listing) | Hypothesis → variant design → sample size → interpretation for App Store A/B tests |
+| [`asc-metrics`](plugin/skills/asc-metrics) | Analyze your exact App Store Connect data (downloads, revenue, subscriptions, countries) via Appeeky Connect |
+| [`crash-analytics`](plugin/skills/crash-analytics) | Crashlytics setup, crash triage framework (P0–P3), symbolication, phased release strategy, rating recovery |
 
 ### Market Intelligence
 
 | Skill | What it does |
 |-------|-------------|
-| [`market-movers`](skills/market-movers) | Identifies top chart gainers/losers, new entries, and dropped apps — explains what's driving changes |
-| [`market-pulse`](skills/market-pulse) | Full market briefing: chart movements + trending keywords + featured apps + new launches in one view |
-| [`competitor-tracking`](skills/competitor-tracking) | Weekly competitor surveillance — metadata changes, keyword shifts, rating trends, chart movement deltas |
+| [`market-movers`](plugin/skills/market-movers) | Identifies top chart gainers/losers, new entries, and dropped apps — explains what's driving changes |
+| [`market-pulse`](plugin/skills/market-pulse) | Full market briefing: chart movements + trending keywords + featured apps + new launches in one view |
+| [`competitor-tracking`](plugin/skills/competitor-tracking) | Weekly competitor surveillance — metadata changes, keyword shifts, rating trends, chart movement deltas |
 
 ### Strategy & Recovery
 
 | Skill | What it does |
 |-------|-------------|
-| [`category-positioning`](skills/category-positioning) | Pick / switch primary + secondary App Store / Play categories — competitive density, featuring odds, switch-cost analysis |
-| [`app-rejection-recovery`](skills/app-rejection-recovery) | Diagnose Apple / Google rejections by guideline, draft Resolution Center responses, decide fix vs appeal |
+| [`category-positioning`](plugin/skills/category-positioning) | Pick / switch primary + secondary App Store / Play categories — competitive density, featuring odds, switch-cost analysis |
+| [`app-rejection-recovery`](plugin/skills/app-rejection-recovery) | Diagnose Apple / Google rejections by guideline, draft Resolution Center responses, decide fix vs appeal |
 
 ### Foundation
 
 | Skill | What it does |
 |-------|-------------|
-| [`aso-router`](skills/aso-router) | **Single entry point** — reads any natural-language ASO request and routes to the right specialist skill. Use when you don't want to remember every skill name |
-| [`app-marketing-context`](skills/app-marketing-context) | Creates a context doc (app, audience, competitors, goals) that all other skills reference |
+| [`aso-router`](plugin/skills/aso-router) | **Single entry point** — reads any natural-language ASO request and routes to the right specialist skill. Use when you don't want to remember every skill name |
+| [`app-marketing-context`](plugin/skills/app-marketing-context) | Creates a context doc (app, audience, competitors, goals) that all other skills reference |
 
 ## How It Works
 
@@ -181,8 +181,8 @@ Skills reference each other — `aso-audit` might suggest running `keyword-resea
 | Method | Command |
 |--------|---------|
 | CLI | `npx skills add appeeky/aso-skills -a cursor` |
-| Project-level | `cp -r aso-skills/skills/* .cursor/skills/` |
-| Global | `cp -r aso-skills/skills/* ~/.cursor/skills/` |
+| Project-level | `cp -r aso-skills/plugin/skills/* .cursor/skills/` |
+| Global | `cp -r aso-skills/plugin/skills/* ~/.cursor/skills/` |
 
 ### Claude Code
 
@@ -200,7 +200,7 @@ Plugin skills are namespaced, e.g. `/aso-skills:aso-audit`.
 | Plugin | `/plugin marketplace add appeeky/aso-skills` then `/plugin install aso-skills@aso-skills` |
 | CLI | `npx skills add appeeky/aso-skills` |
 | Specific skills | `npx skills add appeeky/aso-skills --skill aso-audit keyword-research` |
-| Manual | `cp -r aso-skills/skills/* .claude/skills/` |
+| Manual | `cp -r aso-skills/plugin/skills/* .claude/skills/` |
 
 ### Any Agent
 
