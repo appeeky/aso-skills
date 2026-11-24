@@ -37,68 +37,75 @@ The skill will ask you for the following information:
 </ParamField>
 
 <ParamField path="platform" type="string" default="iOS">
-  Which platform to audit: `iOS`, `Android`, or `Both`. iOS and Android scoring differs — notably, the Keyword Field factor only applies to iOS, and Description carries more weight on Android (15% vs 5%).
+  Which platform to audit: `iOS`, `Android`, or `Both`. iOS and Android scoring differs — notably, the Keyword Field factor only applies to iOS, and Description carries more weight on Android (25% vs 5%).
 </ParamField>
 
 ## Scoring Framework
 
-The audit scores 10 factors and computes a weighted ASO Score from 0 to 100.
+The audit scores up to 10 factors and computes a weighted ASO Score from 0 to 100.
 
 <Accordion title="10 Scoring Factors and Weights">
 
-| Factor | Weight | What's Evaluated |
-|---|---|---|
-| **Title** | 20% | Primary keyword presence, character usage (30-char limit), brand/keyword balance, readability |
-| **Subtitle** | 15% | Secondary keywords not repeated from title, value proposition, character usage — iOS only |
-| **Keyword Field** | 15% | No repetition, no spaces after commas, singular forms, full 100-char usage — iOS only |
-| **Description** | 5% iOS / 15% Android | First-3-line hook, feature/benefit framing, keyword density (Android), formatting, CTA |
-| **Ratings & Reviews** | 10% | Overall rating, recency of reviews, sentiment trend, developer response rate |
-| **Screenshots** | 10% | All 10 slots used, first 3 slots highlight top features, keyword-rich captions, design consistency |
-| **App Preview Video** | 5% | Exists, hooks in first 3 seconds, 15–30 seconds long, works without sound |
-| **Category** | 5% | Optimal primary and secondary category selection for maximum visibility |
-| **Localization** | 5% | Metadata and keywords localized for target markets |
-| **Ratings Momentum** | 10% | Trend direction of ratings over time — improving, stable, or declining |
+| Factor | iOS | Android | What's Evaluated |
+|---|---|---|---|
+| **Title** | 20% | 20% | Primary keyword presence, character usage (30-char limit), brand/keyword balance, readability |
+| **Subtitle** | 10% | — | Secondary keywords not repeated from title, value proposition, character usage |
+| **Keyword Field** | 10% | — | No repetition, no spaces after commas, singular forms, full 100-char usage |
+| **Description** | 5% | 25% | First-3-line hook, feature/benefit framing, formatting, CTA; keyword usage on Android, where it is indexed |
+| **Screenshots** | 15% | 15% | Slots used, first 3 lead with top features, readable captions, design consistency |
+| **App Preview Video** | 5% | 5% | Exists, hooks in first 3 seconds, 15–30 seconds long, works without sound |
+| **Ratings & Reviews** | 15% | 15% | Average rating, rating count against competitors, complaint themes in recent reviews |
+| **Icon** | 5% | 5% | Distinctive, simple, fits the category, no text |
+| **Keyword Rankings** | 10% | 10% | Top-10 keywords, near misses at ranks 11–50, 7-day trend, competitor gap |
+| **Conversion Signals** | 5% | 5% | What's New, promotional text, In-App Events, Custom Product Pages |
+
+A factor the audit has no data for is marked **Not assessed** and left out of the score. Public store data does not include the subtitle, keyword field, promotional text, preview video, In-App Events or Custom Product Pages; paste them in to have them scored. The overall score is the weighted average of the assessed factors and states how much of the weight it covers.
 
 </Accordion>
 
 ## Output
 
-The skill returns a structured report with four sections.
+The skill opens with a two-sentence verdict and the three most important actions, then returns these sections.
 
 ### ASO Score Card
 
-A visual breakdown of your score across all 10 factors:
+A visual breakdown of your score across the factors the audit could assess, with one line of evidence under each:
 
 ```
-Overall ASO Score: 67/100
+Overall ASO Score: 74/100  (based on 6 of 10 factors, 70% of the weight)
+Appeeky automated score: 98/100
 
 Title:              8/10  ████████░░
-Subtitle:           6/10  ██████░░░░
-Keyword Field:      4/10  ████░░░░░░
-Description:        8/10  ████████░░
-Ratings & Reviews:  7/10  ███████░░░
-Screenshots:       10/10  ██████████
-Preview Video:      2/10  ██░░░░░░░░
-Category:           8/10  ████████░░
-Localization:       4/10  ████░░░░░░
-Ratings Momentum:   6/10  ██████░░░░
+Subtitle:           Not assessed (text not available)
+Keyword Field:      Not assessed (text not available)
+Description:        7/10  ███████░░░
+Screenshots:        7/10  ███████░░░
+Preview Video:      Not assessed
+Ratings & Reviews:  8/10  ████████░░
+Icon:               Not assessed (image not viewed)
+Keyword Rankings:   7/10  ███████░░░
+Conversion Signals: 5/10  █████░░░░░
 ```
 
 ### Quick Wins — Implement Today
 
-Three to five changes you can make immediately without a new app submission — for example, updating your Promotional Text, Keyword Field, or responding to recent negative reviews.
+Up to three changes you can make immediately without a new app submission — for example, updating your Promotional Text, Keyword Field, or responding to recent negative reviews.
 
 ### High-Impact Changes — This Week
 
-Three to five higher-effort changes with significant ranking or conversion impact — such as rewriting your title and subtitle with better keyword targeting.
+Up to three higher-effort changes with significant ranking or conversion impact — such as rewriting your title and subtitle with better keyword targeting.
 
 ### Strategic Recommendations — This Month
 
-Three to five longer-term improvements — such as building a screenshot set, launching an App Preview video, or running a rating-recovery campaign.
+Up to three longer-term improvements — such as building a screenshot set, launching an App Preview video, or running a rating-recovery campaign.
 
 ### Competitor Comparison Table
 
-A side-by-side snapshot of your app versus the top 3 competitors on key metrics including title keywords, screenshot count, rating, and estimated downloads.
+A side-by-side snapshot of your app versus the top 3 competitors on the metrics the audit pulled, such as rating and rating count.
+
+### Not Assessed
+
+What the audit could not see, and where to check it in App Store Connect or Play Console.
 
 ## Example Prompts
 
