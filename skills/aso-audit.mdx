@@ -1,10 +1,10 @@
 ---
 title: "ASO Audit: Score & Fix Your App Store Listing Fast"
 sidebarTitle: "ASO Audit"
-description: "Score your App Store listing across 10 weighted factors, surface problems hurting your ranking, and get a prioritized fix list — in one command."
+description: "Score your App Store listing across up to 10 weighted factors, surface problems hurting your ranking, and get a prioritized fix list — in one command."
 ---
 
-The ASO Audit skill gives you a clear, numbered score (0–100) for your App Store or Google Play listing, breaks that score into 10 weighted factors, and hands you a three-tier action plan: quick wins you can ship today, high-impact changes for this week, and strategic moves for this month. Instead of guessing why your app isn't ranking, you get a data-backed diagnosis with specific steps to fix it.
+The ASO Audit skill gives you a clear, numbered score (0–100) for your App Store or Google Play listing, breaks that score into up to 10 weighted factors, and hands you a three-tier action plan: quick wins you can ship today, high-impact changes for this week, and strategic moves for this month. Instead of guessing why your app isn't ranking, you get a data-backed diagnosis with specific steps to fix it.
 
 ## What you need before you start
 
@@ -40,7 +40,11 @@ Or describe your goal naturally — the skill activates whenever you ask about a
 
 ## The 10 audit factors
 
-Every factor is scored 0–10 and rolled into an overall weighted ASO Score. The weights reflect how strongly each factor influences search ranking and conversion in the App Store algorithm.
+Every factor the audit has data for is scored 0–10 and rolled into an overall weighted ASO Score. The weights add up to 100% and reflect how strongly each factor influences search ranking and conversion.
+
+<Note>
+  The audit only scores what it can see. Public store data does not include your subtitle, keyword field, promotional text, preview video, In-App Events or Custom Product Pages, so those factors are marked **Not assessed** and left out of the score unless you paste them in. The score always says how much of the weight it covers.
+</Note>
 
 <AccordionGroup>
   <Accordion title="1. Title — 20% weight">
@@ -54,15 +58,15 @@ Every factor is scored 0–10 and rolled into an overall weighted ASO Score. The
     | 0–3 | Generic, no keywords, or truncated in search results |
   </Accordion>
 
-  <Accordion title="2. Subtitle — 15% weight (iOS)">
+  <Accordion title="2. Subtitle — 10% weight (iOS)">
     Your subtitle is the second-highest-weighted field Apple indexes. The audit checks that it contains secondary keywords absent from your title (no duplication wastes indexing budget), communicates a clear user benefit, and uses the full 30 characters.
   </Accordion>
 
-  <Accordion title="3. Keyword Field — 15% weight (iOS)">
+  <Accordion title="3. Keyword Field — 10% weight (iOS)">
     Hidden from users but fully indexed by Apple. The skill checks for the most common mistakes: repeated words from your title or subtitle, spaces after commas (each character counts), plural forms (Apple indexes both — use singular to save space), unused characters out of 100, irrelevant keywords, and wasteful terms like "app", "free", or your category name.
   </Accordion>
 
-  <Accordion title="4. Description — 5% iOS / 15% Android">
+  <Accordion title="4. Description — 5% iOS / 25% Android">
     On iOS, the description doesn't affect search ranking — it's a pure conversion tool. On Android, Google indexes the full text, so keyword density matters. The audit evaluates your first three lines (visible before "more"), benefit-led writing vs feature-led, formatting with line breaks and bullets, your closing call to action, and any social proof you include.
   </Accordion>
 
@@ -93,34 +97,35 @@ Every factor is scored 0–10 and rolled into an overall weighted ASO Score. The
 
 ## What the output looks like
 
-After the skill runs, you receive four sections:
+After the skill runs, you receive a two-sentence verdict with the three most important actions, followed by these sections:
 
 <Steps>
   <Step title="ASO Score Card">
-    A visual breakdown of your score across all 10 factors, showing both the numeric score and a bar chart so you can instantly see where you're weakest.
+    A visual breakdown of your score across the factors the audit could assess, with one line of evidence under each, so you can instantly see where you're weakest.
 
     ```text
-    Overall ASO Score: 61/100
+    Overall ASO Score: 74/100  (based on 6 of 10 factors, 70% of the weight)
+    Appeeky automated score: 98/100
 
     Title:              8/10  ████████░░
-    Subtitle:           6/10  ██████░░░░
-    Keyword Field:      4/10  ████░░░░░░
-    Description:        8/10  ████████░░
-    Screenshots:       10/10  ██████████
-    Preview Video:      2/10  ██░░░░░░░░
+    Subtitle:           Not assessed (text not available)
+    Keyword Field:      Not assessed (text not available)
+    Description:        7/10  ███████░░░
+    Screenshots:        7/10  ███████░░░
+    Preview Video:      Not assessed
     Ratings & Reviews:  8/10  ████████░░
-    Icon:               8/10  ████████░░
-    Keyword Rankings:   6/10  ██████░░░░
-    Conversion Signals: 4/10  ████░░░░░░
+    Icon:               Not assessed (image not viewed)
+    Keyword Rankings:   7/10  ███████░░░
+    Conversion Signals: 5/10  █████░░░░░
     ```
   </Step>
 
   <Step title="Quick Wins">
-    Three to five changes you can make today — typically keyword field fixes, subtitle tweaks, or promotional text updates that require no design work and no App Review submission.
+    Up to three changes you can make today — typically keyword field fixes, subtitle tweaks, or promotional text updates that require no design work and no App Review submission.
   </Step>
 
   <Step title="High-Impact Changes">
-    Three to five improvements that take more effort — new screenshots, a revised title, or a revamped description — but move the needle significantly on your score and ranking.
+    Up to three improvements that take more effort — new screenshots, a revised title, or a revamped description — but move the needle significantly on your score and ranking.
   </Step>
 
   <Step title="Strategic Recommendations">
@@ -137,17 +142,26 @@ After the skill runs, you receive four sections:
 The skill pulls live data from the Appeeky MCP Server using these tools:
 
 <CardGroup cols={2}>
-  <Card title="aso_full_audit" icon="magnifying-glass-chart">
-    Runs the full 10-factor audit and returns weighted scores with specific findings for each factor.
-  </Card>
   <Card title="get_app" icon="mobile">
-    Fetches your current metadata — title, subtitle, description, screenshots, icon, and ratings — from the live store listing.
+    Fetches the live listing: title, description, release notes, update date, rating, languages and screenshot URLs.
   </Card>
   <Card title="get_app_keywords" icon="key">
-    Pulls your current keyword rankings so the audit can score your keyword coverage and spot gaps.
+    Pulls tracked keyword ranks with volume, difficulty and 7-day change, including ranks 21–50.
   </Card>
-  <Card title="get_keyword_metrics" icon="chart-bar">
-    Returns search volume and difficulty scores for your target keywords, used to weight the keyword coverage findings in your score.
+  <Card title="get_app_reviews" icon="comments">
+    Returns the most recent reviews so the audit can group complaints into themes.
+  </Card>
+  <Card title="get_app_screenshots" icon="images">
+    Lists screenshots per device, so the audit can check how many slots are used.
+  </Card>
+  <Card title="get_app_similar" icon="users">
+    Finds competitors with their ratings for the comparison table.
+  </Card>
+  <Card title="get_keyword_gap" icon="chart-bar">
+    Finds keywords competitors rank for that you don't. The audit cross-checks it against your own ranks.
+  </Card>
+  <Card title="aso_full_audit" icon="magnifying-glass-chart">
+    Appeeky's automated score, reported next to the audit's own as a second opinion.
   </Card>
 </CardGroup>
 

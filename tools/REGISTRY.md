@@ -56,7 +56,7 @@ Which skills use which Appeeky tools:
 
 | Skill | Primary Tools Used |
 |-------|-------------------|
-| `aso-audit` | `aso_full_audit`, `get_app`, `get_app_keywords`, `get_keyword_metrics` |
+| `aso-audit` | `get_app`, `get_app_keywords`, `get_app_reviews`, `get_app_screenshots`, `get_app_similar`, `get_keyword_gap`, `aso_full_audit` |
 | `keyword-research` | `get_keyword_suggestions`, `get_keyword_metrics`, `get_keyword_ranks`, `get_app_keywords` |
 | `metadata-optimization` | `aso_validate_metadata`, `aso_suggest_metadata`, `get_app` |
 | `competitor-analysis` | `aso_competitor_report`, `compare_keywords`, `get_app_intelligence` |
